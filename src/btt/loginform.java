@@ -6,7 +6,11 @@
 package btt;
 
 import Admin.admin_dashboard;
+import config.dbconnector;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import register.registrationform;
 
 /**
  *
@@ -20,7 +24,18 @@ public class loginform extends javax.swing.JFrame {
     public loginform() {
         initComponents();
     }
+    
+public static boolean loginAcc(String username, String password){
+        dbconnector connector = new dbconnector();
+        try{
+            String query = "SELECT * FROM tbl_u  WHERE u_uname = '" + username + "' AND u_pass = '" + password + "'";
+            ResultSet resultSet = connector.getData(query);
+            return resultSet.next();
+        }catch (SQLException ex) {
+            return false;
+        }
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,12 +47,13 @@ public class loginform extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        password = new javax.swing.JTextField();
+        u_pass = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
+        u_uname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,13 +76,13 @@ public class loginform extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 440, 420);
 
-        password.addActionListener(new java.awt.event.ActionListener() {
+        u_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+                u_passActionPerformed(evt);
             }
         });
-        jPanel1.add(password);
-        password.setBounds(560, 270, 200, 30);
+        jPanel1.add(u_pass);
+        u_pass.setBounds(560, 270, 200, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel3.setText("Password:");
@@ -78,13 +94,13 @@ public class loginform extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(560, 190, 80, 10);
 
-        username.addActionListener(new java.awt.event.ActionListener() {
+        u_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
+                u_unameActionPerformed(evt);
             }
         });
-        jPanel1.add(username);
-        username.setBounds(560, 210, 200, 30);
+        jPanel1.add(u_uname);
+        u_uname.setBounds(560, 210, 200, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel2.setText("Welcome to BTT");
@@ -100,7 +116,16 @@ public class loginform extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(620, 320, 80, 30);
+        jButton1.setBounds(580, 320, 80, 30);
+
+        jButton2.setText("SignUp");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(680, 320, 65, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,28 +142,34 @@ public class loginform extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+    private void u_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_passActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_u_passActionPerformed
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+    private void u_unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_unameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
+    }//GEN-LAST:event_u_unameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String acc = "Admin";
-        String user = "David";
-        String pass = "2123";
-        
-        if(user.equals(username.getText()) && pass.equals(password.getText())){
+
+        if(loginAcc(u_uname.getText(),u_pass.getText())){
+            
+            JOptionPane.showMessageDialog(null,"Log in Success!");
             admin_dashboard ads = new admin_dashboard();
-            JOptionPane.showMessageDialog(null,"Login Success!");
             ads.setVisible(true);
             this.dispose();
-            
+        }else{
+            JOptionPane.showMessageDialog(null,"User not found!");
         }
-        
+       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        registrationform registrationform = new registrationform();
+        registrationform.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,12 +208,13 @@ public class loginform extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField password;
-    private javax.swing.JTextField username;
+    private javax.swing.JTextField u_pass;
+    private javax.swing.JTextField u_uname;
     // End of variables declaration//GEN-END:variables
 }
