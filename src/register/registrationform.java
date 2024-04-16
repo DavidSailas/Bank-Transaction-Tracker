@@ -12,6 +12,7 @@ public class registrationform extends javax.swing.JFrame {
     public registrationform() {
         initComponents();
     }
+    
     public static String email, username;
     
     public boolean dupCheck(){
@@ -31,7 +32,7 @@ public class registrationform extends javax.swing.JFrame {
                     u_email.setText("");
                 }
                 
-                username = resultSet.getString("u_usn");
+                username = resultSet.getString("u_uname");
                 if(username.equals(u_uname.getText())){
                     JOptionPane.showMessageDialog(null,"Username is Already Used!");
                     u_uname.setText("");
@@ -339,6 +340,26 @@ public class registrationform extends javax.swing.JFrame {
     }//GEN-LAST:event_u_passActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+      
+        
+        if(u_lname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
+                || u_uname.getText().isEmpty() || u_pass.getText().isEmpty())
+        {
+            
+            JOptionPane.showMessageDialog(null,"All fields are required!");
+            
+        }else if(u_pass.getText().length() < 8){
+            
+            JOptionPane.showMessageDialog(null,"Password should be 8 above!");
+            u_pass.setText("");
+            
+        }else if(dupCheck()){
+            
+            System.out.println("Duplicate Exist!");
+            
+        }
+        else{
         
                dbconnector connector = new dbconnector();
 
@@ -353,7 +374,7 @@ public class registrationform extends javax.swing.JFrame {
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         
-               loginform ads = new loginform();
+        loginform ads = new loginform();
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel13MouseClicked
