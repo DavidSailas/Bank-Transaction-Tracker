@@ -59,7 +59,6 @@ public class registrationform extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         u_fname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -90,32 +89,21 @@ public class registrationform extends javax.swing.JFrame {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logo-256.png"))); // NOI18N
 
-        jLabel15.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(72, 149, 239));
-        jLabel15.setText("ROMANOTECH");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(137, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(107, 107, 107))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(178, 178, 178))))
+                .addComponent(jLabel14)
+                .addGap(107, 107, 107))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(112, Short.MAX_VALUE)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addGap(102, 102, 102))
+                .addGap(133, 133, 133))
         );
 
         jLabel1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 48)); // NOI18N
@@ -343,7 +331,7 @@ public class registrationform extends javax.swing.JFrame {
 
       
         
-        if(u_lname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
+        if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
                 || u_uname.getText().isEmpty() || u_pass.getText().isEmpty())
         {
             
@@ -370,6 +358,7 @@ public class registrationform extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Connection Error:");
         }
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -422,7 +411,6 @@ public class registrationform extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

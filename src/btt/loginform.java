@@ -1,6 +1,7 @@
 package btt;
 
 import Admin.admin_dashboard;
+import User.user_dashboard;
 import config.dbconnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,17 +15,34 @@ public class loginform extends javax.swing.JFrame {
         initComponents();
     }
 
+    static String status;
+    static String type;
+    static String fname;
+    static String lname;
+    
     public static boolean loginAcc(String username, String password){
         dbconnector connector = new dbconnector();
         try{
             String query = "SELECT * FROM tbl_u  WHERE u_uname = '" + username + "' AND u_pass = '" + password + "'";
             ResultSet resultSet = connector.getData(query);
-            return resultSet.next();
+             if(resultSet.next()){
+                
+                status = resultSet.getString("u_status");
+                type = resultSet.getString("u_type");
+                fname = resultSet.getString("u_fname");
+                lname = resultSet.getString("u_lname");
+                 
+                return true;
+            }else{
+                return false;
+            }
+            
         }catch (SQLException ex) {
             return false;
         }
 
     }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -33,7 +51,6 @@ public class loginform extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         u_uname = new javax.swing.JTextField();
@@ -58,10 +75,6 @@ public class loginform extends javax.swing.JFrame {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logo-256.png"))); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(72, 149, 239));
-        jLabel11.setText("ROMANOTECH");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -70,19 +83,13 @@ public class loginform extends javax.swing.JFrame {
                 .addContainerGap(124, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(120, 120, 120))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 48)); // NOI18N
@@ -232,13 +239,31 @@ public class loginform extends javax.swing.JFrame {
         
          if(loginAcc(u_uname.getText(),u_pass.getText())){
             
-            JOptionPane.showMessageDialog(null,"Log in Success!");
-            admin_dashboard ads = new admin_dashboard();
-            ads.setVisible(true);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(null,"User not found!");
-        }
+             if(!status.equals("Active")){            
+                      loginform ads = new loginform();
+                      ads.setVisible(true);
+                      this.dispose();
+         }          
+            else{         
+                if(type.equals("Admin")){                 
+                      JOptionPane.showMessageDialog(null, "Log in successfully.");
+                      admin_dashboard ads = new admin_dashboard();
+                      ads.adminName.setText(" "+""+fname);
+                      ads.setVisible(true);
+                      this.dispose();                    
+                }else if(type.equals("User")){                  
+                       JOptionPane.showMessageDialog(null, "Log in successfully.");
+                       user_dashboard uds = new  user_dashboard();
+                       uds.userName.setText(" "+""+fname);
+                       uds.setVisible(true);
+                       this.dispose();                     
+                 }else{
+                        JOptionPane.showMessageDialog(null, "Account does not exist.");
+                    }     
+               }            
+        }else{          
+            JOptionPane.showMessageDialog(null, "User does not exist!");
+        }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -285,7 +310,6 @@ public class loginform extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
