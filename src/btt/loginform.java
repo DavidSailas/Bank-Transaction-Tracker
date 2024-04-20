@@ -3,6 +3,7 @@ package btt;
 import Admin.admin_dashboard;
 import User.user_dashboard;
 import config.dbconnector;
+import config.session;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -31,7 +32,15 @@ public class loginform extends javax.swing.JFrame {
                 type = resultSet.getString("u_type");
                 fname = resultSet.getString("u_fname");
                 lname = resultSet.getString("u_lname");
-                 
+                session sess = session.getInstance();
+                sess.setUid(resultSet.getInt("u_id")); 
+                sess.setFname(resultSet.getString("u_fname"));
+                sess.setLname(resultSet.getString("u_lname"));
+                sess.setEmail(resultSet.getString("u_email"));
+                sess.setUsername(resultSet.getString("u_uname"));
+                sess.setType(resultSet.getString("u_type"));
+                sess.setStatus(resultSet.getString("u_status"));
+                
                 return true;
             }else{
                 return false;
@@ -233,13 +242,15 @@ public class loginform extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
          if(loginAcc(u_uname.getText(),u_pass.getText())){
             
-             if(!status.equals("Active")){            
+             if(!status.equals("Active")){ 
+                      JOptionPane.showMessageDialog(null, "In-Active Account, Contact the Admin!");
                       loginform ads = new loginform();
                       ads.setVisible(true);
                       this.dispose();
@@ -248,15 +259,15 @@ public class loginform extends javax.swing.JFrame {
                 if(type.equals("Admin")){                 
                       JOptionPane.showMessageDialog(null, "Log in successfully.");
                       admin_dashboard ads = new admin_dashboard();
-                      ads.adminName.setText(" "+""+fname);
+                      ads.adminName1.setText(""+""+fname);
                       ads.setVisible(true);
                       this.dispose();                    
                 }else if(type.equals("User")){                  
-                       JOptionPane.showMessageDialog(null, "Log in successfully.");
-                       user_dashboard uds = new  user_dashboard();
-                       uds.userName.setText(" "+""+fname);
-                       uds.setVisible(true);
-                       this.dispose();                     
+                      JOptionPane.showMessageDialog(null, "Log in successfully.");
+                      user_dashboard uds = new  user_dashboard();
+                      uds.userName.setText(""+""+fname);
+                      uds.setVisible(true);
+                      this.dispose();                     
                  }else{
                         JOptionPane.showMessageDialog(null, "Account does not exist.");
                     }     
