@@ -18,8 +18,7 @@ public class loginform extends javax.swing.JFrame {
 
     static String status;
     static String type;
-    static String fname;
-    static String lname;
+
     
     public static boolean loginAcc(String username, String password){
         dbconnector connector = new dbconnector();
@@ -30,8 +29,7 @@ public class loginform extends javax.swing.JFrame {
                 
                 status = resultSet.getString("u_status");
                 type = resultSet.getString("u_type");
-                fname = resultSet.getString("u_fname");
-                lname = resultSet.getString("u_lname");
+
                 session sess = session.getInstance();
                 sess.setUid(resultSet.getInt("u_id")); 
                 sess.setFname(resultSet.getString("u_fname"));
@@ -258,14 +256,12 @@ public class loginform extends javax.swing.JFrame {
             else{         
                 if(type.equals("Admin")){                 
                       JOptionPane.showMessageDialog(null, "Log in successfully.");
-                      admin_dashboard ads = new admin_dashboard();
-                      ads.adminName1.setText(""+""+fname);
+                      admin_dashboard ads = new admin_dashboard();                     
                       ads.setVisible(true);
                       this.dispose();                    
                 }else if(type.equals("User")){                  
                       JOptionPane.showMessageDialog(null, "Log in successfully.");
                       user_dashboard uds = new  user_dashboard();
-                      uds.userName.setText(""+""+fname);
                       uds.setVisible(true);
                       this.dispose();                     
                  }else{

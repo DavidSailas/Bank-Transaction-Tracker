@@ -1,3 +1,4 @@
+
 package Admin;
 
 import btt.loginform;
@@ -6,25 +7,25 @@ import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 
+public class user extends javax.swing.JFrame {
 
-
-public class transaction extends javax.swing.JFrame {
-
-    
-    public transaction() {
+   
+    public user() {
         initComponents();
-        displayData();
+        displayData();       
     }
+
     Color navcolor =  new Color(255,255,255);
     Color hovercolor =  new Color(102,204,255);
-            
-        public void displayData(){
+    
+      public void displayData(){
         try{
             dbconnector connector = new dbconnector();
-            ResultSet rs = connector.getData("SELECT u_id, u_fname, u_lname,u_email FROM tbl_u");
+            ResultSet rs = connector.getData("SELECT u_id, u_fname, u_lname,u_email,u_status FROM tbl_u");
             userTbl.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
@@ -34,6 +35,7 @@ public class transaction extends javax.swing.JFrame {
        
     
     }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -46,6 +48,8 @@ public class transaction extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         adminName1 = new javax.swing.JLabel();
         adminName = new javax.swing.JLabel();
+        add1 = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         p_add = new javax.swing.JPanel();
@@ -64,6 +68,7 @@ public class transaction extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
@@ -73,12 +78,28 @@ public class transaction extends javax.swing.JFrame {
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.white, java.awt.Color.black, java.awt.Color.lightGray));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel9.setText("TRANSACTION");
+        jLabel9.setText("USERS");
 
         adminName1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
         adminName1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-34.png"))); // NOI18N
 
         adminName.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
+
+        add1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        add1.setText("ADD");
+        add1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add1ActionPerformed(evt);
+            }
+        });
+
+        edit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        edit.setText("EDIT");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -87,7 +108,11 @@ public class transaction extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
+                .addGap(58, 58, 58)
+                .addComponent(add1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(edit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
                 .addComponent(adminName1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(adminName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,10 +123,14 @@ public class transaction extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(adminName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(adminName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(adminName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(add1)
+                            .addComponent(edit))
+                        .addComponent(jLabel9)))
                 .addContainerGap())
         );
 
@@ -145,10 +174,10 @@ public class transaction extends javax.swing.JFrame {
         p_add1.setLayout(null);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-transaction-34.png"))); // NOI18N
-        jLabel12.setText("TRANSACTION");
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/users-34.png"))); // NOI18N
+        jLabel12.setText("USERS");
         p_add1.add(jLabel12);
-        jLabel12.setBounds(20, 0, 115, 34);
+        jLabel12.setBounds(20, 0, 80, 34);
 
         p_add2.setBackground(new java.awt.Color(102, 204, 255));
         p_add2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,9 +195,8 @@ public class transaction extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-admin-settings-male-34.png"))); // NOI18N
-        jLabel13.setText("ADMINISTRATION");
         p_add2.add(jLabel13);
-        jLabel13.setBounds(20, 0, 135, 34);
+        jLabel13.setBounds(20, 0, 34, 34);
 
         p_add3.setBackground(new java.awt.Color(102, 204, 255));
         p_add3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,9 +214,8 @@ public class transaction extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-tracking-34.png"))); // NOI18N
-        jLabel15.setText("TRACKER");
         p_add3.add(jLabel15);
-        jLabel15.setBounds(20, 0, 87, 34);
+        jLabel15.setBounds(20, 0, 34, 34);
 
         p_add4.setBackground(new java.awt.Color(102, 204, 255));
         p_add4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,9 +233,8 @@ public class transaction extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-messages-34.png"))); // NOI18N
-        jLabel14.setText("MESSAGE");
         p_add4.add(jLabel14);
-        jLabel14.setBounds(20, 0, 86, 34);
+        jLabel14.setBounds(20, 0, 34, 34);
 
         p_add5.setBackground(new java.awt.Color(102, 204, 255));
         p_add5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -226,9 +252,8 @@ public class transaction extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-security-34.png"))); // NOI18N
-        jLabel16.setText("SECURITY");
         p_add5.add(jLabel16);
-        jLabel16.setBounds(20, 0, 90, 34);
+        jLabel16.setBounds(20, 0, 34, 34);
 
         p_add6.setBackground(new java.awt.Color(102, 204, 255));
         p_add6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -257,10 +282,6 @@ public class transaction extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel11)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(p_add1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -268,12 +289,17 @@ public class transaction extends javax.swing.JFrame {
                             .addComponent(p_add2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(p_add3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(p_add4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(p_add5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(p_add5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel11))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(p_add6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 38, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(p_add6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +329,7 @@ public class transaction extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
@@ -311,25 +337,16 @@ public class transaction extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 1000, 450);
 
         pack();
         setLocationRelativeTo(null);
@@ -350,8 +367,8 @@ public class transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_p_addMouseExited
 
     private void p_add1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseClicked
-        transaction ads = new transaction();
-        ads.setVisible(true);
+        user u = new user();
+        u.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_p_add1MouseClicked
 
@@ -364,9 +381,7 @@ public class transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add1MouseExited
 
     private void p_add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseClicked
-        administration ads = new administration();
-        ads.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_p_add2MouseClicked
 
     private void p_add2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseEntered
@@ -378,9 +393,7 @@ public class transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add2MouseExited
 
     private void p_add3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add3MouseClicked
-        tracker ads = new tracker();
-        ads.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_p_add3MouseClicked
 
     private void p_add3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add3MouseEntered
@@ -392,9 +405,7 @@ public class transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add3MouseExited
 
     private void p_add4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add4MouseClicked
-        message ads = new message();
-        ads.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_p_add4MouseClicked
 
     private void p_add4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add4MouseEntered
@@ -406,9 +417,7 @@ public class transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add4MouseExited
 
     private void p_add5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add5MouseClicked
-        security ads = new security();
-        ads.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_p_add5MouseClicked
 
     private void p_add5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add5MouseEntered
@@ -420,19 +429,56 @@ public class transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add5MouseExited
 
     private void p_add6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseClicked
-        p_add6.setBackground(navcolor);
-    }//GEN-LAST:event_p_add6MouseClicked
-
-    private void p_add6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseEntered
-        p_add6.setBackground(hovercolor);
-    }//GEN-LAST:event_p_add6MouseEntered
-
-    private void p_add6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseExited
         loginform ads = new loginform();
         JOptionPane.showMessageDialog(null,"Logout Success!");
         ads.setVisible(true);
         this.dispose();
+    }//GEN-LAST:event_p_add6MouseClicked
+
+    private void p_add6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseEntered
+        p_add6.setBackground(navcolor);
+    }//GEN-LAST:event_p_add6MouseEntered
+
+    private void p_add6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseExited
+        p_add6.setBackground(hovercolor);
     }//GEN-LAST:event_p_add6MouseExited
+
+    private void add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add1ActionPerformed
+        userAEU ur = new userAEU();
+        ur.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_add1ActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        int rowIndex = userTbl.getSelectedRow();
+        
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select an Item!");
+        }else{
+            try{
+            dbconnector connector = new dbconnector();
+            TableModel tbl = userTbl.getModel();
+            ResultSet resultSet = connector.getData("SELECT * FROM tbl_u WHERE u_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+            if(resultSet.next()){
+            userAEU ur = new userAEU();
+            ur.u_id.setText(""+resultSet.getInt("u_id"));
+            ur.u_fname.setText(""+resultSet.getString("u_fname"));
+            ur.u_lname.setText(""+resultSet.getString("u_lname"));
+            ur.u_email.setText(""+resultSet.getString("u_email"));
+            ur.u_uname.setText(""+resultSet.getString("u_uname"));
+            ur.u_pass.setText(""+resultSet.getString("u_pass"));
+            ur.u_type.setSelectedItem(""+resultSet.getString("u_type"));
+            ur.u_status.setSelectedItem(""+resultSet.getString("u_status"));
+            ur.add.setEnabled(false);
+            ur.update.setEnabled(true);
+            ur.setVisible(true);
+            this.dispose();
+            } 
+        }catch(SQLException ex){
+                System.out.println(""+ex);
+        }
+    } 
+    }//GEN-LAST:event_editActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,27 +497,29 @@ public class transaction extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new transaction().setVisible(true);
+                new user().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add1;
     public javax.swing.JLabel adminName;
     public javax.swing.JLabel adminName1;
+    private javax.swing.JButton edit;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -40,8 +40,10 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        adminName1 = new javax.swing.JLabel();
+        menu = new javax.swing.JLabel();
         adminName = new javax.swing.JLabel();
+        adminName1 = new javax.swing.JLabel();
+        user = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -92,10 +94,10 @@ public class admin_dashboard extends javax.swing.JFrame {
         p_add1.setLayout(null);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-transaction-34.png"))); // NOI18N
-        jLabel12.setText("TRANSACTION");
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/users-34.png"))); // NOI18N
+        jLabel12.setText("USERS");
         p_add1.add(jLabel12);
-        jLabel12.setBounds(20, 0, 115, 34);
+        jLabel12.setBounds(20, 0, 70, 34);
 
         p_add2.setBackground(new java.awt.Color(102, 204, 255));
         p_add2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,9 +115,8 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-admin-settings-male-34.png"))); // NOI18N
-        jLabel13.setText("ADMINISTRATION");
         p_add2.add(jLabel13);
-        jLabel13.setBounds(20, 0, 135, 34);
+        jLabel13.setBounds(20, 0, 34, 34);
 
         p_add3.setBackground(new java.awt.Color(102, 204, 255));
         p_add3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,9 +134,8 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-tracking-34.png"))); // NOI18N
-        jLabel15.setText("TRACKER");
         p_add3.add(jLabel15);
-        jLabel15.setBounds(20, 0, 87, 34);
+        jLabel15.setBounds(20, 0, 34, 34);
 
         p_add4.setBackground(new java.awt.Color(102, 204, 255));
         p_add4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,9 +153,8 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-messages-34.png"))); // NOI18N
-        jLabel14.setText("MESSAGE");
         p_add4.add(jLabel14);
-        jLabel14.setBounds(20, 0, 86, 34);
+        jLabel14.setBounds(20, 0, 34, 34);
 
         p_add5.setBackground(new java.awt.Color(102, 204, 255));
         p_add5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -173,9 +172,8 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-security-34.png"))); // NOI18N
-        jLabel16.setText("SECURITY");
         p_add5.add(jLabel16);
-        jLabel16.setBounds(20, 0, 90, 34);
+        jLabel16.setBounds(20, 0, 34, 34);
 
         p_add6.setBackground(new java.awt.Color(102, 204, 255));
         p_add6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -246,46 +244,29 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.white, java.awt.Color.black, java.awt.Color.lightGray));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("ADMIN");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 3, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel9.setText("DASHBOARD");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 30, -1, -1));
 
-        adminName1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
-        adminName1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-34.png"))); // NOI18N
+        menu.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
+        menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/mune-34.png"))); // NOI18N
+        jPanel3.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, -1));
 
         adminName.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
+        jPanel3.add(adminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 150, 30));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
-                .addComponent(adminName1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(adminName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(adminName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(adminName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        adminName1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 18)); // NOI18N
+        jPanel3.add(adminName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 150, 30));
+
+        user.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
+        user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-34.png"))); // NOI18N
+        jPanel3.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 30, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -331,7 +312,7 @@ public class admin_dashboard extends javax.swing.JFrame {
             ads.setVisible(true);
             this.dispose();
         }else{
-            adminName.setText(",  "+sess.getFname());
+            adminName.setText(""+sess.getFname());
             adminName1.setText(""+sess.getLname());
         
         } 
@@ -346,9 +327,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add5MouseEntered
 
     private void p_add5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add5MouseClicked
-        security ads = new security();
-        ads.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_p_add5MouseClicked
 
     private void p_add4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add4MouseExited
@@ -360,9 +339,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add4MouseEntered
 
     private void p_add4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add4MouseClicked
-        message ads = new message();
-        ads.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_p_add4MouseClicked
 
     private void p_add3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add3MouseExited
@@ -374,9 +351,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add3MouseEntered
 
     private void p_add3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add3MouseClicked
-        tracker ads = new tracker();
-        ads.setVisible(true);
-        this.dispose();
+ 
     }//GEN-LAST:event_p_add3MouseClicked
 
     private void p_add2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseExited
@@ -388,9 +363,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add2MouseEntered
 
     private void p_add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseClicked
-        administration ads = new administration();
-        ads.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_p_add2MouseClicked
 
     private void p_add1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseExited
@@ -402,8 +375,8 @@ public class admin_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add1MouseEntered
 
     private void p_add1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseClicked
-        transaction ads = new transaction();
-        ads.setVisible(true);
+        user u = new user();
+        u.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_p_add1MouseClicked
 
@@ -423,18 +396,18 @@ public class admin_dashboard extends javax.swing.JFrame {
 
     private void p_add6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseClicked
        
-           loginform ads = new loginform();
+        loginform ads = new loginform();
         JOptionPane.showMessageDialog(null,"Logout Success!");
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_p_add6MouseClicked
 
     private void p_add6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseEntered
-        p_add6.setBackground(hovercolor);
+        p_add6.setBackground(navcolor);
     }//GEN-LAST:event_p_add6MouseEntered
 
     private void p_add6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseExited
-        p_add6.setBackground(navcolor);
+        p_add6.setBackground(hovercolor);
     }//GEN-LAST:event_p_add6MouseExited
 
     
@@ -486,6 +459,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    public javax.swing.JLabel menu;
     private javax.swing.JPanel p_add;
     private javax.swing.JPanel p_add1;
     private javax.swing.JPanel p_add2;
@@ -493,5 +467,6 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel p_add4;
     private javax.swing.JPanel p_add5;
     private javax.swing.JPanel p_add6;
+    public javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }
