@@ -2,6 +2,7 @@ package btt;
 
 import Admin.admin_dashboard;
 import User.user_dashboard;
+import config.PasswordHasher;
 import config.dbconnector;
 import config.session;
 import java.sql.ResultSet;
@@ -245,6 +246,40 @@ public class loginform extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+        PasswordHasher pH = new PasswordHasher();
+        
+        String password = pH.hashPassword(u_pass.getText());
+        
+         if(loginAcc(u_uname.getText(),password))
+         {            
+             if(!status.equals("Active")){            
+                 JOptionPane.showMessageDialog(null, "Account is not Active!.");
+         }          
+            else{         
+                if(type.equals("Admin")){                 
+                      JOptionPane.showMessageDialog(null, "Log in successfully.");
+                      admin_dashboard ads = new admin_dashboard();
+                      
+                      ads.setVisible(true);
+                      this.dispose();                    
+                }else if(type.equals("User")){                  
+                       JOptionPane.showMessageDialog(null, "Log in successfully.");
+                       user_dashboard uds = new  user_dashboard();
+                       
+                       uds.setVisible(true);
+                       this.dispose();                     
+                 }else{
+                        JOptionPane.showMessageDialog(null, "Account does not exist! ","Notice", JOptionPane.ERROR_MESSAGE);
+                    }     
+               }            
+        }
+         else if(u_pass.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Please enter your password! ","Notice", JOptionPane.ERROR_MESSAGE);
+         }
+         
+            else{          
+            JOptionPane.showMessageDialog(null, "User does not exist! ","Notice", JOptionPane.ERROR_MESSAGE);
+        }               
          if(loginAcc(u_uname.getText(),u_pass.getText())){
             
              if(!status.equals("Active")){ 

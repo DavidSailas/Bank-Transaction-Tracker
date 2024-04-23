@@ -1,6 +1,7 @@
 package register;
 
 import btt.loginform;
+import config.PasswordHasher;
 import config.dbconnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -329,9 +330,11 @@ public class registrationform extends javax.swing.JFrame {
     }//GEN-LAST:event_u_passActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-      
         
+                       PasswordHasher pH = new PasswordHasher();
+        
+       String password = pH.hashPassword(u_pass.getText());
+       
         if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
                 || u_uname.getText().isEmpty() || u_pass.getText().isEmpty())
         {
@@ -353,7 +356,7 @@ public class registrationform extends javax.swing.JFrame {
                dbconnector connector = new dbconnector();
 
         if(connector.insertData("INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status) "
-        + "VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+ u_email.getText()+"','"+u_uname.getText()+"','"+ u_pass.getText()+"','"+ u_type.getSelectedItem()+"','Pending')")){
+        + "VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+ u_email.getText()+"','"+u_uname.getText()+"','"+password+"','"+ u_type.getSelectedItem()+"','Pending')")){
             JOptionPane.showMessageDialog(null, "Inserted Success!");
             loginform ads = new loginform();
             ads.setVisible(true);

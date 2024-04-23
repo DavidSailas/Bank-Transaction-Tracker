@@ -2,6 +2,7 @@
 package Admin;
 
 import btt.loginform;
+import config.PasswordHasher;
 import config.dbconnector;
 import config.session;
 import java.awt.Color;
@@ -360,6 +361,10 @@ public class userAEU extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
 
+               PasswordHasher pH = new PasswordHasher();
+        
+       String password = pH.hashPassword(u_pass.getText());
+        
         if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty()
             || u_uname.getText().isEmpty() || u_pass.getText().isEmpty())
         {
@@ -382,7 +387,7 @@ public class userAEU extends javax.swing.JFrame {
 
             if(connector.insertData("INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status) "
                 + "VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+ u_email.getText()+"','"+u_uname.getText()+"','"
-                    + u_pass.getText()+"','"+ u_status.getSelectedItem()+"','"+u_status.getSelectedItem()+"')")){
+                    + password +"','"+ u_status.getSelectedItem()+"','"+u_status.getSelectedItem()+"')")){
             JOptionPane.showMessageDialog(null, "Inserted Success!");
             user u = new user();
             u.setVisible(true);
@@ -406,7 +411,11 @@ public class userAEU extends javax.swing.JFrame {
     }//GEN-LAST:event_u_statusActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-       
+
+       PasswordHasher pH = new PasswordHasher();
+        
+       String password = pH.hashPassword(u_pass.getText());
+        
         if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty()
             || u_uname.getText().isEmpty() || u_pass.getText().isEmpty())
         {
@@ -428,7 +437,7 @@ public class userAEU extends javax.swing.JFrame {
         dbconnector connector = new dbconnector();
         
         connector.updateData("UPDATE tbl_u SET u_fname = '"+u_fname.getText()+"',u_lname = '"+u_lname.getText()+"',u_email = '"+u_email.getText()+"',"
-        + "u_uname = '"+u_uname.getText()+"',u_pass = '"+u_pass.getText()+"',u_type = '"+u_type.getSelectedItem()+"',u_status = '"+u_status.getSelectedItem()+"' "
+        + "u_uname = '"+u_uname.getText()+"',u_pass = '"+password+"',u_type = '"+u_type.getSelectedItem()+"',u_status = '"+u_status.getSelectedItem()+"' "
         + "WHERE u_id = '"+u_id.getText()+"'");
 
             user u = new user();

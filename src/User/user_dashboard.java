@@ -171,6 +171,11 @@ public class user_dashboard extends javax.swing.JFrame {
 
         menu.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
         menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/mune-34.png"))); // NOI18N
+        menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuMouseClicked(evt);
+            }
+        });
         jPanel3.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
         userName.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
@@ -302,6 +307,12 @@ public class user_dashboard extends javax.swing.JFrame {
     private void p_add6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add6MouseExited
         p_add6.setBackground(hovercolor);
     }//GEN-LAST:event_p_add6MouseExited
+
+    private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
+       user_settings us = new user_settings();
+       us.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_menuMouseClicked
 
     /**
      * @param args the command line arguments
