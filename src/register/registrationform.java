@@ -150,7 +150,7 @@ public class registrationform extends javax.swing.JFrame {
 
         u_type.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         u_type.setForeground(new java.awt.Color(51, 51, 51));
-        u_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "ADMIN", "USER", " " }));
+        u_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User", " ", " " }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("User Type:");
@@ -356,6 +356,7 @@ public class registrationform extends javax.swing.JFrame {
         + "VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+ u_email.getText()+"','"+u_uname.getText()+"','"+ u_pass.getText()+"','"+ u_type.getSelectedItem()+"','Pending')")){
             JOptionPane.showMessageDialog(null, "Inserted Success!");
             loginform ads = new loginform();
+            ads.setVisible(true);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Connection Error:");

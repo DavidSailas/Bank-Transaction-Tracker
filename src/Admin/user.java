@@ -3,6 +3,7 @@ package Admin;
 
 import btt.loginform;
 import config.dbconnector;
+import config.session;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -70,6 +71,11 @@ public class user extends javax.swing.JFrame {
         edit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
@@ -136,8 +142,9 @@ public class user extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-admin-settings-male-34.png"))); // NOI18N
+        jLabel13.setText("ADMINISTRATION");
         p_add2.add(jLabel13);
-        jLabel13.setBounds(20, 0, 34, 34);
+        jLabel13.setBounds(20, 0, 140, 34);
 
         p_add3.setBackground(new java.awt.Color(102, 204, 255));
         p_add3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,8 +162,9 @@ public class user extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-tracking-34.png"))); // NOI18N
+        jLabel15.setText("TRACKER");
         p_add3.add(jLabel15);
-        jLabel15.setBounds(20, 0, 34, 34);
+        jLabel15.setBounds(20, 0, 90, 34);
 
         p_add4.setBackground(new java.awt.Color(102, 204, 255));
         p_add4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,8 +182,9 @@ public class user extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-messages-34.png"))); // NOI18N
+        jLabel14.setText("MESSAGE");
         p_add4.add(jLabel14);
-        jLabel14.setBounds(20, 0, 34, 34);
+        jLabel14.setBounds(20, 0, 90, 34);
 
         p_add5.setBackground(new java.awt.Color(102, 204, 255));
         p_add5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,8 +202,9 @@ public class user extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-security-34.png"))); // NOI18N
+        jLabel16.setText("SECURITY");
         p_add5.add(jLabel16);
-        jLabel16.setBounds(20, 0, 34, 34);
+        jLabel16.setBounds(20, 0, 90, 34);
 
         p_add6.setBackground(new java.awt.Color(102, 204, 255));
         p_add6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -277,15 +287,16 @@ public class user extends javax.swing.JFrame {
         jPanel3.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
         adminName.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
-        jPanel3.add(adminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 150, 30));
+        jPanel3.add(adminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 150, 30));
 
         adminName1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 18)); // NOI18N
-        jPanel3.add(adminName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 150, 30));
+        jPanel3.add(adminName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 150, 30));
 
         user.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
         user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-34.png"))); // NOI18N
-        jPanel3.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 30, -1));
+        jPanel3.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 30, -1));
 
+        add1.setBackground(new java.awt.Color(102, 204, 255));
         add1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         add1.setText("ADD");
         add1.addActionListener(new java.awt.event.ActionListener() {
@@ -294,6 +305,7 @@ public class user extends javax.swing.JFrame {
             }
         });
 
+        edit.setBackground(new java.awt.Color(102, 204, 255));
         edit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         edit.setText("EDIT");
         edit.addActionListener(new java.awt.event.ActionListener() {
@@ -381,7 +393,9 @@ public class user extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add1MouseExited
 
     private void p_add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseClicked
-
+        administration a = new administration();
+        a.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_p_add2MouseClicked
 
     private void p_add2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseEntered
@@ -393,7 +407,9 @@ public class user extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add2MouseExited
 
     private void p_add3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add3MouseClicked
-
+        tracker t = new tracker();
+        t.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_p_add3MouseClicked
 
     private void p_add3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add3MouseEntered
@@ -405,7 +421,9 @@ public class user extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add3MouseExited
 
     private void p_add4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add4MouseClicked
-
+        message m = new message();
+        m.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_p_add4MouseClicked
 
     private void p_add4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add4MouseEntered
@@ -417,7 +435,9 @@ public class user extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add4MouseExited
 
     private void p_add5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add5MouseClicked
-
+        security s = new security();
+        s.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_p_add5MouseClicked
 
     private void p_add5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add5MouseEntered
@@ -479,6 +499,22 @@ public class user extends javax.swing.JFrame {
         }
     } 
     }//GEN-LAST:event_editActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+                
+        session sess = session.getInstance();
+        
+        if (sess.getUid() == 0){
+            JOptionPane.showMessageDialog(null,"No account, Login First!");
+            loginform ads = new loginform();
+            ads.setVisible(true);
+            this.dispose();
+        }else{
+            adminName.setText(""+sess.getFname());
+            adminName1.setText(""+sess.getLname());
+        
+        } 
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
