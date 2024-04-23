@@ -280,32 +280,6 @@ public class loginform extends javax.swing.JFrame {
             else{          
             JOptionPane.showMessageDialog(null, "User does not exist! ","Notice", JOptionPane.ERROR_MESSAGE);
         }               
-         if(loginAcc(u_uname.getText(),u_pass.getText())){
-            
-             if(!status.equals("Active")){ 
-                      JOptionPane.showMessageDialog(null, "In-Active Account, Contact the Admin!");
-                      loginform ads = new loginform();
-                      ads.setVisible(true);
-                      this.dispose();
-         }          
-            else{         
-                if(type.equals("Admin")){                 
-                      JOptionPane.showMessageDialog(null, "Log in successfully.");
-                      admin_dashboard ads = new admin_dashboard();                     
-                      ads.setVisible(true);
-                      this.dispose();                    
-                }else if(type.equals("User")){                  
-                      JOptionPane.showMessageDialog(null, "Log in successfully.");
-                      user_dashboard uds = new  user_dashboard();
-                      uds.setVisible(true);
-                      this.dispose();                     
-                 }else{
-                        JOptionPane.showMessageDialog(null, "Account does not exist.");
-                    }     
-               }            
-        }else{          
-            JOptionPane.showMessageDialog(null, "User does not exist!");
-        }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
