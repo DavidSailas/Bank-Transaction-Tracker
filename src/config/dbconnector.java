@@ -5,6 +5,7 @@
  */
 package config;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,9 +21,10 @@ import javax.swing.JOptionPane;
 public class dbconnector {
     
     public Connection connect;
+    private String newPassword;
     
     public dbconnector(){
-        
+    
             try{
                 connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/btt", "root", "");
             }catch(SQLException ex){
@@ -81,5 +83,42 @@ public boolean deleteData(String sql) {
         return false;
     }
 }
-
+    private String generateRandomPassword(int length) {
+    String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+    SecureRandom random = new SecureRandom();
+    StringBuilder sb = new StringBuilder();
+    
+    for (int i = 0; i < length; i++) {
+        int randomIndex = random.nextInt(chars.length());
+        sb.append(chars.charAt(randomIndex));
+        
+    }
+    
+    return sb.toString();
+    
+}
+     public String getNewPassword() {
+        return newPassword;
+    }
+// Function to reset user password
+    public boolean resetUserPassword(String userId) {
+        String newPassword = generateRandomPassword(8);
+        String sql = "UPDATE users SET password = ? WHERE user_id = ?";
+        
+        try (PreparedStatement pst = connect.prepareStatement(sql)) {
+            pst.setString(1, newPassword);
+            pst.setString(2, userId);
+            int rowsUpdated = pst.executeUpdate();
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(null, "Password reset successfully!");
+                return true;
+            } else {
+                System.out.println("Password reset failed. No user found with the specified ID.");
+                return false;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error occurred while resetting the password: " + ex.getMessage());
+            return false;
+        }
+    }
 }

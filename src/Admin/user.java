@@ -42,6 +42,13 @@ public class user extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popUp = new javax.swing.JPopupMenu();
+        view = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        randompass = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        u_rpass = new javax.swing.JTextField();
+        generateRandomPassword = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
@@ -69,6 +76,71 @@ public class user extends javax.swing.JFrame {
         user = new javax.swing.JLabel();
         add1 = new javax.swing.JButton();
         edit = new javax.swing.JButton();
+
+        view.setBackground(new java.awt.Color(102, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("VIEW DETAILS");
+
+        javax.swing.GroupLayout viewLayout = new javax.swing.GroupLayout(view);
+        view.setLayout(viewLayout);
+        viewLayout.setHorizontalGroup(
+            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewLayout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(jLabel1)
+                .addContainerGap(155, Short.MAX_VALUE))
+        );
+        viewLayout.setVerticalGroup(
+            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1)
+                .addContainerGap(237, Short.MAX_VALUE))
+        );
+
+        randompass.setBackground(new java.awt.Color(102, 204, 255));
+
+        jLabel2.setText("Random Password:");
+
+        u_rpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                u_rpassActionPerformed(evt);
+            }
+        });
+
+        generateRandomPassword.setText("Reset");
+        generateRandomPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateRandomPasswordActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout randompassLayout = new javax.swing.GroupLayout(randompass);
+        randompass.setLayout(randompassLayout);
+        randompassLayout.setHorizontalGroup(
+            randompassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(randompassLayout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addGroup(randompassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(u_rpass)
+                    .addGroup(randompassLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(generateRandomPassword)))
+                .addContainerGap(166, Short.MAX_VALUE))
+        );
+        randompassLayout.setVerticalGroup(
+            randompassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(randompassLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(u_rpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(generateRandomPassword)
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -516,6 +588,25 @@ public class user extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_formWindowActivated
 
+    private void u_rpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_rpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_u_rpassActionPerformed
+
+    private void generateRandomPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateRandomPasswordActionPerformed
+
+dbconnector connector = new dbconnector();
+String userId = "theUserId"; 
+
+if (connector.resetUserPassword(userId)) {
+    String newPassword = connector.getNewPassword();
+    u_rpass.setText(newPassword); 
+    JOptionPane.showMessageDialog(null, "New Password: " + newPassword);
+} else {
+    // Handle password reset failure
+}
+    
+    }//GEN-LAST:event_generateRandomPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -556,6 +647,8 @@ public class user extends javax.swing.JFrame {
     public javax.swing.JLabel adminName;
     public javax.swing.JLabel adminName1;
     private javax.swing.JButton edit;
+    private javax.swing.JButton generateRandomPassword;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -563,6 +656,7 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -577,7 +671,11 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JPanel p_add4;
     private javax.swing.JPanel p_add5;
     private javax.swing.JPanel p_add6;
+    private javax.swing.JPopupMenu popUp;
+    private javax.swing.JPanel randompass;
+    private javax.swing.JTextField u_rpass;
     public javax.swing.JLabel user;
     private javax.swing.JTable userTbl;
+    private javax.swing.JPanel view;
     // End of variables declaration//GEN-END:variables
 }
