@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
@@ -43,12 +44,20 @@ public class user extends javax.swing.JFrame {
     private void initComponents() {
 
         popUp = new javax.swing.JPopupMenu();
-        view = new javax.swing.JPanel();
+        view = new javax.swing.JMenuItem();
+        edit = new javax.swing.JMenuItem();
+        viewpanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        randompass = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        u_rpass = new javax.swing.JTextField();
-        generateRandomPassword = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        u_id = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        fullname = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        umail = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        type = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
@@ -75,71 +84,110 @@ public class user extends javax.swing.JFrame {
         adminName1 = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
         add1 = new javax.swing.JButton();
-        edit = new javax.swing.JButton();
 
-        view.setBackground(new java.awt.Color(102, 204, 255));
+        view.setText("View");
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
+        popUp.add(view);
+
+        edit.setText("Edit");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
+        popUp.add(edit);
+
+        viewpanel.setBackground(new java.awt.Color(102, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("VIEW DETAILS");
 
-        javax.swing.GroupLayout viewLayout = new javax.swing.GroupLayout(view);
-        view.setLayout(viewLayout);
-        viewLayout.setHorizontalGroup(
-            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewLayout.createSequentialGroup()
-                .addGap(149, 149, 149)
+        jLabel4.setText("user id:");
+
+        u_id.setText("sample");
+
+        jLabel5.setText("fullname:");
+
+        fullname.setText("sample");
+
+        jLabel6.setText("username:");
+
+        username.setText("sample");
+
+        jLabel7.setText("Email:");
+
+        umail.setText("sample");
+
+        jLabel8.setText("Type:");
+
+        type.setText("sample");
+
+        javax.swing.GroupLayout viewpanelLayout = new javax.swing.GroupLayout(viewpanel);
+        viewpanel.setLayout(viewpanelLayout);
+        viewpanelLayout.setHorizontalGroup(
+            viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewpanelLayout.createSequentialGroup()
+                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewpanelLayout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel1))
+                    .addGroup(viewpanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(u_id))
+                    .addGroup(viewpanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fullname))
+                    .addGroup(viewpanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(username))
+                    .addGroup(viewpanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(umail))
+                    .addGroup(viewpanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(type)))
+                .addContainerGap(157, Short.MAX_VALUE))
+        );
+        viewpanelLayout.setVerticalGroup(
+            viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewpanelLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addContainerGap(155, Short.MAX_VALUE))
-        );
-        viewLayout.setVerticalGroup(
-            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel1)
-                .addContainerGap(237, Short.MAX_VALUE))
-        );
-
-        randompass.setBackground(new java.awt.Color(102, 204, 255));
-
-        jLabel2.setText("Random Password:");
-
-        u_rpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                u_rpassActionPerformed(evt);
-            }
-        });
-
-        generateRandomPassword.setText("Reset");
-        generateRandomPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generateRandomPasswordActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout randompassLayout = new javax.swing.GroupLayout(randompass);
-        randompass.setLayout(randompassLayout);
-        randompassLayout.setHorizontalGroup(
-            randompassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(randompassLayout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addGroup(randompassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(u_rpass)
-                    .addGroup(randompassLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(generateRandomPassword)))
-                .addContainerGap(166, Short.MAX_VALUE))
-        );
-        randompassLayout.setVerticalGroup(
-            randompassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(randompassLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(u_rpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(generateRandomPassword)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(u_id))
+                .addGap(27, 27, 27)
+                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(fullname))
+                .addGap(27, 27, 27)
+                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(username))
+                .addGap(27, 27, 27)
+                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(umail))
+                .addGap(27, 27, 27)
+                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(type))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -151,6 +199,11 @@ public class user extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
+        userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                userTblMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(userTbl);
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
@@ -377,15 +430,6 @@ public class user extends javax.swing.JFrame {
             }
         });
 
-        edit.setBackground(new java.awt.Color(102, 204, 255));
-        edit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        edit.setText("EDIT");
-        edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -402,8 +446,6 @@ public class user extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(add1)
-                        .addGap(18, 18, 18)
-                        .addComponent(edit)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -413,9 +455,7 @@ public class user extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add1)
-                    .addComponent(edit))
+                .addComponent(add1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -541,37 +581,6 @@ public class user extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_add1ActionPerformed
 
-    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        int rowIndex = userTbl.getSelectedRow();
-        
-        if(rowIndex < 0){
-            JOptionPane.showMessageDialog(null, "Please select an Item!");
-        }else{
-            try{
-            dbconnector connector = new dbconnector();
-            TableModel tbl = userTbl.getModel();
-            ResultSet resultSet = connector.getData("SELECT * FROM tbl_u WHERE u_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
-            if(resultSet.next()){
-            userAEU ur = new userAEU();
-            ur.u_id.setText(""+resultSet.getInt("u_id"));
-            ur.u_fname.setText(""+resultSet.getString("u_fname"));
-            ur.u_lname.setText(""+resultSet.getString("u_lname"));
-            ur.u_email.setText(""+resultSet.getString("u_email"));
-            ur.u_uname.setText(""+resultSet.getString("u_uname"));
-            ur.u_pass.setText(""+resultSet.getString("u_pass"));
-            ur.u_type.setSelectedItem(""+resultSet.getString("u_type"));
-            ur.u_status.setSelectedItem(""+resultSet.getString("u_status"));
-            ur.add.setEnabled(false);
-            ur.update.setEnabled(true);
-            ur.setVisible(true);
-            this.dispose();
-            } 
-        }catch(SQLException ex){
-                System.out.println(""+ex);
-        }
-    } 
-    }//GEN-LAST:event_editActionPerformed
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
                 
         session sess = session.getInstance();
@@ -588,24 +597,75 @@ public class user extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_formWindowActivated
 
-    private void u_rpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_rpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_u_rpassActionPerformed
+    private void userTblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTblMousePressed
+       if (SwingUtilities.isRightMouseButton(evt)) {
+            popUp.show(userTbl, evt.getX(), evt.getY());
+       }
+    }//GEN-LAST:event_userTblMousePressed
 
-    private void generateRandomPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateRandomPasswordActionPerformed
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+       
+         String uid = userTbl.getValueAt(userTbl.getSelectedRow(), 0).toString();
 
-dbconnector connector = new dbconnector();
-String userId = "theUserId"; 
+        try {
+             dbconnector dbc = new dbconnector();
+             TableModel tbl = userTbl.getModel();
+             ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '" + uid + "'");
 
-if (connector.resetUserPassword(userId)) {
-    String newPassword = connector.getNewPassword();
-    u_rpass.setText(newPassword); 
-    JOptionPane.showMessageDialog(null, "New Password: " + newPassword);
-} else {
-    // Handle password reset failure
-}
-    
-    }//GEN-LAST:event_generateRandomPasswordActionPerformed
+             if (rs.next()) {
+              u_id.setText(rs.getString("u_id"));
+              fullname.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
+              username.setText(rs.getString("u_usn"));
+              umail.setText(rs.getString("u_email"));
+              type.setText(rs.getString("u_type"));
+          
+    }
+                
+        Object[] options = {};
+          
+        JOptionPane.showOptionDialog(null, viewpanel, "",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, null);
+        
+            }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
+        
+    }//GEN-LAST:event_viewActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        
+        int rowIndex = userTbl.getSelectedRow();
+
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select an Item!");
+        }else{
+            try{
+                dbconnector connector = new dbconnector();
+                TableModel tbl = userTbl.getModel();
+                ResultSet resultSet = connector.getData("SELECT * FROM tbl_u WHERE u_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+                if(resultSet.next()){
+                    userAEU ur = new userAEU();
+                    ur.u_id.setText(""+resultSet.getInt("u_id"));
+                    ur.u_fname.setText(""+resultSet.getString("u_fname"));
+                    ur.u_lname.setText(""+resultSet.getString("u_lname"));
+                    ur.u_email.setText(""+resultSet.getString("u_email"));
+                    ur.u_uname.setText(""+resultSet.getString("u_uname"));
+                    ur.u_pass.setText("");
+                    ur.u_pass.setEnabled(false);
+                    ur.u_type.setSelectedItem(""+resultSet.getString("u_type"));
+                    ur.u_status.setSelectedItem(""+resultSet.getString("u_status"));
+                    ur.add.setEnabled(false);
+                    ur.update.setEnabled(true);
+                    ur.setVisible(true);
+                    this.dispose();
+                }
+            }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
+        }
+        
+    }//GEN-LAST:event_editActionPerformed
 
     /**
      * @param args the command line arguments
@@ -646,8 +706,8 @@ if (connector.resetUserPassword(userId)) {
     private javax.swing.JButton add1;
     public javax.swing.JLabel adminName;
     public javax.swing.JLabel adminName1;
-    private javax.swing.JButton edit;
-    private javax.swing.JButton generateRandomPassword;
+    private javax.swing.JMenuItem edit;
+    private javax.swing.JLabel fullname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -656,8 +716,12 @@ if (connector.resetUserPassword(userId)) {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -672,10 +736,13 @@ if (connector.resetUserPassword(userId)) {
     private javax.swing.JPanel p_add5;
     private javax.swing.JPanel p_add6;
     private javax.swing.JPopupMenu popUp;
-    private javax.swing.JPanel randompass;
-    private javax.swing.JTextField u_rpass;
+    private javax.swing.JLabel type;
+    private javax.swing.JLabel u_id;
+    private javax.swing.JLabel umail;
     public javax.swing.JLabel user;
     private javax.swing.JTable userTbl;
-    private javax.swing.JPanel view;
+    private javax.swing.JLabel username;
+    private javax.swing.JMenuItem view;
+    private javax.swing.JPanel viewpanel;
     // End of variables declaration//GEN-END:variables
 }

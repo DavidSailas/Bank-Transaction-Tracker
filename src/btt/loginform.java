@@ -295,7 +295,9 @@ public class loginform extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        // TODO add your handling code here:
+        forgetpass fp = new forgetpass();
+        fp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
     
