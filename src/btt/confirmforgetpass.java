@@ -5,7 +5,12 @@
  */
 package btt;
 
+import config.PasswordHasher;
 import config.dbconnector;
+import config.session;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -49,7 +54,7 @@ public class confirmforgetpass extends javax.swing.JFrame {
 
         scode.setEnabled(false);
 
-        reset.setText("Reset");
+        reset.setText("continue");
         reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetActionPerformed(evt);
@@ -146,13 +151,37 @@ public class confirmforgetpass extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
 
        dbconnector dbc = new dbconnector();
-     
-        
+String retypeCode = rcode.getText();
+String newPassword = npass.getText();
+String confirmPassword = cpass.getText();
+
+session sess = session.getInstance();
+String scode = sess.getSecurityCode(); 
+
+if (retypeCode.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "All fields are required.");
+} else if (scode == null || !scode.equals(retypeCode)) {
+    JOptionPane.showMessageDialog(null, "Security code does not match.");
+} else if (newPassword.length() < 8) {
+    JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long.");
+} else if (!newPassword.equals(confirmPassword)) {
+    JOptionPane.showMessageDialog(null, "Passwords do not match.");
+} else {
+    boolean updateSuccess = dbc.updatePassword(sess.getUid(), newPassword);
+    if (updateSuccess) {
+        loginform lf = new loginform();
+        lf.setVisible(true);
+        this.dispose(); 
+    }
+}
+
+
     }//GEN-LAST:event_resetActionPerformed
 
     private void npassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_npassActionPerformed

@@ -13,6 +13,8 @@ public class session {
     private String type;
     private String status;
     
+     private String securityCode;
+    
     private session(){
         
     }
@@ -28,6 +30,13 @@ public class session {
         return instance == null;
     }
 
+    public String getSecurityCode() {
+        return securityCode;
+    }
+    
+    public void setSecurityCode(String SecurityCode) {
+        this.securityCode = SecurityCode;
+    }
     public int getUid() {
         return uid;
     }

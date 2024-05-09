@@ -100,4 +100,27 @@ public boolean deleteData(String sql) {
      public String getNewPassword() {
         return newPassword;
     }
+     
+     public boolean updatePassword(int userId, String newPassword) {
+    String hashedPassword = new PasswordHasher().hashPassword(newPassword);
+    String sql = "UPDATE tbl_u SET u_pass = ? WHERE u_id = ?";
+    
+    try (PreparedStatement pst = connect.prepareStatement(sql)) {
+        pst.setString(1, hashedPassword);
+        pst.setInt(2, userId);
+        
+        int rowsUpdated = pst.executeUpdate();
+        if (rowsUpdated > 0) {
+            JOptionPane.showMessageDialog(null, "Password updated successfully!");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Failed to update the password. No user found with the specified ID.");
+            return false;
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error occurred while updating the password: " + ex.getMessage());
+        return false;
+    }
+}
+
 }

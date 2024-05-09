@@ -6,6 +6,7 @@
 package btt;
 
 import config.dbconnector;
+import config.session;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,10 +34,69 @@ public class forgetpass extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        username = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        fullname = new javax.swing.JLabel();
+        yes = new javax.swing.JButton();
+        no = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         confirm = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
+
+        username.setBackground(new java.awt.Color(102, 204, 255));
+
+        jLabel1.setText("Is this your account?");
+
+        fullname.setText("sample");
+
+        yes.setText("yes");
+        yes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesActionPerformed(evt);
+            }
+        });
+
+        no.setText("no");
+        no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usernameLayout = new javax.swing.GroupLayout(username);
+        username.setLayout(usernameLayout);
+        usernameLayout.setHorizontalGroup(
+            usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usernameLayout.createSequentialGroup()
+                .addGroup(usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(usernameLayout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel1))
+                    .addGroup(usernameLayout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(fullname))
+                    .addGroup(usernameLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(yes)
+                        .addGap(57, 57, 57)
+                        .addComponent(no)))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        usernameLayout.setVerticalGroup(
+            usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usernameLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(fullname)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGroup(usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yes)
+                    .addComponent(no))
+                .addGap(64, 64, 64))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,27 +116,24 @@ public class forgetpass extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(confirm)
-                        .addGap(43, 43, 43)))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGap(132, 132, 132)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confirm)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addGap(97, 97, 97)
                 .addComponent(confirm)
-                .addGap(122, 122, 122))
+                .addGap(73, 73, 73))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,31 +153,56 @@ public class forgetpass extends javax.swing.JFrame {
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
 
-       dbconnector connector = new dbconnector();
+    dbconnector connector = new dbconnector();
+    session sess = session.getInstance();
+
 try {
-    String newPassword = connector.generateRandomCode(8);
-    String u_email = email.getText(); 
+    String u_email = email.getText();
     String query = "SELECT * FROM tbl_u WHERE u_email = ?;";
-    
+
     try (PreparedStatement pstmt = connector.connect.prepareStatement(query)) {
         pstmt.setString(1, u_email);
         ResultSet rs = pstmt.executeQuery();
 
         if (rs.next()) {
-            confirmforgetpass cfp = new confirmforgetpass();
-            cfp.scode.setText(newPassword);
-            cfp.setVisible(true);
-            this.dispose();
+           
+            sess.setFname(rs.getString("u_fname"));
+            sess.setLname(rs.getString("u_lname"));
+     
+            fullname.setText(sess.getFname() + " " + sess.getLname());
         } else {
             JOptionPane.showMessageDialog(null, "User does not exist!");
             email.setText("");
         }
+
+        Object[] options = {};         
+        JOptionPane.showOptionDialog(null, username, "",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,null, options, null);
     }
+
 } catch (SQLException ex) {
     System.out.println(ex);
 }
 
     }//GEN-LAST:event_confirmActionPerformed
+
+    private void noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noActionPerformed
+        forgetpass fp = new forgetpass();
+        fp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_noActionPerformed
+
+    private void yesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesActionPerformed
+       
+    dbconnector connector = new dbconnector();
+    String newPassword = connector.generateRandomCode(8);
+
+        confirmforgetpass cfp = new confirmforgetpass();
+        cfp.scode.setText(newPassword);
+        cfp.setVisible(true);
+        this.dispose(); 
+    
+    }//GEN-LAST:event_yesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +242,13 @@ try {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton confirm;
     private javax.swing.JTextField email;
+    public javax.swing.JLabel fullname;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JButton no;
+    private javax.swing.JPanel username;
+    private javax.swing.JButton yes;
     // End of variables declaration//GEN-END:variables
 }

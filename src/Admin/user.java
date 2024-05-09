@@ -610,12 +610,12 @@ public class user extends javax.swing.JFrame {
         try {
              dbconnector dbc = new dbconnector();
              TableModel tbl = userTbl.getModel();
-             ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '" + uid + "'");
+             ResultSet rs = dbc.getData("SELECT * FROM tbl_u WHERE u_id = '" + uid + "'");
 
              if (rs.next()) {
               u_id.setText(rs.getString("u_id"));
               fullname.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
-              username.setText(rs.getString("u_usn"));
+              username.setText(rs.getString("u_uname"));
               umail.setText(rs.getString("u_email"));
               type.setText(rs.getString("u_type"));
           
