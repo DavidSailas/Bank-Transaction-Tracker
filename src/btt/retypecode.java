@@ -5,6 +5,7 @@
  */
 package btt;
 
+import config.dbconnector;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,7 +46,7 @@ public class retypecode extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Security code:");
 
-        scode.setEnabled(false);
+        scode.setEditable(false);
 
         verify.setBackground(new java.awt.Color(51, 153, 255));
         verify.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -131,8 +132,10 @@ public class retypecode extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyActionPerformed
-    String retypecode = rcode.getText().trim();
-    if (retypecode.equals(scode)) {
+    
+    String retypecode = rcode.getText();
+    
+    if (retypecode.equals(scode.getText())) {
         
         JOptionPane.showMessageDialog(null, "Code verified! Proceeding to the next form.");
     confirmforgetpass cfp = new confirmforgetpass();

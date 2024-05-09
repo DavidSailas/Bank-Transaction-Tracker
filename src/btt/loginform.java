@@ -72,10 +72,13 @@ public class loginform extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        nousn = new javax.swing.JLabel();
+        xps = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
         jPanel2.setMinimumSize(new java.awt.Dimension(500, 450));
@@ -100,14 +103,21 @@ public class loginform extends javax.swing.JFrame {
                 .addContainerGap(129, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+
         jLabel1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 48)); // NOI18N
         jLabel1.setText("WELCOME BACK!");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(609, 59, 310, 60));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Username:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 70, -1));
+        jPanel1.add(u_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 280, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Password:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, 60, -1));
+        jPanel1.add(u_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 280, -1));
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -119,6 +129,7 @@ public class loginform extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 310, 90, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 153, 255));
@@ -128,15 +139,19 @@ public class loginform extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 266, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("__________");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(684, 351, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("__________");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 352, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("or");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 351, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -169,72 +184,17 @@ public class loginform extends javax.swing.JFrame {
                 .addComponent(jLabel4))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(u_uname, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(u_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel6)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel8)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
-                .addGap(6, 6, 6)
-                .addComponent(u_uname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel3)
-                .addGap(4, 4, 4)
-                .addComponent(u_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel5)
-                .addGap(30, 30, 30)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel7)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 384, -1, -1));
+
+        nousn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        nousn.setForeground(new java.awt.Color(255, 0, 0));
+        nousn.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel1.add(nousn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 150, 170, 20));
+
+        xps.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        xps.setForeground(new java.awt.Color(255, 0, 0));
+        xps.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel1.add(xps, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, 170, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,12 +212,24 @@ public class loginform extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        nousn.setText("");
+        xps.setText("");
         
         PasswordHasher pH = new PasswordHasher();
         
         String password = pH.hashPassword(u_pass.getText());
         
-         if(loginAcc(u_uname.getText(),password))
+        if(u_uname.getText().isEmpty() || u_pass.getText().equals("")){
+             if(u_uname.getText().isEmpty()){
+                nousn.setText("Field Required");  
+             }
+             if(u_pass.getText().equals(""))
+                xps.setText("Field Required"); 
+        }
+         else{
+            
+            if(loginAcc(u_uname.getText(),password))
          {            
              if(!status.equals("Active")){            
                  JOptionPane.showMessageDialog(null, "Account is not Active!.");
@@ -280,13 +252,16 @@ public class loginform extends javax.swing.JFrame {
                     }     
                }            
         }
-         else if(u_pass.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Please enter your password! ","Notice", JOptionPane.ERROR_MESSAGE);
-         }
+      else{          
+             nousn.setText("Invalid Username."); 
+             xps.setText("Invalid Password.");
+             u_uname.setText("");
+             u_pass.setText("");
+        }                     
+            
+        }
+        
          
-            else{          
-            JOptionPane.showMessageDialog(null, "User does not exist! ","Notice", JOptionPane.ERROR_MESSAGE);
-        }               
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -350,7 +325,9 @@ public class loginform extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel nousn;
     private javax.swing.JPasswordField u_pass;
     private javax.swing.JTextField u_uname;
+    private javax.swing.JLabel xps;
     // End of variables declaration//GEN-END:variables
 }
