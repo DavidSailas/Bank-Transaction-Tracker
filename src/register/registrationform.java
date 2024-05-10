@@ -156,7 +156,9 @@ public class registrationform extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("User Type:");
 
+        jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Create");
         jButton1.setPreferredSize(new java.awt.Dimension(60, 30));
         jButton1.addActionListener(new java.awt.event.ActionListener() {

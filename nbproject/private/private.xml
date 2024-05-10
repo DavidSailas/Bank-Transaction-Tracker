@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank-Transaction-Tracker/src/btt/forgetpass.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank-Transaction-Tracker/src/btt/confirmforgetpass.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank-Transaction-Tracker/src/btt/loginform.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank-Transaction-Tracker/src/config/dbconnector.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank-Transaction-Tracker/src/register/registrationform.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank-Transaction-Tracker/src/config/session.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank-Transaction-Tracker/src/btt/retypecode.java</file>
+        </group>
     </open-files>
 </project-private>
