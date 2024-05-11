@@ -171,7 +171,7 @@ public class registrationform extends javax.swing.JFrame {
 
         u_type.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         u_type.setForeground(new java.awt.Color(51, 51, 51));
-        u_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User", " ", " " }));
+        u_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Admin", "User" }));
         jPanel1.add(u_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 220, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -188,7 +188,7 @@ public class registrationform extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 100, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 220, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -237,37 +237,31 @@ public class registrationform extends javax.swing.JFrame {
         jLabel12.setText("or");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 363, -1, -1));
 
-        a1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a1.setText("*");
         jPanel1.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 140, 30));
 
-        a2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         a2.setForeground(new java.awt.Color(255, 0, 0));
         a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a2.setText("*");
         jPanel1.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 140, 30));
 
-        a3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         a3.setForeground(new java.awt.Color(255, 0, 0));
         a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a3.setText("*");
         jPanel1.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 140, 30));
 
-        a4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         a4.setForeground(new java.awt.Color(255, 0, 0));
         a4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a4.setText("*");
         jPanel1.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 140, 30));
 
-        a5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         a5.setForeground(new java.awt.Color(255, 0, 0));
         a5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a5.setText("*");
         jPanel1.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 140, 30));
 
-        a6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         a6.setForeground(new java.awt.Color(255, 0, 0));
         a6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a6.setText("*");
@@ -318,7 +312,7 @@ public class registrationform extends javax.swing.JFrame {
        String password = pH.hashPassword(u_pass.getText());
        
         if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
-                || u_uname.getText().isEmpty() || u_pass.getText().isEmpty())
+                || u_uname.getText().isEmpty() || u_pass.getText().isEmpty()|| u_type.getSelectedIndex()== 0)
         {
             
           if(u_fname.getText().isEmpty()){
@@ -339,14 +333,12 @@ public class registrationform extends javax.swing.JFrame {
             else if(u_pass.getText().length()<8){
                 a5.setText("Password is too short!");
             }if(u_type.getSelectedIndex() == 0){
-                a6.setText("Field Required");
-                     
-  
+                a6.setText("Field Required");            
         }else if(u_pass.getText().length()<8){
             a5.setText("Password is too short!");
         }else if(dupCheck()){
             System.out.println("Duplicate Exist");
-        else{
+        }else{
         
                dbconnector connector = new dbconnector();
 
