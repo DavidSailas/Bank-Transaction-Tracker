@@ -279,7 +279,6 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-admin-settings-male-34.png"))); // NOI18N
-        jLabel13.setText("ADMINISTRATION");
         p_add2.add(jLabel13);
         jLabel13.setBounds(20, 0, 140, 34);
 
