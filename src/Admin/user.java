@@ -40,11 +40,13 @@ public class user extends javax.swing.JFrame {
             TableColumn tc1 = tcm.getColumn(1);
             TableColumn tc2 = tcm.getColumn(2);
             TableColumn tc3 = tcm.getColumn(3);
+            TableColumn tc4 = tcm.getColumn(4);
             
             tc.setHeaderValue("ID");
             tc1.setHeaderValue("First Name");
             tc2.setHeaderValue("Last Name");
-            tc3.setHeaderValue("Status");
+            tc3.setHeaderValue("Email");
+            tc4.setHeaderValue("Status");
              rs.close();
         }catch(SQLException ex){
             System.out.println("Errors: "+ex.getMessage());
@@ -221,6 +223,7 @@ public class user extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
+        userTbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 userTblMousePressed(evt);

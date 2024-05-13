@@ -22,15 +22,15 @@ public class registrationform extends javax.swing.JFrame {
         
         try{
             
-            String query = "SELECT * FROM tbl_u  WHERE u_uname = '" + u_uname.getText() + "' OR u_email = '" + u_email.getText() + "'";
+            String query = "SELECT * FROM tbl_u  WHERE u_uname = '" + u_uname.getText() + "' OR u_email = '" + mail.getText() + "'";
             ResultSet resultSet = connector.getData(query);
             
             if(resultSet.next()){
              
                 email = resultSet.getString("u_email");
-                if(email.equals(u_email.getText())){
+                if(email.equals(mail.getText())){
                     JOptionPane.showMessageDialog(null,"Email is Already Used!");
-                    u_email.setText("");
+                    mail.setText("");
                 }
                 
                 username = resultSet.getString("u_uname");
@@ -67,7 +67,7 @@ public class registrationform extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        u_email = new javax.swing.JTextField();
+        mail = new javax.swing.JTextField();
         u_uname = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         u_pass = new javax.swing.JTextField();
@@ -144,12 +144,12 @@ public class registrationform extends javax.swing.JFrame {
         jLabel5.setText("Username:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
 
-        u_email.addActionListener(new java.awt.event.ActionListener() {
+        mail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                u_emailActionPerformed(evt);
+                mailActionPerformed(evt);
             }
         });
-        jPanel1.add(u_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 210, -1));
+        jPanel1.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 210, -1));
 
         u_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,10 +286,6 @@ public class registrationform extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_u_fnameActionPerformed
 
-    private void u_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_u_emailActionPerformed
-
     private void u_unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_u_unameActionPerformed
@@ -300,59 +296,69 @@ public class registrationform extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        a1.setText("");
-        a2.setText("");
-        a3.setText("");
-        a4.setText("");
-        a5.setText("");
-        a6.setText("");
-        
-        PasswordHasher pH = new PasswordHasher();
-        
-       String password = pH.hashPassword(u_pass.getText());
-       
-        if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
-                || u_uname.getText().isEmpty() || u_pass.getText().isEmpty()|| u_type.getSelectedIndex()== 0)
-        {
-            
-          if(u_fname.getText().isEmpty()){
-                a1.setText("Field Required");
-            }
-            if(u_lname.getText().isEmpty()){
-                a2.setText("Field Required");
-            }
-            if(u_email.getText().isEmpty()){
-                a4.setText("Field Required");
-            }
-            if(u_uname.getText().isEmpty()){
-                a3.setText("Field Required");
-            }
-            if(u_pass.getText().isEmpty()){
-                a5.setText("Field Required");
-            }
-            else if(u_pass.getText().length()<8){
-                a5.setText("Password is too short!");
-            }if(u_type.getSelectedIndex() == 0){
-                a6.setText("Field Required");            
-        }else if(u_pass.getText().length()<8){
-            a5.setText("Password is too short!");
-        }else if(dupCheck()){
-            System.out.println("Duplicate Exist");
-        }else{
-        
-               dbconnector connector = new dbconnector();
+        // Clearing error messages
+a1.setText("");
+a2.setText("");
+a3.setText("");
+a4.setText("");
+a5.setText("");
+a6.setText("");
 
+// Creating PasswordHasher object
+PasswordHasher pH = new PasswordHasher();
+
+// Hashing the password entered by the user
+String password = pH.hashPassword(u_pass.getText());
+
+// Checking if any of the fields are empty or if the selected index is 0
+if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || mail.getText().isEmpty() 
+        || u_uname.getText().isEmpty() || u_pass.getText().isEmpty() || u_type.getSelectedIndex() == 0) {
+    
+    // Setting error messages for each empty field
+    if(u_fname.getText().isEmpty()){
+        a1.setText("Field Required");
+    }
+    if(u_lname.getText().isEmpty()){
+        a2.setText("Field Required");
+    }
+    if(mail.getText().isEmpty()){
+        a3.setText("Field Required");
+    }
+    if(u_uname.getText().isEmpty()){
+        a4.setText("Field Required");
+    }
+    if(u_pass.getText().isEmpty()){
+        a5.setText("Field Required");
+    } else if(u_pass.getText().length() < 8){
+        a5.setText("Password is too short!");
+    }
+    if(u_type.getSelectedIndex() == 0){
+        a6.setText("Field Required");            
+    }
+} else {
+    // If there are no empty fields and the password length is sufficient
+    if(u_pass.getText().length() < 8){
+        a5.setText("Password is too short!");
+    } else if(dupCheck()){
+        System.out.println("Duplicate Exist");
+    } else {
+        // Creating dbconnector object
+        dbconnector connector = new dbconnector();
+
+        // Inserting data into the database
         if(connector.insertData("INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status) "
-        + "VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+ u_email.getText()+"','"+u_uname.getText()+"','"+password+"','"+ u_type.getSelectedItem()+"','Pending')")){
+        + "VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+ mail.getText()+"','"+u_uname.getText()
+                +"','"+password+"','"+ u_type.getSelectedItem()+"','Pending')")){
             JOptionPane.showMessageDialog(null, "Inserted Success!");
             loginform ads = new loginform();
             ads.setVisible(true);
             this.dispose();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Connection Error:");
         }
     }
-        }
+}
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -361,6 +367,10 @@ public class registrationform extends javax.swing.JFrame {
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,7 +431,7 @@ public class registrationform extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField u_email;
+    private javax.swing.JTextField mail;
     private javax.swing.JTextField u_fname;
     private javax.swing.JTextField u_lname;
     private javax.swing.JTextField u_pass;

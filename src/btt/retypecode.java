@@ -133,9 +133,8 @@ public class retypecode extends javax.swing.JFrame {
 
     private void verifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyActionPerformed
     
-    String retypecode = rcode.getText();
     
-    if (retypecode.equals(scode.getText())) {
+    if (rcode.getText().equals(scode.getText())) {
         
         JOptionPane.showMessageDialog(null, "Code verified! Proceeding to the next form.");
     confirmforgetpass cfp = new confirmforgetpass();

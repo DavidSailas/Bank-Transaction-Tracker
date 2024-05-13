@@ -210,6 +210,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1200, 1600));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -300,7 +301,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-tracking-34.png"))); // NOI18N
         jLabel15.setText("TRACKER");
         p_add3.add(jLabel15);
-        jLabel15.setBounds(20, 0, 90, 34);
+        jLabel15.setBounds(20, 0, 140, 34);
 
         p_add4.setBackground(new java.awt.Color(102, 204, 255));
         p_add4.addMouseListener(new java.awt.event.MouseAdapter() {
