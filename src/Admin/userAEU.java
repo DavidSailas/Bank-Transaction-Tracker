@@ -220,6 +220,8 @@ public class userAEU extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setMinimumSize(new java.awt.Dimension(500, 450));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        image.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 320, 230));
 
         jButton1.setText("Remove");
