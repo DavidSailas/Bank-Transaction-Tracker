@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 08:13 AM
+-- Generation Time: May 14, 2024 at 04:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,24 +28,27 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tbl_u` (
-  `u_id` int(20) NOT NULL,
+  `u_id` int(10) NOT NULL,
   `u_fname` varchar(50) NOT NULL,
   `u_lname` varchar(50) NOT NULL,
   `u_email` varchar(50) NOT NULL,
   `u_uname` varchar(50) NOT NULL,
   `u_pass` varchar(50) NOT NULL,
   `u_type` varchar(50) NOT NULL,
-  `u_status` varchar(50) NOT NULL
+  `u_status` varchar(50) NOT NULL,
+  `u_image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_u`
 --
 
-INSERT INTO `tbl_u` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_uname`, `u_pass`, `u_type`, `u_status`) VALUES
-(1001, 'David', 'Villondo', 'dasai', 'dasai', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'Admin', 'Active'),
-(1004, 'David Sailas', 'Romano', 'sailas', 'sailas', '123456789', 'User', 'Active'),
-(1006, 'Mercelyn', 'Batol', 'sammytan', 'ashlyn', '143c896ac0dceba01fc3adc068b9cad563934add554ee016f9', 'Admin', 'Active');
+INSERT INTO `tbl_u` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_uname`, `u_pass`, `u_type`, `u_status`, `u_image`) VALUES
+(1001, 'David', 'Romano', 'dasai@gmail.com', 'dasai', '12345678', 'Admin', 'Active', ''),
+(1002, 'David', 'Villondo', 'ashai@gmail', 'ashai', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'Admin', 'Active', ''),
+(1003, 'Ashlyn', 'Batol', 'aliya@gmail.com', 'aliya', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Active', ''),
+(1004, 'Christine Jane', 'Abendan', 'kath@gmail.com', 'kath', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Pending', ''),
+(1005, 'Christian', 'Abendan', 'cjabendan@gmail.com', 'ike', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Pending', '');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +68,7 @@ ALTER TABLE `tbl_u`
 -- AUTO_INCREMENT for table `tbl_u`
 --
 ALTER TABLE `tbl_u`
-  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
+  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1006;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

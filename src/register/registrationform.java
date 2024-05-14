@@ -92,7 +92,7 @@ public class registrationform extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 92, 229));
         jPanel2.setMinimumSize(new java.awt.Dimension(500, 450));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logo-256.png"))); // NOI18N
@@ -117,7 +117,8 @@ public class registrationform extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 48)); // NOI18N
-        jLabel1.setText("Sign Up!");
+        jLabel1.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel1.setText("Sign Up");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, 60));
 
         u_fname.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +179,7 @@ public class registrationform extends javax.swing.JFrame {
         jLabel8.setText("User Type:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
+        jButton1.setBackground(new java.awt.Color(0, 51, 184));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Create");
@@ -196,7 +197,7 @@ public class registrationform extends javax.swing.JFrame {
         jLabel9.setText("Already have an account?");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel13.setForeground(new java.awt.Color(0, 51, 184));
         jLabel13.setText("Log in now!");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -343,19 +344,22 @@ if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || mail.getText().
         System.out.println("Duplicate Exist");
     } else {
         // Creating dbconnector object
-        dbconnector connector = new dbconnector();
+       dbconnector connector = new dbconnector();
 
-        // Inserting data into the database
-        if(connector.insertData("INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status) "
-        + "VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+ mail.getText()+"','"+u_uname.getText()
-                +"','"+password+"','"+ u_type.getSelectedItem()+"','Pending')")){
-            JOptionPane.showMessageDialog(null, "Inserted Success!");
-            loginform ads = new loginform();
-            ads.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Connection Error:");
-        }
+// Inserting data into the database
+String query = "INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image) "
+        + "VALUES ('" + u_fname.getText() + "','" + u_lname.getText() + "','" + mail.getText() + "','"
+        + u_uname.getText() + "','" + password + "','" + u_type.getSelectedItem() + "','Pending','')";
+
+if (connector.insertData(query)) {
+    JOptionPane.showMessageDialog(null, "Inserted Success!");
+    loginform ads = new loginform();
+    ads.setVisible(true);
+    this.dispose();
+} else {
+    JOptionPane.showMessageDialog(null, "Connection Error:");
+}
+
     }
 }
 

@@ -86,7 +86,7 @@ public class loginform extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 92, 229));
         jPanel2.setMinimumSize(new java.awt.Dimension(500, 450));
         jPanel2.setPreferredSize(new java.awt.Dimension(600, 450));
 
@@ -110,12 +110,13 @@ public class loginform extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 184));
         jLabel1.setText("WELCOME BACK!");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Username");
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
+        jButton1.setBackground(new java.awt.Color(0, 51, 184));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Log in");
@@ -127,7 +128,7 @@ public class loginform extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 51, 184));
         jLabel5.setText("Forgot password?");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,7 +151,7 @@ public class loginform extends javax.swing.JFrame {
         jLabel9.setText("Don't have an account?");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 51, 184));
         jLabel4.setText("Sign up now!");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

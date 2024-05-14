@@ -197,11 +197,12 @@ public class userAEU extends javax.swing.JFrame {
         delete = new javax.swing.JButton();
         cancle = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        navtext = new javax.swing.JLabel();
         adminName = new javax.swing.JLabel();
         adminName1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -216,7 +217,7 @@ public class userAEU extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel5.setBackground(new java.awt.Color(0, 92, 229));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setMinimumSize(new java.awt.Dimension(500, 450));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -378,9 +379,9 @@ public class userAEU extends javax.swing.JFrame {
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.white, java.awt.Color.black, java.awt.Color.lightGray));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel9.setText("EDIT USERS");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        navtext.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        navtext.setText("USERS");
+        jPanel3.add(navtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         adminName.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
         jPanel3.add(adminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 150, 30));
@@ -423,6 +424,8 @@ public class userAEU extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
 
+        
+        
                PasswordHasher pH = new PasswordHasher();
         
        String password = pH.hashPassword(u_pass.getText());
@@ -445,19 +448,24 @@ public class userAEU extends javax.swing.JFrame {
         }
         else{
 
-            dbconnector connector = new dbconnector();
 
-            if(connector.insertData("INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status) "
-                + "VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+ u_email.getText()+"','"+u_uname.getText()+"','"
-                    + password +"','"+ u_status.getSelectedItem()+"','"+u_status.getSelectedItem()+"')")){
-            JOptionPane.showMessageDialog(null, "Inserted Success!");
-            user u = new user();
-            u.setVisible(true);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Connection Error:");
-        }
-        }
+         dbconnector connector = new dbconnector();
+
+// Inserting data into the database
+String query = "INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image) "
+        + "VALUES ('" + u_fname.getText() + "','" + u_lname.getText() + "','" + u_email.getText() + "','"
+        + u_uname.getText() + "','" + password + "','" + u_type.getSelectedItem() + "','Pending','')";
+
+if (connector.insertData(query)) {
+    JOptionPane.showMessageDialog(null, "Inserted Success!");
+     user u = new user();
+     u.setVisible(true);
+     this.dispose();
+} else {
+    JOptionPane.showMessageDialog(null, "Connection Error:");
+}
+
+    }
     }//GEN-LAST:event_addActionPerformed
 
     private void u_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_idActionPerformed
@@ -630,11 +638,11 @@ public class userAEU extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel navtext;
     public javax.swing.JTextField u_email;
     public javax.swing.JTextField u_fname;
     public javax.swing.JTextField u_id;

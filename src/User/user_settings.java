@@ -28,7 +28,7 @@ public class user_settings extends javax.swing.JFrame {
     }
 
     Color navcolor =  new Color(255,255,255);
-    Color hovercolor =  new Color(102,204,255);
+    Color hovercolor =  new Color(0,92,229);
            
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -49,6 +49,7 @@ public class user_settings extends javax.swing.JFrame {
         a3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -91,7 +92,7 @@ public class user_settings extends javax.swing.JFrame {
         });
         jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 280, 30));
 
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 92, 229));
 
         jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
