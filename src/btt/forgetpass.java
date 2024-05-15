@@ -55,10 +55,10 @@ public class forgetpass extends javax.swing.JFrame {
 
         fullname.setBackground(new java.awt.Color(255, 255, 255));
         fullname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        fullname.setForeground(new java.awt.Color(51, 153, 255));
+        fullname.setForeground(new java.awt.Color(0, 51, 184));
         fullname.setText("sample");
 
-        yes.setBackground(new java.awt.Color(51, 153, 255));
+        yes.setBackground(new java.awt.Color(0, 51, 184));
         yes.setForeground(new java.awt.Color(255, 255, 255));
         yes.setText("YES");
         yes.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +67,7 @@ public class forgetpass extends javax.swing.JFrame {
             }
         });
 
-        no.setBackground(new java.awt.Color(51, 153, 255));
+        no.setBackground(new java.awt.Color(0, 51, 184));
         no.setForeground(new java.awt.Color(255, 255, 255));
         no.setText("NO");
         no.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +111,7 @@ public class forgetpass extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        confirm.setBackground(new java.awt.Color(51, 153, 255));
+        confirm.setBackground(new java.awt.Color(0, 51, 184));
         confirm.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         confirm.setForeground(new java.awt.Color(255, 255, 255));
         confirm.setText("CONTINUE");
@@ -124,7 +124,7 @@ public class forgetpass extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Enter your email address.");
 
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 92, 229));
 
         jLabel2.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

@@ -48,7 +48,7 @@ public class retypecode extends javax.swing.JFrame {
 
         scode.setEditable(false);
 
-        verify.setBackground(new java.awt.Color(51, 153, 255));
+        verify.setBackground(new java.awt.Color(0, 51, 184));
         verify.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         verify.setForeground(new java.awt.Color(255, 255, 255));
         verify.setText("VERIFY");
@@ -61,7 +61,7 @@ public class retypecode extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Please retype the code.");
 
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 92, 229));
 
         jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
