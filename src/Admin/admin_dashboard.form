@@ -334,14 +334,14 @@
                           <Component id="color1" alignment="0" max="32767" attributes="0"/>
                           <Component id="color4" alignment="0" max="32767" attributes="0"/>
                           <Component id="color5" alignment="0" max="32767" attributes="0"/>
-                          <Component id="color6" alignment="0" pref="133" max="32767" attributes="0"/>
+                          <Component id="color6" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
