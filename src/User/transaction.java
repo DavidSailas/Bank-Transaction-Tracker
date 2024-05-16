@@ -17,7 +17,7 @@ public class transaction extends javax.swing.JFrame {
         initComponents();
         
     }
-    Color navcolor =  new Color(255,255,255);
+    Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229);
  
     
@@ -50,6 +50,7 @@ public class transaction extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -396,7 +397,7 @@ public class transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_color2MouseExited
 
     private void color3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color3MouseClicked
-        ledger l = new ledger();
+        logs l = new logs();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color3MouseClicked

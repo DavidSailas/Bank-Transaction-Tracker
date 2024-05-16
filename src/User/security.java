@@ -33,6 +33,7 @@ public class security extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel7.setBackground(new java.awt.Color(0, 92, 229));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -216,6 +217,7 @@ public class security extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color1MouseClicked
@@ -247,7 +249,7 @@ public class security extends javax.swing.JFrame {
     }//GEN-LAST:event_color2MouseExited
 
     private void color3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color3MouseClicked
-        ledger l = new ledger();
+        logs l = new logs();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color3MouseClicked

@@ -1,7 +1,7 @@
 
 package User;
 
-import User.ledger;
+import User.logs;
 import User.security;
 import User.transaction;
 import btt.loginform;
@@ -170,6 +170,7 @@ public class user_dashboard extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -414,6 +415,7 @@ public class user_dashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color1MouseClicked
@@ -445,7 +447,7 @@ public class user_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_color2MouseExited
 
     private void color3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color3MouseClicked
-        ledger l = new ledger();
+        logs l = new logs();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color3MouseClicked

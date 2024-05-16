@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,55 +37,27 @@ public class userAEU extends javax.swing.JFrame {
       public String path;
       public String oldpath;
     
-   public int FileExistenceChecker(String path){
-        File file = new File(path);
-        String fileName = file.getName();
-        
-        Path filePath = Paths.get("src/u_images", fileName);
-        boolean fileExists = Files.exists(filePath);
-        
-        if (fileExists) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+public int FileExistenceChecker(String fileName){
+    Path filePath = Paths.get("src/u_images", fileName);
+    return Files.exists(filePath) ? 1 : 0;
+}
 
-   public static int getHeightFromWidth(String imagePath, int desiredWidth) {
-        try {
-            // Read the image file
-            File imageFile = new File(imagePath);
-            BufferedImage image = ImageIO.read(imageFile);
-            
-            // Get the original width and height of the image
-            int originalWidth = image.getWidth();
-            int originalHeight = image.getHeight();
-            
-            // Calculate the new height based on the desired width and the aspect ratio
-            int newHeight = (int) ((double) desiredWidth / originalWidth * originalHeight);
-            
-            return newHeight;
-        } catch (IOException ex) {
-            System.out.println("No image found!");
-        }
-        
+public static int getHeightFromWidth(String imagePath, int desiredWidth) {
+    try {
+        BufferedImage image = ImageIO.read(new File(imagePath));
+        int originalHeight = image.getHeight();
+        return (int) ((double) desiredWidth / image.getWidth() * originalHeight);
+    } catch (IOException ex) {
+        System.out.println("No image found!");
         return -1;
     }
-   
-   public  ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
-    ImageIcon MyImage = null;
-        if(ImagePath !=null){
-            MyImage = new ImageIcon(ImagePath);
-        }else{
-            MyImage = new ImageIcon(pic);
-        }
-        
-    int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
+}
 
-    Image img = MyImage.getImage();
-    Image newImg = img.getScaledInstance(label.getWidth(), newHeight, Image.SCALE_SMOOTH);
-    ImageIcon image = new ImageIcon(newImg);
-    return image;
+public ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
+    ImageIcon MyImage = (ImagePath != null) ? new ImageIcon(ImagePath) : new ImageIcon(pic);
+    int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
+    Image newImg = MyImage.getImage().getScaledInstance(label.getWidth(), newHeight, Image.SCALE_SMOOTH);
+    return new ImageIcon(newImg);
 }
     
     public static String email, username;
@@ -126,42 +99,35 @@ public class userAEU extends javax.swing.JFrame {
         
     }
     
-     public boolean upCheck(){
-        
-        dbconnector connector = new dbconnector();
-        
-        try{
-            
-            String query = "SELECT * FROM tbl_u  WHERE (u_uname = '" + u_uname.getText() + "' OR u_email = '" + u_email.getText() + "')AND u_id != '"+u_id.getText()+"'";
-            ResultSet resultSet = connector.getData(query);
-            
-            if(resultSet.next()){
-             
-                email = resultSet.getString("u_email");
-                if(email.equals(u_email.getText())){
-                    JOptionPane.showMessageDialog(null,"Email is Already Used!");
-                    u_email.setText("");
-                }
-                
-                username = resultSet.getString("u_uname");
-                if(username.equals(u_uname.getText())){
-                    JOptionPane.showMessageDialog(null,"Username is Already Used!");
-                    u_uname.setText("");
-                }
-                
-                return true;
-                
-            }else{
-                return false;
+public boolean upCheck() {
+    dbconnector connector = new dbconnector();
+    String uname = u_uname.getText();
+    String email = u_email.getText();
+    String uid = u_id.getText();
+
+    String query = "SELECT u_email, u_uname FROM tbl_u WHERE (u_uname = ? OR u_email = ?) AND u_id != ?";
+    try (PreparedStatement pst = connector.connect.prepareStatement(query)) {
+        pst.setString(1, uname);
+        pst.setString(2, email);
+        pst.setString(3, uid);
+        ResultSet resultSet = pst.executeQuery();
+
+        if (resultSet.next()) {
+            if (email.equals(resultSet.getString("u_email"))) {
+                JOptionPane.showMessageDialog(null, "Email is Already Used!");
+                u_email.setText("");
             }
-            
-        }catch(SQLException ex){
-            
-            System.out.println(""+ex);
-            return false;
+            if (uname.equals(resultSet.getString("u_uname"))) {
+                JOptionPane.showMessageDialog(null, "Username is Already Used!");
+                u_uname.setText("");
+            }
+            return true;
         }
-        
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Database Error: " + ex.getMessage());
     }
+    return false;
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -408,25 +374,28 @@ public class userAEU extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            try {
-                selectedFile = fileChooser.getSelectedFile();
-                destination = "src/u_images/" + selectedFile.getName();
-                path  = selectedFile.getAbsolutePath();
+    JFileChooser fileChooser = new JFileChooser();
+    int returnValue = fileChooser.showOpenDialog(null);
+    if (returnValue == JFileChooser.APPROVE_OPTION) {
+        try {
+            selectedFile = fileChooser.getSelectedFile();
+            String fileName = selectedFile.getName();
+            destination = "src/u_images/" + fileName;
+            path = selectedFile.getAbsolutePath();
 
-                if(FileExistenceChecker(path) == 1){
-                    JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
-                    destination = "";
-                    path="";
-                }else{
-                    image.setIcon(ResizeImage(path, null, image));
-                }
-            } catch (Exception ex) {
-                System.out.println("File Error!");
+            if(FileExistenceChecker(fileName) == 1){
+                JOptionPane.showMessageDialog(null, "File Already Exist in Destination, Rename or Choose another!");
+                destination = "";
+                path="";
+            }else{
+              
+                Files.copy(Paths.get(path), Paths.get(destination), StandardCopyOption.REPLACE_EXISTING);
+                image.setIcon(ResizeImage(destination, null, image));
             }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "File Error: " + ex.getMessage());
         }
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void u_fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_fnameActionPerformed

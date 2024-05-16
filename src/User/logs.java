@@ -6,9 +6,9 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 
-public class ledger extends javax.swing.JFrame {
+public class logs extends javax.swing.JFrame {
 
-    public ledger() {
+    public logs() {
         initComponents();
     }
     Color navcolor =  new Color(204,204,204);
@@ -33,6 +33,7 @@ public class ledger extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel7.setBackground(new java.awt.Color(0, 92, 229));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -98,7 +99,7 @@ public class ledger extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/history-24.png"))); // NOI18N
-        jLabel18.setText("LEDGER");
+        jLabel18.setText("Logs");
         color3.add(jLabel18);
         jLabel18.setBounds(20, 0, 90, 40);
 
@@ -181,7 +182,7 @@ public class ledger extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 184));
-        jLabel9.setText("Ledger");
+        jLabel9.setText("Logs");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,7 +192,7 @@ public class ledger extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
-                .addGap(0, 768, Short.MAX_VALUE))
+                .addGap(0, 792, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,6 +217,7 @@ public class ledger extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color1MouseClicked
@@ -247,7 +249,7 @@ public class ledger extends javax.swing.JFrame {
     }//GEN-LAST:event_color2MouseExited
 
     private void color3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color3MouseClicked
-        ledger l = new ledger();
+        logs l = new logs();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color3MouseClicked
@@ -307,20 +309,21 @@ public class ledger extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ledger.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ledger.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ledger.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ledger.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ledger().setVisible(true);
+                new logs().setVisible(true);
             }
         });
     }
