@@ -693,8 +693,16 @@ public class user extends javax.swing.JFrame {
                     ur.u_status.setSelectedItem(""+resultSet.getString("u_status"));
                     ur.add.setEnabled(false);
                     ur.update.setEnabled(true);
+                    ur.image.setIcon(ur.ResizeImage(resultSet.getString("u_image"), null, ur.image));
+                    ur.oldpath = resultSet.getString("u_image");
+                    ur.path = resultSet.getString("u_image");
+                    ur.destination = resultSet.getString("u_image");
                     ur.setVisible(true);
                     this.dispose();
+                    
+                    if(resultSet.getString("u_image").isEmpty()){
+                    ur.addProfile.setText("Add user profile");
+                }
                 }
             }catch(SQLException ex){
                 System.out.println(""+ex);
