@@ -10,8 +10,20 @@ import btt.loginform;
 import config.dbconnector;
 import config.session;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.JTableHeader;
@@ -29,7 +41,83 @@ public class user extends javax.swing.JFrame {
 
     Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229);
+       public String destination = "";
+   File selectedFile;
+   public String path;
+   public String oldpath;
     
+   public int FileExistenceChecker(String path){
+        File file = new File(path);
+        String fileName = file.getName();
+        
+        Path filePath = Paths.get("src/u_images", fileName);
+        boolean fileExists = Files.exists(filePath);
+        
+        if (fileExists) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+   public static int getHeightFromWidth(String imagePath, int desiredWidth) {
+        try {
+           
+            File imageFile = new File(imagePath);
+            BufferedImage image = ImageIO.read(imageFile);
+            
+            int originalWidth = image.getWidth();
+            int originalHeight = image.getHeight();
+            
+            int newHeight = (int) ((double) desiredWidth / originalWidth * originalHeight);
+            
+            return newHeight;
+        } catch (IOException ex) {
+            System.out.println("No image found!");
+        }
+        
+        return -1;
+    }
+   
+   public  ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
+    ImageIcon MyImage = null;
+        if(ImagePath !=null){
+            MyImage = new ImageIcon(ImagePath);
+        }else{
+            MyImage = new ImageIcon(pic);
+        }
+        
+    int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
+
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(label.getWidth(), newHeight, Image.SCALE_SMOOTH);
+    ImageIcon image = new ImageIcon(newImg);
+    return image;
+}
+    
+   public void imageUpdater(String existingFilePath, String newFilePath){
+        File existingFile = new File(existingFilePath);
+        if (existingFile.exists()) {
+            String parentDirectory = existingFile.getParent();
+            File newFile = new File(newFilePath);
+            String newFileName = newFile.getName();
+            File updatedFile = new File(parentDirectory, newFileName);
+            existingFile.delete();
+            try {
+                Files.copy(newFile.toPath(), updatedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Image updated successfully.");
+            } catch (IOException e) {
+                System.out.println("Error occurred while updating the image: "+e);
+            }
+        } else {
+            try{
+                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            }catch(IOException e){
+                System.out.println("Error on update!");
+            }
+        }
+   }
+   
       public void displayData(){
         try{
             dbconnector connector = new dbconnector();
@@ -69,7 +157,6 @@ public class user extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         u_id = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         fullname = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         username = new javax.swing.JLabel();
@@ -77,6 +164,8 @@ public class user extends javax.swing.JFrame {
         umail = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        image = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
@@ -124,45 +213,56 @@ public class user extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("VIEW DETAILS");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("User ID:");
 
-        u_id.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        u_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         u_id.setForeground(new java.awt.Color(255, 255, 255));
         u_id.setText("sample");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Fullname:");
-
-        fullname.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        fullname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         fullname.setForeground(new java.awt.Color(255, 255, 255));
         fullname.setText("sample");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Username:");
 
-        username.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        username.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         username.setForeground(new java.awt.Color(255, 255, 255));
         username.setText("sample");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Email:");
 
-        umail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        umail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         umail.setForeground(new java.awt.Color(255, 255, 255));
         umail.setText("sample");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Type:");
 
-        type.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        type.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         type.setForeground(new java.awt.Color(255, 255, 255));
         type.setText("sample");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        image.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout viewpanelLayout = new javax.swing.GroupLayout(viewpanel);
         viewpanel.setLayout(viewpanelLayout);
@@ -176,29 +276,26 @@ public class user extends javax.swing.JFrame {
                     .addGroup(viewpanelLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(u_id))
                     .addGroup(viewpanelLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fullname))
-                    .addGroup(viewpanelLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(username))
-                    .addGroup(viewpanelLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(umail))
-                    .addGroup(viewpanelLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(type)))
-                .addContainerGap(157, Short.MAX_VALUE))
+                        .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(viewpanelLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(username))
+                            .addGroup(viewpanelLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(umail))
+                            .addGroup(viewpanelLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(type))
+                            .addComponent(fullname)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         viewpanelLayout.setVerticalGroup(
             viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,11 +306,11 @@ public class user extends javax.swing.JFrame {
                 .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(u_id))
-                .addGap(27, 27, 27)
-                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(fullname))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fullname)
+                .addGap(18, 18, 18)
                 .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(username))
@@ -225,7 +322,7 @@ public class user extends javax.swing.JFrame {
                 .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(type))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -646,7 +743,11 @@ public class user extends javax.swing.JFrame {
         try {
             dbconnector dbc = new dbconnector();
             TableModel tbl = userTbl.getModel();
-            ResultSet rs = dbc.getData("SELECT * FROM tbl_u WHERE u_id = '" + uid + "'");
+            String query = "SELECT * FROM tbl_u WHERE u_id = ?";
+            PreparedStatement pst = dbc.connect.prepareStatement(query);
+            pst.setString(1, uid);
+            ResultSet rs = pst.executeQuery();
+
 
             if (rs.next()) {
                 u_id.setText(rs.getString("u_id"));
@@ -654,8 +755,12 @@ public class user extends javax.swing.JFrame {
                 username.setText(rs.getString("u_uname"));
                 umail.setText(rs.getString("u_email"));
                 type.setText(rs.getString("u_type"));
+                image.setIcon(ResizeImage(rs.getString("u_image"), null, image));
+                oldpath = rs.getString("u_image");
+                path = rs.getString("u_image");
+                destination = rs.getString("u_image");
+           }
 
-            }
 
             Object[] options = {};
 
@@ -768,6 +873,7 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JPanel color6;
     private javax.swing.JMenuItem edit;
     private javax.swing.JLabel fullname;
+    public javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -778,13 +884,13 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;

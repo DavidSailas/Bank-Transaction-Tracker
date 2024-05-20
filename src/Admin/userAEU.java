@@ -275,6 +275,7 @@ public boolean upCheck() {
         jPanel5.setMinimumSize(new java.awt.Dimension(500, 450));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        remove.setForeground(new java.awt.Color(0, 51, 184));
         remove.setText("Remove");
         remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,6 +284,8 @@ public boolean upCheck() {
         });
         jPanel5.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 150, -1));
 
+        addProfile.setBackground(new java.awt.Color(255, 255, 255));
+        addProfile.setForeground(new java.awt.Color(0, 51, 184));
         addProfile.setText("Select");
         addProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -552,7 +555,7 @@ public boolean upCheck() {
         
         String imageDestination = (selectedFile != null) ? destination : "";
         
- if(dbc.insertData("INSERT INTO tbl_u (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status, u_image)"
+ if(dbc.insertData("INSERT INTO tbl_u (u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image)"
         + " VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+u_email.getText()+"','"+u_uname.getText()+"','"
         +password+"','"+u_type.getSelectedItem()+"','Active','"+imageDestination+"')"))
         {
