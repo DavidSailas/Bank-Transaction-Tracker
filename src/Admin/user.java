@@ -11,8 +11,11 @@ import config.dbconnector;
 import config.session;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Window;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,11 +24,15 @@ import java.nio.file.StandardCopyOption;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -34,9 +41,14 @@ import net.proteanit.sql.DbUtils;
 
 public class user extends javax.swing.JFrame {
 
+    DefaultListModel listModel = new DefaultListModel();
+    
     public user() {
         initComponents();
         displayData();
+        list.setModel(listModel);
+        searchField.setBorder(new EmptyBorder(0,10,0,0));
+        DefaultTableModel model = (DefaultTableModel) userTbl.getModel();
     }
 
     Color navcolor =  new Color(204,204,204);
@@ -60,40 +72,29 @@ public class user extends javax.swing.JFrame {
         }
     }
 
-   public static int getHeightFromWidth(String imagePath, int desiredWidth) {
-        try {
-           
-            File imageFile = new File(imagePath);
-            BufferedImage image = ImageIO.read(imageFile);
-            
-            int originalWidth = image.getWidth();
-            int originalHeight = image.getHeight();
-            
-            int newHeight = (int) ((double) desiredWidth / originalWidth * originalHeight);
-            
-            return newHeight;
-        } catch (IOException ex) {
-            System.out.println("No image found!");
-        }
-        
-        return -1;
-    }
-   
-   public  ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
-    ImageIcon MyImage = null;
-        if(ImagePath !=null){
-            MyImage = new ImageIcon(ImagePath);
-        }else{
-            MyImage = new ImageIcon(pic);
-        }
-        
-    int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
+   public ImageIcon ResizeImage(ImageIcon originalIcon, int targetWidth, int targetHeight) {
+        Image originalImage = originalIcon.getImage();
 
-    Image img = MyImage.getImage();
-    Image newImg = img.getScaledInstance(label.getWidth(), newHeight, Image.SCALE_SMOOTH);
-    ImageIcon image = new ImageIcon(newImg);
-    return image;
+        // Calculate the appropriate height based on the aspect ratio
+        int newHeight = getHeightFromWidth(originalImage, targetWidth);
+
+        // Create a new BufferedImage with the desired dimensions
+        BufferedImage resizedImage = new BufferedImage(targetWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+
+        // Get the graphics context of the resized image
+        resizedImage.createGraphics().drawImage(originalImage, 0, 0, targetWidth, newHeight, null);
+
+        // Convert the resized BufferedImage back to an ImageIcon
+        return new ImageIcon(resizedImage);
 }
+
+// Function to calculate height from width maintaining aspect ratio
+    public int getHeightFromWidth(Image image, int desiredWidth) {
+        int originalWidth = image.getWidth(null);
+        int originalHeight = image.getHeight(null);
+
+        return (int) ((double) desiredWidth / originalWidth * originalHeight);
+    }
     
    public void imageUpdater(String existingFilePath, String newFilePath){
         File existingFile = new File(existingFilePath);
@@ -166,10 +167,18 @@ public class user extends javax.swing.JFrame {
         type = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
+        exportData = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        excel = new javax.swing.JButton();
+        nameField = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        pdf = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
-        add1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         list = new javax.swing.JList<>();
@@ -190,6 +199,7 @@ public class user extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         color6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        export = new javax.swing.JButton();
 
         view.setText("View");
         view.addActionListener(new java.awt.event.ActionListener() {
@@ -325,6 +335,55 @@ public class user extends javax.swing.JFrame {
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
+        exportData.setBackground(new java.awt.Color(255, 255, 255));
+        exportData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        exportData.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 320, 10));
+
+        jPanel7.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText(" System Users Data");
+        jPanel7.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
+
+        exportData.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
+
+        excel.setBackground(new java.awt.Color(0, 204, 51));
+        excel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        excel.setForeground(new java.awt.Color(255, 255, 255));
+        excel.setText("EXCEL");
+        excel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excelActionPerformed(evt);
+            }
+        });
+        exportData.add(excel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 110, 30));
+        exportData.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 290, 30));
+
+        jLabel23.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Download reports as:");
+        exportData.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 290, 30));
+
+        jLabel24.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel24.setText("File name:");
+        exportData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 20));
+
+        pdf.setBackground(new java.awt.Color(255, 102, 102));
+        pdf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        pdf.setForeground(new java.awt.Color(255, 255, 255));
+        pdf.setText(" PDF");
+        pdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pdfActionPerformed(evt);
+            }
+        });
+        exportData.add(pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 110, 30));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -334,6 +393,7 @@ public class user extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         userTbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -343,15 +403,7 @@ public class user extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(userTbl);
 
-        add1.setBackground(new java.awt.Color(0, 51, 184));
-        add1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        add1.setForeground(new java.awt.Color(255, 255, 255));
-        add1.setText("Add a new user");
-        add1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add1ActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 570, 385));
 
         jPanel4.setBackground(new java.awt.Color(0, 92, 229));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.white, java.awt.Color.black, java.awt.Color.lightGray));
@@ -398,9 +450,12 @@ public class user extends javax.swing.JFrame {
         jLabel17.setText("Search");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 20));
 
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(768, 49, 220, 385));
+
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 184));
         jLabel9.setText("Users");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 16, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -487,7 +542,7 @@ public class user extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/messages-24.png"))); // NOI18N
-        jLabel19.setText(" MESSAGE");
+        jLabel19.setText("REPORT");
         color4.add(jLabel19);
         jLabel19.setBounds(20, 0, 90, 40);
 
@@ -571,45 +626,27 @@ public class user extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(add1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(add1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19))
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 458));
+
+        export.setBackground(new java.awt.Color(27, 57, 77));
+        export.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        export.setForeground(new java.awt.Color(255, 255, 255));
+        export.setText("Export Users Data");
+        export.setBorder(null);
+        export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportActionPerformed(evt);
+            }
+        });
+        jPanel1.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 180, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -626,16 +663,69 @@ public class user extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_userTblMousePressed
 
-    private void add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add1ActionPerformed
-        userAEU ur = new userAEU();
-        ur.update.setEnabled(false);
-        ur.setVisible(true);
-        this.dispose();
-
-    }//GEN-LAST:event_add1ActionPerformed
-
     private void listMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMousePressed
+         
+        String fullName = list.getSelectedValue();
+        String[] nameParts = fullName.trim().split("\\s+");
+        
+ 
+        int lastNameStartIndex = -1;
+        for (int i = 0; i < nameParts.length; i++) {
+            if (nameParts[i].equalsIgnoreCase("Delos") ||
+                nameParts[i].equalsIgnoreCase("Dela") ||
+                nameParts[i].equalsIgnoreCase("Del") ||
+                nameParts[i].equalsIgnoreCase("San") ||   
+                nameParts[i].equalsIgnoreCase("Santo") || 
+                nameParts[i].equalsIgnoreCase("La") || 
+                nameParts[i].equalsIgnoreCase("Santa")    
+                    ) {
+                lastNameStartIndex = i;
+                break;
+            }
+        }
 
+        // If no last name identifier is found, default to the last part as the last name
+        if (lastNameStartIndex == -1) {
+            lastNameStartIndex = nameParts.length - 1;
+        }
+
+        String firstName = String.join(" ", Arrays.copyOfRange(nameParts, 0, lastNameStartIndex));
+        String lastName = String.join(" ", Arrays.copyOfRange(nameParts, lastNameStartIndex, nameParts.length));
+        
+        
+        dbconnector dbc = new dbconnector();
+
+        try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT * FROM tbl_u WHERE u_fname = ? AND u_lname = ?")) {
+            pst.setString(1, firstName);
+            pst.setString(2, lastName);
+            ResultSet rs = pst.executeQuery();    
+
+      
+            if (rs.next()) {
+                userAEU ru = new userAEU();
+                ru.u_id.setText(String.valueOf(rs.getInt("u_id")));
+                ru.u_fname.setText(rs.getString("u_fname"));
+                ru.u_lname.setText(rs.getString("u_lname"));
+                ru.u_uname.setText(rs.getString("u_uname"));
+                ru.u_email.setText(rs.getString("u_email"));
+                ru.u_type.setSelectedItem(rs.getString("u_type"));
+                ru.u_status.setSelectedItem(rs.getString("u_status"));
+                ru.ACCOUNT_NAME.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
+                ru.image.setIcon(ru.ResizeImage(rs.getString("u_image"), null, ru.image));
+                ru.oldpath = rs.getString("u_image");
+                ru.path = rs.getString("u_image");
+                ru.destination = rs.getString("u_image");
+                ru.setVisible(true);
+                this.dispose();
+                
+                if(rs.getString("u_image").isEmpty()){
+                    ru.addProfile.setText(" Add profile");
+                    ru.remove.setEnabled(false);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Errors: " + ex.getMessage());
+        }
     }//GEN-LAST:event_listMousePressed
 
     private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
@@ -647,7 +737,32 @@ public class user extends javax.swing.JFrame {
     }//GEN-LAST:event_searchFieldActionPerformed
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+       
+       listModel.removeAllElements();
 
+        if(!searchField.getText().equals("")){
+        list.setSize(200,210);
+
+        dbconnector dbc = new dbconnector();
+
+        try(PreparedStatement pst = dbc.connect.prepareStatement("SELECT * FROM tbl_u WHERE u_fname LIKE ? OR u_lname LIKE ?")){
+
+            String name = searchField.getText();
+            pst.setString(1,"%"+name+"%");
+            pst.setString(2,"%"+name+"%");
+            ResultSet rs = pst.executeQuery();
+        
+         while(rs.next()){
+             listModel.addElement(rs.getString("u_fname") + " " + rs.getString("u_lname"));
+         }
+
+            }catch(SQLException ex){
+                 System.out.println("Errors: "+ex.getMessage());
+         }                   
+
+        }else{
+             list.setSize(200,0);
+            }
     }//GEN-LAST:event_searchFieldKeyReleased
 
     private void color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color1MouseClicked
@@ -828,6 +943,71 @@ public class user extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
+    private void excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelActionPerformed
+
+    }//GEN-LAST:event_excelActionPerformed
+
+    private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
+
+        if(nameField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please name the pdf first to generate");
+            return;
+        }
+        String name = nameField.getText() + ".pdf";
+        String location = System.getProperty("user.home") + "/OneDrive/Desktop/";
+
+        try {
+            dbconnector dbc = new dbconnector();
+            String query = "SELECT u_id, u_fname, u_lname, u_email, u_uname FROM tbl_u";
+            ResultSet resultSet = dbc.getData(query);
+
+            com.itextpdf.text.Document document = new com.itextpdf.text.Document(PageSize.A5.rotate());
+            PdfWriter.getInstance(document, new FileOutputStream(location + name));
+            document.open();
+
+            PdfPTable pdfPTable = new PdfPTable(5);
+
+            pdfPTable.addCell("ID");
+            pdfPTable.addCell("Firstname");
+            pdfPTable.addCell("Lastname");
+            pdfPTable.addCell("Email");
+            pdfPTable.addCell("Username");
+
+            // Check if the result set has data and process the first row
+            if (resultSet.next()) {
+                do {
+                    // Retrieve each column by name and add to the table
+                    pdfPTable.addCell(resultSet.getString("u_id"));
+                    pdfPTable.addCell(resultSet.getString("u_fname"));
+                    pdfPTable.addCell(resultSet.getString("u_lname"));
+                    pdfPTable.addCell(resultSet.getString("u_email"));
+                    pdfPTable.addCell(resultSet.getString("u_uname"));
+                } while (resultSet.next()); // Continue with the rest of the rows
+            }
+
+            document.add(pdfPTable);
+            document.close();
+            Window window = SwingUtilities.getWindowAncestor(exportData);
+            window.dispose();
+            JOptionPane.showMessageDialog(null, "Successfully Generated");
+            nameField.setText("");
+        } catch (DocumentException | FileNotFoundException e) {
+            System.err.println(e);
+        } catch (SQLException ex) {
+            System.out.println("" + ex);
+        }
+
+    }//GEN-LAST:event_pdfActionPerformed
+
+    private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
+
+        Object[] options = {};
+        JOptionPane.showOptionDialog(null, exportData, "",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, null);
+
+    }//GEN-LAST:event_exportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -864,7 +1044,6 @@ public class user extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton add1;
     private javax.swing.JPanel color1;
     private javax.swing.JPanel color2;
     private javax.swing.JPanel color3;
@@ -872,6 +1051,9 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JPanel color5;
     private javax.swing.JPanel color6;
     private javax.swing.JMenuItem edit;
+    private javax.swing.JButton excel;
+    private javax.swing.JButton export;
+    private javax.swing.JPanel exportData;
     private javax.swing.JLabel fullname;
     public javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
@@ -882,6 +1064,10 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -893,8 +1079,11 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> list;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JButton pdf;
     private javax.swing.JPopupMenu popUp;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel type;

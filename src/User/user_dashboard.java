@@ -47,6 +47,8 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         color5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        profile = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         menu = new javax.swing.JLabel();
         fullname = new javax.swing.JLabel();
@@ -56,8 +58,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        profile = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         viewpanel.setBackground(new java.awt.Color(0, 92, 229));
 
@@ -172,6 +173,8 @@ public class user_dashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -193,10 +196,11 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboard-25.png"))); // NOI18N
         jLabel15.setText(" DASHBOARD");
         color1.add(jLabel15);
-        jLabel15.setBounds(20, 0, 110, 40);
+        jLabel15.setBounds(0, 0, 160, 40);
 
         color2.setBackground(new java.awt.Color(0, 92, 229));
         color2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -214,10 +218,11 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/location-24.png"))); // NOI18N
         jLabel17.setText("TRANSACTION");
         color2.add(jLabel17);
-        jLabel17.setBounds(20, 0, 110, 40);
+        jLabel17.setBounds(0, 0, 160, 40);
 
         color3.setBackground(new java.awt.Color(0, 92, 229));
         color3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,10 +240,11 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/messages-24.png"))); // NOI18N
-        jLabel18.setText("LEDGER");
+        jLabel18.setText("AUDIT LOGS");
         color3.add(jLabel18);
-        jLabel18.setBounds(20, 0, 90, 40);
+        jLabel18.setBounds(0, 0, 160, 40);
 
         color4.setBackground(new java.awt.Color(0, 92, 229));
         color4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -256,10 +262,11 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/protect-24.png"))); // NOI18N
         jLabel19.setText("SECURITY");
         color4.add(jLabel19);
-        jLabel19.setBounds(20, 0, 90, 40);
+        jLabel19.setBounds(-20, 0, 160, 40);
 
         color5.setBackground(new java.awt.Color(0, 92, 229));
         color5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -285,17 +292,17 @@ public class user_dashboard extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addComponent(color1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(color2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(color2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(color1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(color3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(color4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(color5, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(color3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel14)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -316,6 +323,23 @@ public class user_dashboard extends javax.swing.JFrame {
                 .addComponent(color5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel9.setText("Dashboard");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+
+        profile.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        profile.setForeground(new java.awt.Color(0, 51, 184));
+        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male-user-24.png"))); // NOI18N
+        profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileMouseClicked(evt);
+            }
+        });
+        jPanel1.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(979, 16, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(0, 92, 229));
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -342,66 +366,30 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel20.setText("Hello,");
         jPanel7.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("“Welcome to Bank Transactions Tracker,");
+        jLabel21.setText("Manage your finances");
         jPanel7.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText(" your reliable partner in managing and");
-        jPanel7.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+        jLabel22.setText("Your command center for seamless management");
+        jPanel7.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("overseeing your financial activities with ease");
-        jPanel7.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+        jLabel23.setText("and real-time insights into banking transactions ");
+        jPanel7.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("and precision!”");
+        jLabel24.setText("awaits you.");
         jPanel7.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 51, 184));
-        jLabel9.setText("Dashboard");
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Investment data-bro (1).png"))); // NOI18N
+        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 230, 170));
 
-        profile.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        profile.setForeground(new java.awt.Color(0, 51, 184));
-        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male-user-24.png"))); // NOI18N
-        profile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                profileMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(profile)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(profile))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 530, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -490,10 +478,6 @@ public class user_dashboard extends javax.swing.JFrame {
         color5.setBackground(hovercolor);
     }//GEN-LAST:event_color5MouseExited
 
-    private void userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseClicked
-
-    }//GEN-LAST:event_userMouseClicked
-
     private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
 
         session sess = session.getInstance();
@@ -511,6 +495,10 @@ public class user_dashboard extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, new Object[]{}, null);
     }//GEN-LAST:event_profileMouseClicked
+
+    private void userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseClicked
+
+    }//GEN-LAST:event_userMouseClicked
 
     /**
      * @param args the command line arguments
@@ -556,6 +544,7 @@ public class user_dashboard extends javax.swing.JFrame {
     public javax.swing.JLabel fullname;
     private javax.swing.JLabel fullname1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;

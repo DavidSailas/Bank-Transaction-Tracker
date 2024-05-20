@@ -728,7 +728,7 @@ public boolean upCheck() {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JButton remove;
+    public javax.swing.JButton remove;
     public javax.swing.JTextField u_email;
     public javax.swing.JTextField u_fname;
     public javax.swing.JTextField u_id;
