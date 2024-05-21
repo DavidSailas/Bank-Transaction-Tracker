@@ -30,6 +30,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -72,7 +73,7 @@ public class user extends javax.swing.JFrame {
         }
     }
 
-   public ImageIcon ResizeImage(ImageIcon originalIcon, int targetWidth, int targetHeight) {
+   public ImageIcon resizeImage(ImageIcon originalIcon, int targetWidth, int targetHeight) {
         Image originalImage = originalIcon.getImage();
 
         // Calculate the appropriate height based on the aspect ratio
@@ -167,6 +168,9 @@ public class user extends javax.swing.JFrame {
         type = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        stats = new javax.swing.JLabel();
+        print = new javax.swing.JButton();
         exportData = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -274,6 +278,24 @@ public class user extends javax.swing.JFrame {
             .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
         );
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Status:");
+
+        stats.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        stats.setForeground(new java.awt.Color(255, 255, 255));
+        stats.setText("sample");
+
+        print.setBackground(new java.awt.Color(255, 255, 255));
+        print.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        print.setForeground(new java.awt.Color(0, 51, 184));
+        print.setText(" EXPORT");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout viewpanelLayout = new javax.swing.GroupLayout(viewpanel);
         viewpanel.setLayout(viewpanelLayout);
         viewpanelLayout.setHorizontalGroup(
@@ -304,8 +326,14 @@ public class user extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(type))
                             .addComponent(fullname)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(viewpanelLayout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(stats)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                                .addComponent(print, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(44, 44, 44))
         );
         viewpanelLayout.setVerticalGroup(
             viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +360,12 @@ public class user extends javax.swing.JFrame {
                 .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(type))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(stats)
+                    .addComponent(print, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         exportData.setBackground(new java.awt.Color(255, 255, 255));
@@ -628,7 +661,7 @@ public class user extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 458));
 
-        export.setBackground(new java.awt.Color(27, 57, 77));
+        export.setBackground(new java.awt.Color(0, 51, 184));
         export.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         export.setForeground(new java.awt.Color(255, 255, 255));
         export.setText("Export Users Data");
@@ -852,40 +885,50 @@ public class user extends javax.swing.JFrame {
     }//GEN-LAST:event_color6MouseExited
 
     private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
-
+     
         String uid = userTbl.getValueAt(userTbl.getSelectedRow(), 0).toString();
 
         try {
-            dbconnector dbc = new dbconnector();
-            TableModel tbl = userTbl.getModel();
-            String query = "SELECT * FROM tbl_u WHERE u_id = ?";
-            PreparedStatement pst = dbc.connect.prepareStatement(query);
-            pst.setString(1, uid);
-            ResultSet rs = pst.executeQuery();
+             dbconnector dbc = new dbconnector();
+             TableModel tbl = userTbl.getModel();
+             ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '" + uid + "'");
 
+             if (rs.next()) {
+           
+              String imagePath = rs.getString("u_image");
 
-            if (rs.next()) {
-                u_id.setText(rs.getString("u_id"));
-                fullname.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
-                username.setText(rs.getString("u_uname"));
-                umail.setText(rs.getString("u_email"));
-                type.setText(rs.getString("u_type"));
-                image.setIcon(ResizeImage(rs.getString("u_image"), null, image));
-                oldpath = rs.getString("u_image");
-                path = rs.getString("u_image");
-                destination = rs.getString("u_image");
-           }
+              ImageIcon originalIcon = new ImageIcon(imagePath);
+              
+              ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
 
+              image.setIcon(resizedIcon);
 
+              u_id.setText(rs.getString("u_id"));
+              fullname.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
+              username.setText(rs.getString("u_uname"));
+              umail.setText(rs.getString("u_email"));
+              type.setText(rs.getString("u_type"));
+              
+              String as = rs.getString("u_status");
+              if(as.equals("Active")){
+                 
+                  stats.setText(""+as);
+              }else{
+                  
+                  stats.setText(""+as);
+              }
+              
+             }
+         
+                
             Object[] options = {};
-
             JOptionPane.showOptionDialog(null, viewpanel, "",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, options, null);
-
-        }catch(SQLException ex){
-            System.out.println(""+ex);
-        }
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, null);
+        
+            }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
 
     }//GEN-LAST:event_viewActionPerformed
 
@@ -1008,6 +1051,43 @@ public class user extends javax.swing.JFrame {
 
     }//GEN-LAST:event_exportActionPerformed
 
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+
+        JPanel myPanel = new JPanel();
+
+        try {
+            dbconnector dbc = new dbconnector();
+            ResultSet rs = dbc.getData("SELECT * FROM tbl_u WHERE u_id = '" + u_id.getText() + "'");
+
+            if (rs.next()) {
+                PrintUserDets pud = new PrintUserDets();
+                String imagePath = rs.getString("u_image");
+
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+
+                pud.image.setIcon(resizedIcon);
+
+                pud.uid.setText(rs.getString("u_id"));
+                pud.fullname.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
+                pud.username.setText(rs.getString("u_usn"));
+                pud.umail.setText(rs.getString("u_email"));
+                pud.type.setText(rs.getString("u_type"));
+
+                String as = rs.getString("u_status");
+
+                stats.setText(""+as);
+
+                PanelPrinter pPrint = new PanelPrinter(pud.page);
+                pPrint.printPanel();
+            }
+
+        }catch(SQLException ex){
+            System.out.println(""+ex);
+        }
+    }//GEN-LAST:event_printActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1057,6 +1137,7 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JLabel fullname;
     public javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -1085,7 +1166,9 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JTextField nameField;
     private javax.swing.JButton pdf;
     private javax.swing.JPopupMenu popUp;
+    private javax.swing.JButton print;
     private javax.swing.JTextField searchField;
+    private javax.swing.JLabel stats;
     private javax.swing.JLabel type;
     private javax.swing.JLabel u_id;
     private javax.swing.JLabel umail;
