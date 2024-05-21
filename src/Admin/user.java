@@ -7,6 +7,11 @@ import Admin.security;
 import Admin.tracker;
 import Admin.userAEU;
 import btt.loginform;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import config.PanelPrinter;
 import config.dbconnector;
 import config.session;
 import java.awt.Color;
@@ -372,9 +377,10 @@ public class user extends javax.swing.JFrame {
         exportData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         exportData.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 320, 10));
 
-        jPanel7.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel7.setBackground(new java.awt.Color(0, 92, 229));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel22.setBackground(new java.awt.Color(0, 92, 229));
         jLabel22.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -419,6 +425,7 @@ public class user extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1000, 450));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -659,10 +666,10 @@ public class user extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 458));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));
 
         export.setBackground(new java.awt.Color(0, 51, 184));
-        export.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        export.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         export.setForeground(new java.awt.Color(255, 255, 255));
         export.setText("Export Users Data");
         export.setBorder(null);
@@ -671,19 +678,17 @@ public class user extends javax.swing.JFrame {
                 exportActionPerformed(evt);
             }
         });
-        jPanel1.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 180, 30));
+        jPanel1.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 180, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -891,7 +896,7 @@ public class user extends javax.swing.JFrame {
         try {
              dbconnector dbc = new dbconnector();
              TableModel tbl = userTbl.getModel();
-             ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '" + uid + "'");
+             ResultSet rs = dbc.getData("SELECT * FROM tbl_u WHERE u_id = '" + uid + "'");
 
              if (rs.next()) {
            
@@ -997,7 +1002,7 @@ public class user extends javax.swing.JFrame {
             return;
         }
         String name = nameField.getText() + ".pdf";
-        String location = System.getProperty("user.home") + "/OneDrive/Desktop/";
+        String location = System.getProperty("user.home") + "/Documents/";
 
         try {
             dbconnector dbc = new dbconnector();

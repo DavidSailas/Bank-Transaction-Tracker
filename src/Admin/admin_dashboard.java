@@ -279,7 +279,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/users-25.png"))); // NOI18N
-        jLabel16.setText("SYSTEM USERS");
+        jLabel16.setText("ACCOUNTANT");
         color2.add(jLabel16);
         jLabel16.setBounds(0, 0, 160, 40);
 
@@ -572,7 +572,7 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 250, 380));
 
-        add1.setBackground(new java.awt.Color(0, 51, 184));
+        add1.setBackground(new java.awt.Color(0, 92, 229));
         add1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         add1.setForeground(new java.awt.Color(255, 255, 255));
         add1.setText("Add a new user");
@@ -581,7 +581,7 @@ public class admin_dashboard extends javax.swing.JFrame {
                 add1ActionPerformed(evt);
             }
         });
-        jPanel5.add(add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 170, 100));
+        jPanel5.add(add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 170, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

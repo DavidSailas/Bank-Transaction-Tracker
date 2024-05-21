@@ -115,12 +115,13 @@ public class PrintUserDets extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 92, 229));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         page.setBackground(new java.awt.Color(255, 255, 255));
 
-        date.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        date.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        date.setForeground(new java.awt.Color(0, 51, 184));
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date.setText("DATE");
 
@@ -128,10 +129,12 @@ public class PrintUserDets extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Untitled design (2).png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 184));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ARQUSTATS");
+        jLabel3.setText("D.S POINEER PAY");
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 184));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SYSTEM USER DETAILS REPORT");
 
