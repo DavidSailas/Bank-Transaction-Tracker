@@ -232,6 +232,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         });
 
         jPanel5.setBackground(new java.awt.Color(236, 236, 236));
+        jPanel5.setMinimumSize(new java.awt.Dimension(1000, 450));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
@@ -303,7 +304,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/location-24.png"))); // NOI18N
         jLabel17.setText("TRACKER");
         color3.add(jLabel17);
-        jLabel17.setBounds(0, 0, 170, 40);
+        jLabel17.setBounds(0, 0, 140, 40);
 
         color4.setBackground(new java.awt.Color(0, 92, 229));
         color4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,7 +326,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/messages-24.png"))); // NOI18N
         jLabel18.setText("REPORT");
         color4.add(jLabel18);
-        jLabel18.setBounds(0, 0, 170, 40);
+        jLabel18.setBounds(0, 0, 140, 40);
 
         color5.setBackground(new java.awt.Color(0, 92, 229));
         color5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -347,7 +348,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/protect-24.png"))); // NOI18N
         jLabel19.setText("SECURITY");
         color5.add(jLabel19);
-        jLabel19.setBounds(0, 0, 170, 40);
+        jLabel19.setBounds(0, 0, 150, 40);
 
         color6.setBackground(new java.awt.Color(0, 92, 229));
         color6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -514,7 +515,7 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         profile.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         profile.setForeground(new java.awt.Color(0, 51, 184));
-        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male-user-24.png"))); // NOI18N
+        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male-user-26.png"))); // NOI18N
         profile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 profileMouseClicked(evt);

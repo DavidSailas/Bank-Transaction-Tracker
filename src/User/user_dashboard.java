@@ -7,16 +7,53 @@ import User.transaction;
 import btt.loginform;
 import config.session;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 public class user_dashboard extends javax.swing.JFrame {
 
     public user_dashboard() {
         initComponents();
+        date();
     }
 
     Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229);
+    
+        private void date() {
+       
+        Date d = new Date();
+    
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd,yyyy");
+        String dt = sdf.format(d);
+        date.setText(dt);
+    }
+
+    
+        Timer t;
+        SimpleDateFormat st;
+    
+    private void time(){
+
+        t = new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+                Date dt = new Date();
+                st = new SimpleDateFormat("hh:mm:ss a");
+                
+                String tm = st.format(dt);
+                              
+            }
+        });
+        
+        t.start();
+        
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,6 +94,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
 
         viewpanel.setBackground(new java.awt.Color(0, 92, 229));
 
@@ -170,7 +208,9 @@ public class user_dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1000, 450));
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(1000, 450));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
@@ -331,7 +371,7 @@ public class user_dashboard extends javax.swing.JFrame {
 
         profile.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         profile.setForeground(new java.awt.Color(0, 51, 184));
-        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male-user-24.png"))); // NOI18N
+        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male-user-26.png"))); // NOI18N
         profile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 profileMouseClicked(evt);
@@ -378,6 +418,19 @@ public class user_dashboard extends javax.swing.JFrame {
         jPanel7.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 530, 170));
+
+        date.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
+        date.setForeground(new java.awt.Color(0, 51, 184));
+        date.setText("May 19,2024");
+        date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                dateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                dateMouseExited(evt);
+            }
+        });
+        jPanel1.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -488,6 +541,14 @@ public class user_dashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_userMouseClicked
 
+    private void dateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMouseEntered
+
+    }//GEN-LAST:event_dateMouseEntered
+
+    private void dateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMouseExited
+
+    }//GEN-LAST:event_dateMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -529,6 +590,7 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel color3;
     private javax.swing.JPanel color4;
     private javax.swing.JPanel color5;
+    private javax.swing.JLabel date;
     public javax.swing.JLabel fullname;
     private javax.swing.JLabel fullname1;
     private javax.swing.JLabel jLabel1;
