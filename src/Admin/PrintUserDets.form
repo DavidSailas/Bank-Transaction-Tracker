@@ -227,7 +227,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="4d" green="39" red="1b" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Id number"/>
+                <Property name="text" type="java.lang.String" value="id"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -277,7 +277,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="4d" green="39" red="1b" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="usn"/>
+                <Property name="text" type="java.lang.String" value="username"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -327,7 +327,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="4d" green="39" red="1b" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="User ID:"/>
+                <Property name="text" type="java.lang.String" value="type"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

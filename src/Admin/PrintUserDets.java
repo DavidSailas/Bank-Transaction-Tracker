@@ -144,7 +144,7 @@ public class PrintUserDets extends javax.swing.JFrame {
 
         uid.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         uid.setForeground(new java.awt.Color(27, 57, 77));
-        uid.setText("Id number");
+        uid.setText("id");
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(27, 57, 77));
@@ -160,7 +160,7 @@ public class PrintUserDets extends javax.swing.JFrame {
 
         username.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         username.setForeground(new java.awt.Color(27, 57, 77));
-        username.setText("usn");
+        username.setText("username");
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(27, 57, 77));
@@ -176,7 +176,7 @@ public class PrintUserDets extends javax.swing.JFrame {
 
         type.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         type.setForeground(new java.awt.Color(27, 57, 77));
-        type.setText("User ID:");
+        type.setText("type");
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(27, 57, 77));

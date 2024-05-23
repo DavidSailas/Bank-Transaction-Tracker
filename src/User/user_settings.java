@@ -47,6 +47,9 @@ public class user_settings extends javax.swing.JFrame {
         a1 = new javax.swing.JLabel();
         a2 = new javax.swing.JLabel();
         a3 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -74,23 +77,25 @@ public class user_settings extends javax.swing.JFrame {
         jLabel2.setText("New password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 219, -1, -1));
 
+        npass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         npass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 npassActionPerformed(evt);
             }
         });
-        jPanel1.add(npass, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 242, 280, 30));
+        jPanel1.add(npass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 280, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Confirm new password:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, -1, -1));
 
+        cpass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         cpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cpassActionPerformed(evt);
             }
         });
-        jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 280, 30));
+        jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 280, 30));
 
         jPanel2.setBackground(new java.awt.Color(0, 92, 229));
 
@@ -121,12 +126,13 @@ public class user_settings extends javax.swing.JFrame {
         jLabel13.setText("Current password:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 148, -1, -1));
 
+        cnpass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         cnpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cnpassActionPerformed(evt);
             }
         });
-        jPanel1.add(cnpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 171, 280, 30));
+        jPanel1.add(cnpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 280, 30));
 
         a1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         a1.setForeground(new java.awt.Color(255, 0, 0));
@@ -142,6 +148,18 @@ public class user_settings extends javax.swing.JFrame {
         a3.setForeground(new java.awt.Color(255, 0, 0));
         a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jPanel1.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 140, 20));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setText("________________________________________");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, 30));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel20.setText("________________________________________");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, 30));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel21.setText("________________________________________");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -277,7 +295,10 @@ public class user_settings extends javax.swing.JFrame {
     private javax.swing.JPasswordField cnpass;
     private javax.swing.JPasswordField cpass;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

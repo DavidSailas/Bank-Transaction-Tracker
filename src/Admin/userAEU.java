@@ -216,8 +216,14 @@ public boolean upCheck() {
         update = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         cancle = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
 
-        confirmDel.setBackground(new java.awt.Color(27, 55, 77));
+        confirmDel.setBackground(new java.awt.Color(0, 92, 229));
         confirmDel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         confirmDel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 420, 10));
 
@@ -229,7 +235,7 @@ public boolean upCheck() {
         confirmDel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
 
         ACCOUNT_NAME.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ACCOUNT_NAME.setForeground(new java.awt.Color(89, 182, 255));
+        ACCOUNT_NAME.setForeground(new java.awt.Color(255, 255, 255));
         ACCOUNT_NAME.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ACCOUNT_NAME.setText("SAMPLE");
         confirmDel.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 30));
@@ -240,9 +246,9 @@ public boolean upCheck() {
         jLabel21.setText("Are you sure you want to delete user:");
         confirmDel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 420, 20));
 
-        yesBT.setBackground(new java.awt.Color(89, 182, 255));
+        yesBT.setBackground(new java.awt.Color(255, 255, 255));
         yesBT.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        yesBT.setForeground(new java.awt.Color(255, 255, 255));
+        yesBT.setForeground(new java.awt.Color(0, 51, 184));
         yesBT.setText("YES");
         yesBT.setBorderPainted(false);
         yesBT.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -313,6 +319,7 @@ public boolean upCheck() {
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 470, 450));
 
+        u_fname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 u_fnameActionPerformed(evt);
@@ -324,6 +331,7 @@ public boolean upCheck() {
         jLabel2.setText("First name:");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, 20));
 
+        u_lname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 u_lnameActionPerformed(evt);
@@ -343,6 +351,7 @@ public boolean upCheck() {
         jLabel6.setText("Username:");
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, 20));
 
+        u_email.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 u_emailActionPerformed(evt);
@@ -350,6 +359,7 @@ public boolean upCheck() {
         });
         jPanel4.add(u_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 150, 30));
 
+        u_uname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 u_unameActionPerformed(evt);
@@ -361,6 +371,7 @@ public boolean upCheck() {
         jLabel7.setText("Password:");
         jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, 20));
 
+        u_pass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 u_passActionPerformed(evt);
@@ -398,6 +409,7 @@ public boolean upCheck() {
         jLabel18.setText("User ID:");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, 20));
 
+        u_id.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_id.setEnabled(false);
         u_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -450,6 +462,30 @@ public boolean upCheck() {
             }
         });
         jPanel4.add(cancle, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 100, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel20.setText("_____________________");
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, 30));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel22.setText("_____________________");
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, 30));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel23.setText("_____________________");
+        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, 30));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel24.setText("_____________________");
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, 30));
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel25.setText("_____________________");
+        jPanel4.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, 30));
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel26.setText("_____________________");
+        jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));
 
@@ -718,7 +754,13 @@ public boolean upCheck() {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
