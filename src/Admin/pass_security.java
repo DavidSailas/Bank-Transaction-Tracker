@@ -31,10 +31,14 @@ public class pass_security extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         pcolor1 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txt = new javax.swing.JLabel();
         txt1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        pcolor2 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -43,7 +47,7 @@ public class pass_security extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 92, 229));
 
-        jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("PASSWORD & SECURITY");
@@ -82,21 +86,53 @@ public class pass_security extends javax.swing.JFrame {
         jLabel26.setText("Change password");
         pcolor1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 50));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText(">");
+        pcolor1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 2, 50, 50));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Manage your password.");
 
         txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txt.setForeground(new java.awt.Color(0, 51, 184));
+        txt.setForeground(new java.awt.Color(0, 0, 102));
         txt.setText("PASSWORD");
 
         txt1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txt1.setForeground(new java.awt.Color(0, 51, 184));
+        txt1.setForeground(new java.awt.Color(0, 0, 102));
         txt1.setText("SECURITY");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Review security.");
+
+        pcolor2.setBackground(new java.awt.Color(255, 255, 255));
+        pcolor2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pcolor2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pcolor2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pcolor2MouseExited(evt);
+            }
+        });
+        pcolor2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText("Two-factor Authentication");
+        pcolor2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 50));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText(">");
+        pcolor2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 2, 50, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,12 +159,15 @@ public class pass_security extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(pcolor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +183,9 @@ public class pass_security extends javax.swing.JFrame {
                 .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(0, 225, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(pcolor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 158, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,6 +216,18 @@ public class pass_security extends javax.swing.JFrame {
     private void pcolor1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor1MouseExited
          pcolor1.setBackground(bg);
     }//GEN-LAST:event_pcolor1MouseExited
+
+    private void pcolor2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pcolor2MouseClicked
+
+    private void pcolor2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor2MouseEntered
+        pcolor2.setBackground(lg);
+    }//GEN-LAST:event_pcolor2MouseEntered
+
+    private void pcolor2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor2MouseExited
+         pcolor2.setBackground(bg);
+    }//GEN-LAST:event_pcolor2MouseExited
 
     /**
      * @param args the command line arguments
@@ -215,10 +268,14 @@ public class pass_security extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pcolor1;
+    private javax.swing.JPanel pcolor2;
     public javax.swing.JLabel txt;
     public javax.swing.JLabel txt1;
     // End of variables declaration//GEN-END:variables

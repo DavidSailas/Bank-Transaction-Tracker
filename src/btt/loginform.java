@@ -85,7 +85,6 @@ public class loginform extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1000, 450));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 450));
@@ -95,33 +94,30 @@ public class loginform extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(500, 450));
         jPanel2.setPreferredSize(new java.awt.Dimension(600, 450));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logo-256.png"))); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo-260.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(124, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(120, 120, 120))
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Himalaya", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("WELCOME BACK!");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(609, 59, 310, 60));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 59, 500, 60));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Username");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 70, -1));
 
@@ -167,12 +163,14 @@ public class loginform extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 352, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 102));
         jLabel8.setText("or");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 351, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 102));
         jLabel9.setText("Don't have an account?");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -214,6 +212,7 @@ public class loginform extends javax.swing.JFrame {
         jPanel1.add(xps, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, 170, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 102));
         jLabel11.setText("Password");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, 60, -1));
 

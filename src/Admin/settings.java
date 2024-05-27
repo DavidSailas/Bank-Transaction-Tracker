@@ -39,9 +39,6 @@ public class settings extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         pcolor3 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
-        pcolor4 = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -113,35 +110,9 @@ public class settings extends javax.swing.JFrame {
         jLabel25.setText("Personal details");
         pcolor3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 50));
 
-        pcolor4.setBackground(new java.awt.Color(255, 255, 255));
-        pcolor4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pcolor4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pcolor4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pcolor4MouseExited(evt);
-            }
-        });
-        pcolor4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 51, 184));
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user (1).png"))); // NOI18N
-        jLabel26.setText(" Profile");
-        pcolor4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 50));
-
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 51, 184));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("ACCOUNT SETTINGS");
-
         jPanel2.setBackground(new java.awt.Color(0, 92, 229));
 
-        jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("SETTINGS");
@@ -169,11 +140,7 @@ public class settings extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pcolor1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pcolor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pcolor3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pcolor4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(pcolor3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -183,17 +150,13 @@ public class settings extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(pcolor4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pcolor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pcolor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pcolor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,7 +187,9 @@ public class settings extends javax.swing.JFrame {
     }//GEN-LAST:event_pcolor1MouseExited
 
     private void pcolor2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor2MouseClicked
-        // TODO add your handling code here:
+        pass_security ps = new pass_security();
+        ps.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_pcolor2MouseClicked
 
     private void pcolor2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor2MouseEntered
@@ -246,23 +211,6 @@ public class settings extends javax.swing.JFrame {
     private void pcolor3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor3MouseExited
         pcolor3.setBackground(bg);
     }//GEN-LAST:event_pcolor3MouseExited
-
-    private void pcolor4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor4MouseClicked
-        admin_dashboard ads = new admin_dashboard();
-        JOptionPane.showOptionDialog(null, ads.viewpanel, "",
-        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-            null, new Object[]{}, null);
-        ads.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_pcolor4MouseClicked
-
-    private void pcolor4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor4MouseEntered
-        pcolor4.setBackground(lg);
-    }//GEN-LAST:event_pcolor4MouseEntered
-
-    private void pcolor4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor4MouseExited
-        pcolor4.setBackground(bg);
-    }//GEN-LAST:event_pcolor4MouseExited
 
     /**
      * @param args the command line arguments
@@ -303,14 +251,11 @@ public class settings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pcolor1;
     private javax.swing.JPanel pcolor2;
     private javax.swing.JPanel pcolor3;
-    private javax.swing.JPanel pcolor4;
     // End of variables declaration//GEN-END:variables
 }

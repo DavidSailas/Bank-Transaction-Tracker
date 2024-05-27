@@ -79,7 +79,7 @@ public class changepass extends javax.swing.JFrame {
         jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 280, 35));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("New password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
@@ -92,7 +92,7 @@ public class changepass extends javax.swing.JFrame {
         jPanel1.add(npass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 280, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Confirm new password:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
 
@@ -106,7 +106,7 @@ public class changepass extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 92, 229));
 
-        jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("CHANGE PASSWORD");
@@ -128,7 +128,7 @@ public class changepass extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel13.setForeground(new java.awt.Color(0, 0, 102));
         jLabel13.setText("Current password:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
 
@@ -168,17 +168,17 @@ public class changepass extends javax.swing.JFrame {
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Your password must be at least 8 characters above and should include a");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 400, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("combination of numbers, letters and special characters (!$@%).");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 360, -1));
 
         fullname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        fullname.setForeground(new java.awt.Color(0, 51, 184));
+        fullname.setForeground(new java.awt.Color(0, 0, 102));
         fullname.setText("Fullname");
         jPanel1.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 300, 50));
 
@@ -217,27 +217,27 @@ public class changepass extends javax.swing.JFrame {
                 if(cpass.getText().isEmpty() || npass.getText().isEmpty() || cnpass.getText().isEmpty()){
 
                     if (cpass.getText().isEmpty()) {
-                        a1.setText(" * Field required!");
+                        a1.setText(" Field required");
                     }
                     if (npass.getText().isEmpty()) {
-                        a2.setText(" * Field required!");
+                        a2.setText(" Field required");
                     }else if(npass.getText().length() < 8){
-                        a2.setText(" * Password must be 8 characters above!");
+                        a2.setText(" Password must be 8 characters above!");
                         npass.setText("");
                     }
                     if(cnpass.getText().isEmpty()){
-                        a3.setText(" * Field required!");
+                        a3.setText(" Field required");
                     }
                 }else if(npass.getText().length() < 8){
-                    a2.setText(" * Password must be 8 characters above!");
+                    a2.setText(" Password must be 8 characters above!");
                     npass.setText("");
                     cnpass.setText("");
                 }else if(!cpass.equals(oldpass)){
                     a1.setText("Password is incorrect!");
                     cpass.setText("");
                 }else if (!npass.getText().equals(cnpass.getText())) {
-                    a2.setText(" * Password does not match!");
-                    a3.setText(" * Password does not match!");
+                    a2.setText(" Password does not match!");
+                    a3.setText(" Password does not match!");
                     npass.setText("");
                     cnpass.setText("");
                 }else{

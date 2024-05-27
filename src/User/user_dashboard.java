@@ -1,8 +1,8 @@
 
 package User;
 
-import User.logs;
-import User.security;
+import User.inbox;
+import User.settings;
 import User.transaction;
 import btt.loginform;
 import config.session;
@@ -84,17 +84,26 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         color5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        menu = new javax.swing.JLabel();
-        fullname = new javax.swing.JLabel();
-        user = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        firstname = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
+        time = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         viewpanel.setBackground(new java.awt.Color(0, 92, 229));
 
@@ -208,15 +217,21 @@ public class user_dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1000, 450));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 450));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logo-13 (1).png"))); // NOI18N
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 84));
 
         color1.setBackground(new java.awt.Color(0, 92, 229));
         color1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,10 +250,12 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboard-25.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/house-chimney.png"))); // NOI18N
         jLabel15.setText(" DASHBOARD");
         color1.add(jLabel15);
-        jLabel15.setBounds(0, 0, 160, 40);
+        jLabel15.setBounds(0, 0, 170, 40);
+
+        jPanel6.add(color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 180, 40));
 
         color2.setBackground(new java.awt.Color(0, 92, 229));
         color2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -257,10 +274,12 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/location-24.png"))); // NOI18N
-        jLabel17.setText("TRANSACTION");
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/receipt.png"))); // NOI18N
+        jLabel17.setText(" TRANSACTION");
         color2.add(jLabel17);
-        jLabel17.setBounds(0, 0, 160, 40);
+        jLabel17.setBounds(0, 0, 180, 40);
+
+        jPanel6.add(color2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
 
         color3.setBackground(new java.awt.Color(0, 92, 229));
         color3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -279,10 +298,12 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/messages-24.png"))); // NOI18N
-        jLabel18.setText("AUDIT LOGS");
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/envelope.png"))); // NOI18N
+        jLabel18.setText(" INBOX");
         color3.add(jLabel18);
-        jLabel18.setBounds(0, 0, 160, 40);
+        jLabel18.setBounds(0, 0, 140, 40);
+
+        jPanel6.add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 180, 40));
 
         color4.setBackground(new java.awt.Color(0, 92, 229));
         color4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -301,10 +322,12 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/protect-24.png"))); // NOI18N
-        jLabel19.setText("SECURITY");
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings.png"))); // NOI18N
+        jLabel19.setText(" SETTINGS");
         color4.add(jLabel19);
-        jLabel19.setBounds(-20, 0, 160, 40);
+        jLabel19.setBounds(0, 0, 160, 40);
+
+        jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 180, 40));
 
         color5.setBackground(new java.awt.Color(0, 92, 229));
         color5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -320,107 +343,153 @@ public class user_dashboard extends javax.swing.JFrame {
         });
         color5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout-25.png"))); // NOI18N
-        jLabel3.setText("Log out");
-        color5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 90, 40));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit.png"))); // NOI18N
+        jLabel3.setText("LOG OUT");
+        color5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 40));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(color1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(color2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(color4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(color5, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
-                .addContainerGap())
-            .addComponent(color3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(color1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(color2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(color3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(color4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(color5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jPanel6.add(color5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 180, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo-13.png"))); // NOI18N
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 120));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 51, 184));
-        jLabel9.setText("Dashboard");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel9.setText("Welcome to D.S PIONEER PAY");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
         profile.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         profile.setForeground(new java.awt.Color(0, 51, 184));
-        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male-user-26.png"))); // NOI18N
+        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-user.png"))); // NOI18N
         profile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 profileMouseClicked(evt);
             }
         });
-        jPanel1.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 20, -1, -1));
+        jPanel1.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, 40, 30));
 
-        jPanel7.setBackground(new java.awt.Color(0, 92, 229));
-        jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        menu.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
-        jPanel7.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("DEPOSIT");
 
-        fullname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        fullname.setForeground(new java.awt.Color(255, 255, 255));
-        fullname.setText("Fullname");
-        jPanel7.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 280, 30));
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/deposit.png"))); // NOI18N
 
-        user.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
-        user.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                userMouseClicked(evt);
-            }
-        });
-        jPanel7.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 30, -1));
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(50, 50, 50))
+        );
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Hello,");
-        jPanel7.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 100, 80));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Investment data-bro (1).png"))); // NOI18N
-        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 230, 170));
+        jPanel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("\" Manage your finances with");
-        jPanel7.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("TRANSFER");
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("D.S PIONEER PAY. \"");
-        jPanel7.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bank.png"))); // NOI18N
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 530, 170));
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addGap(50, 50, 50))
+        );
 
-        date.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        date.setForeground(new java.awt.Color(0, 51, 184));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 100, 80));
+
+        firstname.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        firstname.setForeground(new java.awt.Color(0, 0, 102));
+        firstname.setText("Firstname");
+        jPanel1.add(firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 280, 30));
+
+        jPanel2.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("WALLET BALANCE");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("0.00");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("₱");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 570, 130));
+
+        date.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        date.setForeground(new java.awt.Color(0, 0, 102));
         date.setText("May 19,2024");
         date.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -430,7 +499,55 @@ public class user_dashboard extends javax.swing.JFrame {
                 dateMouseExited(evt);
             }
         });
-        jPanel1.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 110, -1));
+        jPanel1.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 100, -1));
+
+        time.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        time.setForeground(new java.awt.Color(0, 0, 102));
+        time.setText("00:00:00 AM/PM");
+        time.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                timeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                timeMouseExited(evt);
+            }
+        });
+        jPanel1.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 40, 100, -1));
+
+        jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("WITHDRAWAL");
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/money-from-bracket.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel10)
+                .addGap(50, 50, 50))
+        );
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 100, 80));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo (3).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 210, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -476,7 +593,7 @@ public class user_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_color2MouseExited
 
     private void color3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color3MouseClicked
-        logs l = new logs();
+        inbox l = new inbox();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color3MouseClicked
@@ -490,7 +607,7 @@ public class user_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_color3MouseExited
 
     private void color4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color4MouseClicked
-        security s = new security();
+        settings s = new settings();
         s.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color4MouseClicked
@@ -519,6 +636,23 @@ public class user_dashboard extends javax.swing.JFrame {
         color5.setBackground(hovercolor);
     }//GEN-LAST:event_color5MouseExited
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+      
+        
+                      
+        session sess = session.getInstance();
+        
+        if (sess.getUid() == 0){
+            JOptionPane.showMessageDialog(null,"No account, Login First!");
+            loginform ads = new loginform();
+            ads.setVisible(true);
+            this.dispose();
+        }else{
+            firstname.setText("Hi, "+sess.getFname()+", Welcome Back.");
+
+        } 
+    }//GEN-LAST:event_formWindowActivated
+
     private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
 
         session sess = session.getInstance();
@@ -526,7 +660,7 @@ public class user_dashboard extends javax.swing.JFrame {
         if (sess.getUid() > 0) {
 
             uid.setText(String.valueOf(sess.getUid()));
-            fullname.setText(sess.getFname() + " " + sess.getLname());
+            firstname.setText(sess.getFname() + " " + sess.getLname());
             username.setText(sess.getUsername());
             umail.setText(sess.getEmail());
             type.setText(sess.getType());
@@ -537,10 +671,6 @@ public class user_dashboard extends javax.swing.JFrame {
             null, new Object[]{}, null);
     }//GEN-LAST:event_profileMouseClicked
 
-    private void userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseClicked
-
-    }//GEN-LAST:event_userMouseClicked
-
     private void dateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMouseEntered
 
     }//GEN-LAST:event_dateMouseEntered
@@ -548,6 +678,14 @@ public class user_dashboard extends javax.swing.JFrame {
     private void dateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMouseExited
 
     }//GEN-LAST:event_dateMouseExited
+
+    private void timeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timeMouseEntered
+
+    }//GEN-LAST:event_timeMouseEntered
+
+    private void timeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timeMouseExited
+
+    }//GEN-LAST:event_timeMouseExited
 
     /**
      * @param args the command line arguments
@@ -591,35 +729,44 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel color4;
     private javax.swing.JPanel color5;
     private javax.swing.JLabel date;
-    public javax.swing.JLabel fullname;
+    public javax.swing.JLabel firstname;
     private javax.swing.JLabel fullname1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPopupMenu jPopupMenu1;
-    public javax.swing.JLabel menu;
     private javax.swing.JLabel profile;
+    private javax.swing.JLabel time;
     private javax.swing.JLabel type;
     private javax.swing.JLabel uid;
     private javax.swing.JLabel umail;
-    public javax.swing.JLabel user;
     private javax.swing.JLabel username;
     private javax.swing.JPanel viewpanel;
     // End of variables declaration//GEN-END:variables

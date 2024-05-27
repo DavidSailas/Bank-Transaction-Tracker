@@ -97,7 +97,6 @@ public class PrintUserDets extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         page = new javax.swing.JPanel();
         date = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -112,6 +111,7 @@ public class PrintUserDets extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,101 +121,110 @@ public class PrintUserDets extends javax.swing.JFrame {
         page.setBackground(new java.awt.Color(255, 255, 255));
 
         date.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        date.setForeground(new java.awt.Color(0, 51, 184));
+        date.setForeground(new java.awt.Color(0, 0, 102));
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date.setText("DATE");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Untitled design (2).png"))); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("D.S POINEER PAY");
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SYSTEM USER DETAILS REPORT");
 
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
+        image.setBackground(new java.awt.Color(255, 255, 255));
         image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
 
         uid.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        uid.setForeground(new java.awt.Color(0, 51, 184));
+        uid.setForeground(new java.awt.Color(0, 0, 102));
         uid.setText("id");
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel12.setForeground(new java.awt.Color(0, 0, 102));
         jLabel12.setText("ID:");
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel9.setForeground(new java.awt.Color(0, 0, 102));
         jLabel9.setText("Name:");
 
         fullname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        fullname.setForeground(new java.awt.Color(0, 51, 184));
+        fullname.setForeground(new java.awt.Color(0, 0, 102));
         fullname.setText("name");
 
         username.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        username.setForeground(new java.awt.Color(0, 51, 184));
+        username.setForeground(new java.awt.Color(0, 0, 102));
         username.setText("username");
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel10.setForeground(new java.awt.Color(0, 0, 102));
         jLabel10.setText("User:");
 
         umail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        umail.setForeground(new java.awt.Color(0, 51, 184));
+        umail.setForeground(new java.awt.Color(0, 0, 102));
         umail.setText("email");
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel11.setForeground(new java.awt.Color(0, 0, 102));
         jLabel11.setText("Email:");
 
         type.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        type.setForeground(new java.awt.Color(0, 51, 184));
+        type.setForeground(new java.awt.Color(0, 0, 102));
         type.setText("type");
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel15.setForeground(new java.awt.Color(0, 0, 102));
         jLabel15.setText("Type:");
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo.png"))); // NOI18N
 
         javax.swing.GroupLayout pageLayout = new javax.swing.GroupLayout(page);
         page.setLayout(pageLayout);
         pageLayout.setHorizontalGroup(
             pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(pageLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pageLayout.createSequentialGroup()
-                        .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
                         .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(uid)
-                            .addComponent(fullname, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(umail, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pageLayout.createSequentialGroup()
+                                    .addGap(50, 50, 50)
+                                    .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pageLayout.createSequentialGroup()
+                                            .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(30, 30, 30)
+                                            .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(20, 20, 20)
+                                            .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(uid)
+                                                .addComponent(fullname, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(umail, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pageLayout.setVerticalGroup(
             pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pageLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +259,8 @@ public class PrintUserDets extends javax.swing.JFrame {
                                 .addGap(13, 13, 13)
                                 .addComponent(umail)
                                 .addGap(13, 13, 13)
-                                .addComponent(type))))))
+                                .addComponent(type)))))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         jPanel1.add(page, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 530, 520));
@@ -316,8 +326,8 @@ public class PrintUserDets extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
