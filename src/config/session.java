@@ -12,6 +12,7 @@ public class session {
     private String username;
     private String type;
     private String status;
+    private String u_image;
 
     
     private session(){
@@ -82,5 +83,11 @@ public class session {
 
     public void setStatus(String status) {
         this.status = status;
-    }   
+    }
+    public String getImagePath() {
+        return u_image;
+    }
+    public void setImagePath(String u_image) {
+        this.u_image = u_image;
+    } 
 }

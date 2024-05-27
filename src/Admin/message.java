@@ -27,20 +27,6 @@ public class message extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        color1 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        color2 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        color3 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        color4 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        color5 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        color6 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
         m = new javax.swing.JPanel();
@@ -57,186 +43,26 @@ public class message extends javax.swing.JFrame {
         m5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        color1 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        color2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        color3 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        color4 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        color5 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        color6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1000, 450));
 
         jPanel3.setMinimumSize(new java.awt.Dimension(1000, 450));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel6.setBackground(new java.awt.Color(0, 92, 229));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logo-13 (1).png"))); // NOI18N
-
-        color1.setBackground(new java.awt.Color(0, 92, 229));
-        color1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color1MouseExited(evt);
-            }
-        });
-        color1.setLayout(null);
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboard-25.png"))); // NOI18N
-        jLabel15.setText(" DASHBOARD");
-        color1.add(jLabel15);
-        jLabel15.setBounds(0, 0, 160, 40);
-
-        color2.setBackground(new java.awt.Color(0, 92, 229));
-        color2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color2MouseExited(evt);
-            }
-        });
-        color2.setLayout(null);
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/users-25.png"))); // NOI18N
-        jLabel16.setText("ACCOUNTANT");
-        color2.add(jLabel16);
-        jLabel16.setBounds(0, 0, 160, 40);
-
-        color3.setBackground(new java.awt.Color(0, 92, 229));
-        color3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color3MouseExited(evt);
-            }
-        });
-        color3.setLayout(null);
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/location-24.png"))); // NOI18N
-        jLabel17.setText("TRACKER");
-        color3.add(jLabel17);
-        jLabel17.setBounds(0, 0, 170, 40);
-
-        color4.setBackground(new java.awt.Color(0, 92, 229));
-        color4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color4MouseExited(evt);
-            }
-        });
-        color4.setLayout(null);
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/messages-24.png"))); // NOI18N
-        jLabel18.setText("REPORT");
-        color4.add(jLabel18);
-        jLabel18.setBounds(0, 0, 170, 40);
-
-        color5.setBackground(new java.awt.Color(0, 92, 229));
-        color5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color5MouseExited(evt);
-            }
-        });
-        color5.setLayout(null);
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/protect-24.png"))); // NOI18N
-        jLabel19.setText("SECURITY");
-        color5.add(jLabel19);
-        jLabel19.setBounds(0, 0, 170, 40);
-
-        color6.setBackground(new java.awt.Color(0, 92, 229));
-        color6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color6MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color6MouseExited(evt);
-            }
-        });
-        color6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout-25.png"))); // NOI18N
-        jLabel3.setText("Log out");
-        color6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 40));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(color1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(color2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(color3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(color4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(color5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(color6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(color1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(color2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(color3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(color4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(color5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(color6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 184));
@@ -375,6 +201,158 @@ public class message extends javax.swing.JFrame {
         jLabel10.setText("Fullname");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
 
+        jPanel6.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logo-13 (1).png"))); // NOI18N
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 84));
+
+        color1.setBackground(new java.awt.Color(0, 92, 229));
+        color1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color1MouseExited(evt);
+            }
+        });
+        color1.setLayout(null);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboard.png"))); // NOI18N
+        jLabel15.setText(" DASHBOARD");
+        color1.add(jLabel15);
+        jLabel15.setBounds(0, 0, 180, 40);
+
+        jPanel6.add(color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 113, 180, 40));
+
+        color2.setBackground(new java.awt.Color(0, 92, 229));
+        color2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color2MouseExited(evt);
+            }
+        });
+        color2.setLayout(null);
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group.png"))); // NOI18N
+        jLabel16.setText(" ACCOUNTANT");
+        color2.add(jLabel16);
+        jLabel16.setBounds(0, 0, 180, 40);
+
+        jPanel6.add(color2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 159, 180, 40));
+
+        color3.setBackground(new java.awt.Color(0, 92, 229));
+        color3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color3MouseExited(evt);
+            }
+        });
+        color3.setLayout(null);
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/expense.png"))); // NOI18N
+        jLabel17.setText(" TRACKER");
+        color3.add(jLabel17);
+        jLabel17.setBounds(0, 0, 160, 40);
+
+        jPanel6.add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 205, 180, 40));
+
+        color4.setBackground(new java.awt.Color(0, 92, 229));
+        color4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color4MouseExited(evt);
+            }
+        });
+        color4.setLayout(null);
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/file.png"))); // NOI18N
+        jLabel18.setText(" REPORT");
+        color4.add(jLabel18);
+        jLabel18.setBounds(0, 0, 150, 40);
+
+        jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 251, 180, 40));
+
+        color5.setBackground(new java.awt.Color(0, 92, 229));
+        color5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color5MouseExited(evt);
+            }
+        });
+        color5.setLayout(null);
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/shield.png"))); // NOI18N
+        jLabel19.setText(" SECURITY");
+        color5.add(jLabel19);
+        jLabel19.setBounds(0, 0, 160, 40);
+
+        jPanel6.add(color5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 297, 180, 40));
+
+        color6.setBackground(new java.awt.Color(0, 92, 229));
+        color6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color6MouseExited(evt);
+            }
+        });
+        color6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
+        jLabel3.setText(" Log out");
+        color6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 40));
+
+        jPanel6.add(color6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 398, -1, -1));
+
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -389,6 +367,54 @@ public class message extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mMouseEntered
+        m.setBackground(lc);
+    }//GEN-LAST:event_mMouseEntered
+
+    private void mMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mMouseExited
+        m.setBackground(bc);
+    }//GEN-LAST:event_mMouseExited
+
+    private void m2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m2MouseEntered
+
+    private void m2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m2MouseExited
+
+    private void m1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m1MouseEntered
+
+    private void m1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m1MouseExited
+
+    private void m3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m3MouseEntered
+
+    private void m3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m3MouseExited
+
+    private void m4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m4MouseEntered
+
+    private void m4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m4MouseExited
+
+    private void m5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m5MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m5MouseEntered
+
+    private void m5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m5MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m5MouseExited
 
     private void color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color1MouseClicked
         admin_dashboard ads = new admin_dashboard();
@@ -476,54 +502,6 @@ public class message extends javax.swing.JFrame {
         color6.setBackground(hovercolor);
     }//GEN-LAST:event_color6MouseExited
 
-    private void mMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mMouseEntered
-        m.setBackground(lc);
-    }//GEN-LAST:event_mMouseEntered
-
-    private void mMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mMouseExited
-        m.setBackground(bc);
-    }//GEN-LAST:event_mMouseExited
-
-    private void m2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m2MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m2MouseEntered
-
-    private void m2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m2MouseExited
-
-    private void m1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m1MouseEntered
-
-    private void m1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m1MouseExited
-
-    private void m3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m3MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m3MouseEntered
-
-    private void m3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m3MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m3MouseExited
-
-    private void m4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m4MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m4MouseEntered
-
-    private void m4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m4MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m4MouseExited
-
-    private void m5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m5MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m5MouseEntered
-
-    private void m5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m5MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m5MouseExited
-
     /**
      * @param args the command line arguments
      */
@@ -582,22 +560,9 @@ public class message extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel m;
     private javax.swing.JPanel m1;
     private javax.swing.JPanel m2;

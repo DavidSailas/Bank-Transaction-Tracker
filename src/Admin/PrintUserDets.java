@@ -143,44 +143,44 @@ public class PrintUserDets extends javax.swing.JFrame {
         image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
 
         uid.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        uid.setForeground(new java.awt.Color(27, 57, 77));
+        uid.setForeground(new java.awt.Color(0, 51, 184));
         uid.setText("id");
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel12.setForeground(new java.awt.Color(0, 51, 184));
         jLabel12.setText("ID:");
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel9.setForeground(new java.awt.Color(0, 51, 184));
         jLabel9.setText("Name:");
 
         fullname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        fullname.setForeground(new java.awt.Color(27, 57, 77));
+        fullname.setForeground(new java.awt.Color(0, 51, 184));
         fullname.setText("name");
 
         username.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        username.setForeground(new java.awt.Color(27, 57, 77));
+        username.setForeground(new java.awt.Color(0, 51, 184));
         username.setText("username");
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel10.setForeground(new java.awt.Color(0, 51, 184));
         jLabel10.setText("User:");
 
         umail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        umail.setForeground(new java.awt.Color(27, 57, 77));
+        umail.setForeground(new java.awt.Color(0, 51, 184));
         umail.setText("email");
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel11.setForeground(new java.awt.Color(0, 51, 184));
         jLabel11.setText("Email:");
 
         type.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        type.setForeground(new java.awt.Color(27, 57, 77));
+        type.setForeground(new java.awt.Color(0, 51, 184));
         type.setText("type");
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel15.setText("Role:");
+        jLabel15.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel15.setText("Type:");
 
         javax.swing.GroupLayout pageLayout = new javax.swing.GroupLayout(page);
         page.setLayout(pageLayout);
