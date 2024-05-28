@@ -218,7 +218,9 @@ public class pass_security extends javax.swing.JFrame {
     }//GEN-LAST:event_pcolor1MouseExited
 
     private void pcolor2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor2MouseClicked
-        // TODO add your handling code here:
+        security s = new security();
+        s.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_pcolor2MouseClicked
 
     private void pcolor2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcolor2MouseEntered

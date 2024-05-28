@@ -19,6 +19,7 @@ public class user_dashboard extends javax.swing.JFrame {
     public user_dashboard() {
         initComponents();
         date();
+        time();
     }
 
     Color navcolor =  new Color(204,204,204);
@@ -47,6 +48,7 @@ public class user_dashboard extends javax.swing.JFrame {
                 st = new SimpleDateFormat("hh:mm:ss a");
                 
                 String tm = st.format(dt);
+                time.setText(tm);
                               
             }
         });
@@ -73,7 +75,6 @@ public class user_dashboard extends javax.swing.JFrame {
         type = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         color1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         color2 = new javax.swing.JPanel();
@@ -229,9 +230,6 @@ public class user_dashboard extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logo-13 (1).png"))); // NOI18N
-        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 84));
 
         color1.setBackground(new java.awt.Color(0, 92, 229));
         color1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -546,7 +544,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 100, 80));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo (3).png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Credit card.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 210, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -736,7 +734,6 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;

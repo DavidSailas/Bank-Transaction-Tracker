@@ -172,8 +172,8 @@ public class security extends javax.swing.JFrame {
         a1.setText("");
         a2.setText("");
 
-        dbConnector dbc = new dbConnector();
-        Session sess = Session.getInstance();
+        dbconnector dbc = new dbconnector();
+        session sess = session.getInstance();
         PasswordHasher pH = new PasswordHasher();
 
         try {
@@ -182,7 +182,7 @@ public class security extends javax.swing.JFrame {
 
             if (resultSet.next()) {
                 String oldpass = resultSet.getString("u_pass");
-                String cpass = pH.hashPassword(cps.getText());
+                String cpass = pH.hashPassword(csc.getText());
 
                 if (csc.getText().isEmpty() || sc.getText().isEmpty()) {
                     if (csc.getText().isEmpty()) {
