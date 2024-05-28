@@ -273,44 +273,55 @@ public class admin_dashboard extends javax.swing.JFrame {
         time = new javax.swing.JLabel();
 
         viewpanel.setBackground(new java.awt.Color(255, 255, 255));
+        viewpanel.setPreferredSize(new java.awt.Dimension(500, 500));
+        viewpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel12.setForeground(new java.awt.Color(0, 0, 102));
         jLabel12.setText("Id:");
+        viewpanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 82, -1, -1));
 
         u_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        u_id.setForeground(new java.awt.Color(0, 51, 184));
+        u_id.setForeground(new java.awt.Color(0, 0, 102));
         u_id.setText("sample");
+        viewpanel.add(u_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 82, -1, -1));
 
         fullname2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        fullname2.setForeground(new java.awt.Color(0, 51, 184));
+        fullname2.setForeground(new java.awt.Color(0, 0, 102));
         fullname2.setText("Fullname");
+        viewpanel.add(fullname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 284, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
         jLabel6.setText("Username:");
+        viewpanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 128, -1, -1));
 
         username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        username.setForeground(new java.awt.Color(0, 51, 184));
+        username.setForeground(new java.awt.Color(0, 0, 102));
         username.setText("sample");
+        viewpanel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 151, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 102));
         jLabel7.setText("Email:");
+        viewpanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 186, -1, -1));
 
         umail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        umail.setForeground(new java.awt.Color(0, 51, 184));
+        umail.setForeground(new java.awt.Color(0, 0, 102));
         umail.setText("sample");
+        viewpanel.add(umail, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 209, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel8.setForeground(new java.awt.Color(0, 0, 102));
         jLabel8.setText("Type:");
+        viewpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 128, -1, -1));
 
         type.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        type.setForeground(new java.awt.Color(0, 51, 184));
+        type.setForeground(new java.awt.Color(0, 0, 102));
         type.setText("sample");
+        viewpanel.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 151, -1, -1));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         image.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -325,13 +336,17 @@ public class admin_dashboard extends javax.swing.JFrame {
             .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        viewpanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 105, -1, -1));
+
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel13.setForeground(new java.awt.Color(0, 0, 102));
         jLabel13.setText("Status:");
+        viewpanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 186, -1, -1));
 
         stats.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        stats.setForeground(new java.awt.Color(0, 51, 184));
+        stats.setForeground(new java.awt.Color(0, 0, 102));
         stats.setText("sample");
+        viewpanel.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 209, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(0, 92, 229));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -351,7 +366,11 @@ public class admin_dashboard extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 40, 40));
 
+        viewpanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 502, -1));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel24.setText("_____________________________________________________________________________");
+        viewpanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, 30));
 
         pcolor1.setBackground(new java.awt.Color(255, 255, 255));
         pcolor1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -374,6 +393,8 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel23.setText(" Settings");
         pcolor1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 50));
 
+        viewpanel.add(pcolor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 482, -1));
+
         pcolor2.setBackground(new java.awt.Color(255, 255, 255));
         pcolor2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -395,88 +416,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel3.setText(" Log-out");
         pcolor2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 50));
 
-        javax.swing.GroupLayout viewpanelLayout = new javax.swing.GroupLayout(viewpanel);
-        viewpanel.setLayout(viewpanelLayout);
-        viewpanelLayout.setHorizontalGroup(
-            viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(viewpanelLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewpanelLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(26, 26, 26)
-                        .addComponent(u_id)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(viewpanelLayout.createSequentialGroup()
-                        .addComponent(fullname2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(viewpanelLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(username)
-                            .addComponent(umail))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel8)
-                            .addComponent(type)
-                            .addComponent(stats))
-                        .addGap(41, 41, 41))))
-            .addGroup(viewpanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pcolor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pcolor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(viewpanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel24)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        viewpanelLayout.setVerticalGroup(
-            viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewpanelLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(u_id))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(viewpanelLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(viewpanelLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(type)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stats))
-                            .addGroup(viewpanelLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(username)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(umail)))))
-                .addGap(25, 25, 25)
-                .addComponent(fullname2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pcolor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pcolor2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
+        viewpanel.add(pcolor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 416, 482, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -637,7 +577,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 530, 170));
 
         jPanel8.setBackground(new java.awt.Color(0, 92, 229));
-        jPanel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -659,7 +599,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 170, 100));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -681,7 +621,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 170, 100));
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -732,7 +672,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel5.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 100, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 51, 184));
@@ -745,14 +685,14 @@ public class admin_dashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(347, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 230, 380));
@@ -762,7 +702,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         add1.setForeground(new java.awt.Color(0, 51, 184));
         add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/user-add.png"))); // NOI18N
         add1.setText("ADD NEW USER");
-        add1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add1ActionPerformed(evt);
@@ -771,7 +711,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel5.add(add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 170, 90));
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtuser.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -793,7 +733,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel5.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 170, 90));
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtadmin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N

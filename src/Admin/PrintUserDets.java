@@ -138,7 +138,7 @@ public class PrintUserDets extends javax.swing.JFrame {
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         image.setBackground(new java.awt.Color(255, 255, 255));
-        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77), 2));
 
         uid.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         uid.setForeground(new java.awt.Color(0, 0, 102));

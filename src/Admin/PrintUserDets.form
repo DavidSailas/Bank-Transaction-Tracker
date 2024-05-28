@@ -218,7 +218,7 @@
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
+                    <LineBorder thickness="2">
                       <Color PropertyName="color" blue="4d" green="39" red="1b" type="rgb"/>
                     </LineBorder>
                   </Border>
