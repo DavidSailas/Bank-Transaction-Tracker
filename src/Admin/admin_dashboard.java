@@ -276,50 +276,50 @@ public class admin_dashboard extends javax.swing.JFrame {
         viewpanel.setPreferredSize(new java.awt.Dimension(500, 500));
         viewpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 102));
         jLabel12.setText("Id:");
         viewpanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 82, -1, -1));
 
-        u_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        u_id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         u_id.setForeground(new java.awt.Color(0, 0, 102));
         u_id.setText("sample");
         viewpanel.add(u_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 82, -1, -1));
 
-        fullname2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        fullname2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         fullname2.setForeground(new java.awt.Color(0, 0, 102));
         fullname2.setText("Fullname");
         viewpanel.add(fullname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 284, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 102));
         jLabel6.setText("Username:");
-        viewpanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 128, -1, -1));
+        viewpanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, -1));
 
-        username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        username.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         username.setForeground(new java.awt.Color(0, 0, 102));
         username.setText("sample");
-        viewpanel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 151, -1, -1));
+        viewpanel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 102));
         jLabel7.setText("Email:");
-        viewpanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 186, -1, -1));
+        viewpanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, -1, -1));
 
-        umail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        umail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         umail.setForeground(new java.awt.Color(0, 0, 102));
         umail.setText("sample");
-        viewpanel.add(umail, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 209, -1, -1));
+        viewpanel.add(umail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 102));
         jLabel8.setText("Type:");
-        viewpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 128, -1, -1));
+        viewpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
-        type.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        type.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         type.setForeground(new java.awt.Color(0, 0, 102));
         type.setText("sample");
-        viewpanel.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 151, -1, -1));
+        viewpanel.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
@@ -338,20 +338,20 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         viewpanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 105, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 102));
         jLabel13.setText("Status:");
-        viewpanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 186, -1, -1));
+        viewpanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, -1));
 
-        stats.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        stats.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         stats.setForeground(new java.awt.Color(0, 0, 102));
         stats.setText("sample");
-        viewpanel.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 209, -1, -1));
+        viewpanel.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(0, 92, 229));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PROFILE");
@@ -452,7 +452,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         });
         color1.setLayout(null);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house-chimney.png"))); // NOI18N
@@ -476,7 +476,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         });
         color2.setLayout(null);
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/users.png"))); // NOI18N
@@ -500,7 +500,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         });
         color3.setLayout(null);
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/assessment.png"))); // NOI18N
@@ -508,7 +508,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         color3.add(jLabel17);
         jLabel17.setBounds(0, 0, 160, 40);
 
-        jPanel6.add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 180, 40));
+        jPanel6.add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 180, 40));
 
         color4.setBackground(new java.awt.Color(0, 92, 229));
         color4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -524,7 +524,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         });
         color4.setLayout(null);
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/file-circle-info.png"))); // NOI18N
@@ -532,7 +532,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         color4.add(jLabel18);
         jLabel18.setBounds(0, 0, 150, 40);
 
-        jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 180, 40));
+        jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 40));
 
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
 
@@ -543,7 +543,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         menu.setFont(new java.awt.Font("Microsoft Himalaya", 1, 24)); // NOI18N
         jPanel7.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
-        fullname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        fullname.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         fullname.setForeground(new java.awt.Color(255, 255, 255));
         fullname.setText("Fullname");
         jPanel7.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 280, 30));
@@ -556,17 +556,17 @@ public class admin_dashboard extends javax.swing.JFrame {
         });
         jPanel7.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 30, -1));
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Hello,");
         jPanel7.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("\" Manage your finances with");
         jPanel7.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("D.S PIONEER PAY. \"");
         jPanel7.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
@@ -580,14 +580,14 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/users-alt.png"))); // NOI18N
         jLabel2.setText(" USER COUNT");
         jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, -1));
 
-        ttluser.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        ttluser.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         ttluser.setForeground(new java.awt.Color(255, 255, 255));
         ttluser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ttluser.setText("0");
@@ -602,14 +602,14 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 184));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/user-trust.png"))); // NOI18N
         jLabel4.setText(" ACTIVE USERS");
         jPanel9.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, -1));
 
-        active.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        active.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         active.setForeground(new java.awt.Color(0, 51, 184));
         active.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         active.setText("0");
@@ -624,14 +624,14 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 184));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/user-time.png"))); // NOI18N
         jLabel5.setText(" PENDING USERS");
         jPanel10.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, -1));
 
-        pending.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        pending.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         pending.setForeground(new java.awt.Color(0, 51, 184));
         pending.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pending.setText("0");
@@ -642,7 +642,7 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jPanel5.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, 170, 100));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 102));
         jLabel9.setText("Dashboard");
         jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
@@ -674,7 +674,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 51, 184));
         jLabel11.setText("Daily Reports:");
 
@@ -685,20 +685,20 @@ public class admin_dashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 230, 380));
 
         add1.setBackground(new java.awt.Color(255, 255, 255));
-        add1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        add1.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         add1.setForeground(new java.awt.Color(0, 51, 184));
         add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/user-add.png"))); // NOI18N
         add1.setText("ADD NEW USER");
@@ -714,14 +714,14 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtuser.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        txtuser.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         txtuser.setForeground(new java.awt.Color(0, 51, 184));
         txtuser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/user.png"))); // NOI18N
         txtuser.setText(" USER");
         jPanel11.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, -1));
 
-        users.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        users.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         users.setForeground(new java.awt.Color(0, 51, 184));
         users.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         users.setText("0");
@@ -736,14 +736,14 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtadmin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        txtadmin.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         txtadmin.setForeground(new java.awt.Color(0, 51, 184));
         txtadmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/admin-alt.png"))); // NOI18N
-        txtadmin.setText("ADMIN");
+        txtadmin.setText(" ADMIN");
         jPanel12.add(txtadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, -1));
 
-        admin.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        admin.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         admin.setForeground(new java.awt.Color(0, 51, 184));
         admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         admin.setText("0");

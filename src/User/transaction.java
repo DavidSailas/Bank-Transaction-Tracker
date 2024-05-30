@@ -27,8 +27,14 @@ public class transaction extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        list = new javax.swing.JList<>();
+        searchField = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         color1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         color2 = new javax.swing.JPanel();
@@ -40,13 +46,6 @@ public class transaction extends javax.swing.JFrame {
         color5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        list = new javax.swing.JList<>();
-        searchField = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -60,141 +59,12 @@ public class transaction extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 450));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 102));
         jLabel9.setText("Transaction");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
 
-        jPanel6.setBackground(new java.awt.Color(0, 92, 229));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 84));
-
-        color1.setBackground(new java.awt.Color(0, 92, 229));
-        color1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color1MouseExited(evt);
-            }
-        });
-        color1.setLayout(null);
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/house-chimney (1).png"))); // NOI18N
-        jLabel15.setText(" DASHBOARD");
-        color1.add(jLabel15);
-        jLabel15.setBounds(0, 0, 170, 40);
-
-        jPanel6.add(color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 180, 40));
-
-        color2.setBackground(new java.awt.Color(0, 92, 229));
-        color2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color2MouseExited(evt);
-            }
-        });
-        color2.setLayout(null);
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/receipt (1).png"))); // NOI18N
-        jLabel17.setText(" TRANSACTION");
-        color2.add(jLabel17);
-        jLabel17.setBounds(0, 0, 180, 40);
-
-        jPanel6.add(color2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
-
-        color3.setBackground(new java.awt.Color(0, 92, 229));
-        color3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color3MouseExited(evt);
-            }
-        });
-        color3.setLayout(null);
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/envelope.png"))); // NOI18N
-        jLabel18.setText(" INBOX");
-        color3.add(jLabel18);
-        jLabel18.setBounds(0, 0, 140, 40);
-
-        jPanel6.add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 180, 40));
-
-        color4.setBackground(new java.awt.Color(0, 92, 229));
-        color4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color4MouseExited(evt);
-            }
-        });
-        color4.setLayout(null);
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings.png"))); // NOI18N
-        jLabel19.setText(" SETTINGS");
-        color4.add(jLabel19);
-        jLabel19.setBounds(0, 0, 160, 40);
-
-        jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 40));
-
-        color5.setBackground(new java.awt.Color(0, 92, 229));
-        color5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                color5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                color5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                color5MouseExited(evt);
-            }
-        });
-        color5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit.png"))); // NOI18N
-        jLabel3.setText("LOG OUT");
-        color5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 40));
-
-        jPanel6.add(color5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 180, -1));
-
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo-13.png"))); // NOI18N
-        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 120));
-
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
-
+        jTable3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -249,12 +119,141 @@ public class transaction extends javax.swing.JFrame {
         });
         jPanel4.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Search");
         jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 20));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(768, 49, 220, 385));
+
+        jPanel6.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        color1.setBackground(new java.awt.Color(0, 92, 229));
+        color1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color1MouseExited(evt);
+            }
+        });
+        color1.setLayout(null);
+
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/house-chimney.png"))); // NOI18N
+        jLabel15.setText(" DASHBOARD");
+        color1.add(jLabel15);
+        jLabel15.setBounds(0, 0, 170, 40);
+
+        jPanel6.add(color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 180, 40));
+
+        color2.setBackground(new java.awt.Color(0, 92, 229));
+        color2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color2MouseExited(evt);
+            }
+        });
+        color2.setLayout(null);
+
+        jLabel17.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/receipt.png"))); // NOI18N
+        jLabel17.setText(" TRANSACTION");
+        color2.add(jLabel17);
+        jLabel17.setBounds(0, 0, 180, 40);
+
+        jPanel6.add(color2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
+
+        color3.setBackground(new java.awt.Color(0, 92, 229));
+        color3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color3MouseExited(evt);
+            }
+        });
+        color3.setLayout(null);
+
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/envelope.png"))); // NOI18N
+        jLabel18.setText(" INBOX");
+        color3.add(jLabel18);
+        jLabel18.setBounds(0, 0, 140, 40);
+
+        jPanel6.add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 180, 40));
+
+        color4.setBackground(new java.awt.Color(0, 92, 229));
+        color4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color4MouseExited(evt);
+            }
+        });
+        color4.setLayout(null);
+
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings.png"))); // NOI18N
+        jLabel19.setText(" SETTINGS");
+        color4.add(jLabel19);
+        jLabel19.setBounds(0, 0, 160, 40);
+
+        jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 40));
+
+        color5.setBackground(new java.awt.Color(0, 92, 229));
+        color5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                color5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                color5MouseExited(evt);
+            }
+        });
+        color5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit.png"))); // NOI18N
+        jLabel3.setText("LOG OUT");
+        color5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 40));
+
+        jPanel6.add(color5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 180, -1));
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo-13.png"))); // NOI18N
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 120));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -280,6 +279,22 @@ public class transaction extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void listMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMousePressed
+
+    }//GEN-LAST:event_listMousePressed
+
+    private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
+
+    }//GEN-LAST:event_searchFieldMousePressed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+
+    }//GEN-LAST:event_searchFieldKeyReleased
 
     private void color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color1MouseClicked
         user_dashboard uds = new user_dashboard();
@@ -353,105 +368,6 @@ public class transaction extends javax.swing.JFrame {
         color5.setBackground(hovercolor);
     }//GEN-LAST:event_color5MouseExited
 
-    private void listMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMousePressed
-
-        String fullName = list.getSelectedValue();
-        String[] nameParts = fullName.trim().split("\\s+");
-
-        int lastNameStartIndex = -1;
-        for (int i = 0; i < nameParts.length; i++) {
-            if (nameParts[i].equalsIgnoreCase("Delos") ||
-                nameParts[i].equalsIgnoreCase("Dela") ||
-                nameParts[i].equalsIgnoreCase("Del") ||
-                nameParts[i].equalsIgnoreCase("San") ||
-                nameParts[i].equalsIgnoreCase("Santo") ||
-                nameParts[i].equalsIgnoreCase("La") ||
-                nameParts[i].equalsIgnoreCase("Santa")
-            ) {
-                lastNameStartIndex = i;
-                break;
-            }
-        }
-
-        // If no last name identifier is found, default to the last part as the last name
-        if (lastNameStartIndex == -1) {
-            lastNameStartIndex = nameParts.length - 1;
-        }
-
-        String firstName = String.join(" ", Arrays.copyOfRange(nameParts, 0, lastNameStartIndex));
-        String lastName = String.join(" ", Arrays.copyOfRange(nameParts, lastNameStartIndex, nameParts.length));
-
-        dbconnector dbc = new dbconnector();
-
-        try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT * FROM tbl_u WHERE u_fname = ? AND u_lname = ?")) {
-            pst.setString(1, firstName);
-            pst.setString(2, lastName);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                userAEU ru = new userAEU();
-                ru.u_id.setText(String.valueOf(rs.getInt("u_id")));
-                ru.u_fname.setText(rs.getString("u_fname"));
-                ru.u_lname.setText(rs.getString("u_lname"));
-                ru.u_uname.setText(rs.getString("u_uname"));
-                ru.u_email.setText(rs.getString("u_email"));
-                ru.u_type.setSelectedItem(rs.getString("u_type"));
-                ru.u_status.setSelectedItem(rs.getString("u_status"));
-                ru.ACCOUNT_NAME.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
-                ru.image.setIcon(ru.ResizeImage(rs.getString("u_image"), null, ru.image));
-                ru.oldpath = rs.getString("u_image");
-                ru.path = rs.getString("u_image");
-                ru.destination = rs.getString("u_image");
-                ru.setVisible(true);
-                this.dispose();
-
-                if(rs.getString("u_image").isEmpty()){
-                    ru.addProfile.setText(" Add profile");
-                    ru.remove.setEnabled(false);
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println("Errors: " + ex.getMessage());
-        }
-    }//GEN-LAST:event_listMousePressed
-
-    private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
-
-    }//GEN-LAST:event_searchFieldMousePressed
-
-    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
-
-    }//GEN-LAST:event_searchFieldActionPerformed
-
-    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
-
-        listModel.removeAllElements();
-
-        if(!searchField.getText().equals("")){
-            list.setSize(200,210);
-
-            dbconnector dbc = new dbconnector();
-
-            try(PreparedStatement pst = dbc.connect.prepareStatement("SELECT * FROM tbl_u WHERE u_fname LIKE ? OR u_lname LIKE ?")){
-
-                String name = searchField.getText();
-                pst.setString(1,"%"+name+"%");
-                pst.setString(2,"%"+name+"%");
-                ResultSet rs = pst.executeQuery();
-
-                while(rs.next()){
-                    listModel.addElement(rs.getString("u_fname") + " " + rs.getString("u_lname"));
-                }
-
-            }catch(SQLException ex){
-                System.out.println("Errors: "+ex.getMessage());
-            }
-
-        }else{
-            list.setSize(200,0);
-        }
-    }//GEN-LAST:event_searchFieldKeyReleased
-
     /**
      * @param args the command line arguments
      */
@@ -493,7 +409,6 @@ public class transaction extends javax.swing.JFrame {
     private javax.swing.JPanel color3;
     private javax.swing.JPanel color4;
     private javax.swing.JPanel color5;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;

@@ -116,11 +116,12 @@ public class loginform extends javax.swing.JFrame {
         jLabel1.setText("WELCOME BACK!");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 59, 500, 60));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Username");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 70, -1));
 
+        u_uname.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_uname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,13 +130,14 @@ public class loginform extends javax.swing.JFrame {
         });
         jPanel1.add(u_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 280, 30));
 
+        u_pass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_pass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.add(u_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 280, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 51, 184));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Log in");
+        jButton1.setText("LOG IN");
         jButton1.setPreferredSize(new java.awt.Dimension(60, 30));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +146,7 @@ public class loginform extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 270, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 184));
         jLabel5.setText("Forgot password?");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,18 +164,18 @@ public class loginform extends javax.swing.JFrame {
         jLabel7.setText("__________");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 352, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 102));
         jLabel8.setText("or");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 351, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 102));
         jLabel9.setText("Don't have an account?");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 184));
         jLabel4.setText("Sign up now!");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -211,7 +213,7 @@ public class loginform extends javax.swing.JFrame {
         xps.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jPanel1.add(xps, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, 170, 20));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 102));
         jLabel11.setText("Password");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, 60, -1));

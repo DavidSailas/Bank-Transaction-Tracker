@@ -122,9 +122,10 @@ public class registrationform extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("Sign Up");
+        jLabel1.setText("SIGN IN");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, 60));
 
+        u_fname.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_fname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,29 +134,31 @@ public class registrationform extends javax.swing.JFrame {
         });
         jPanel1.add(u_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 210, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("First name");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
+        u_lname.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_lname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.add(u_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 220, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Last name");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("Email");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Username");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
+        mail.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         mail.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         mail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +167,7 @@ public class registrationform extends javax.swing.JFrame {
         });
         jPanel1.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 210, -1));
 
+        u_uname.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_uname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,11 +176,12 @@ public class registrationform extends javax.swing.JFrame {
         });
         jPanel1.add(u_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 102));
         jLabel6.setText("Password");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
+        u_cpass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_cpass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_cpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +190,7 @@ public class registrationform extends javax.swing.JFrame {
         });
         jPanel1.add(u_cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 210, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 102));
         jLabel8.setText("Confirm Password");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
@@ -193,7 +198,7 @@ public class registrationform extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 51, 184));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Create");
+        jButton1.setText("CREATE");
         jButton1.setPreferredSize(new java.awt.Dimension(60, 30));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,11 +209,11 @@ public class registrationform extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 102));
         jLabel9.setText("Already have an account?");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 51, 184));
         jLabel13.setText("Log in now!");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -246,7 +251,7 @@ public class registrationform extends javax.swing.JFrame {
         jLabel11.setText("__________");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 364, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 102));
         jLabel12.setText("or");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 363, -1, -1));
@@ -299,6 +304,7 @@ public class registrationform extends javax.swing.JFrame {
         jLabel20.setText("______________________________");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, 30));
 
+        u_pass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_pass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

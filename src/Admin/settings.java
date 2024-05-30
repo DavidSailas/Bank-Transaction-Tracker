@@ -35,10 +35,13 @@ public class settings extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         pcolor1 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         pcolor2 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         pcolor3 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -64,9 +67,14 @@ public class settings extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 51, 184));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
         jLabel23.setText(" Account");
         pcolor1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 50));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText(">");
+        pcolor1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 2, 50, 50));
 
         pcolor2.setBackground(new java.awt.Color(255, 255, 255));
         pcolor2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -85,9 +93,15 @@ public class settings extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(0, 51, 184));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/padlock.png"))); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/shield.png"))); // NOI18N
         jLabel24.setText(" Password & Security");
-        pcolor2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 50));
+        pcolor2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText(">");
+        pcolor2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 2, 50, 50));
 
         pcolor3.setBackground(new java.awt.Color(255, 255, 255));
         pcolor3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,9 +120,14 @@ public class settings extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 51, 184));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/form.png"))); // NOI18N
         jLabel25.setText("Personal details");
         pcolor3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 50));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText(">");
+        pcolor3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 2, 50, 50));
 
         jPanel2.setBackground(new java.awt.Color(0, 92, 229));
 
@@ -156,7 +175,7 @@ public class settings extends javax.swing.JFrame {
                 .addComponent(pcolor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pcolor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -251,7 +270,10 @@ public class settings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pcolor1;

@@ -40,6 +40,7 @@ public class security extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         fullname = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -51,7 +52,7 @@ public class security extends javax.swing.JFrame {
         scode.setBackground(new java.awt.Color(51, 153, 255));
         scode.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         scode.setForeground(new java.awt.Color(255, 255, 255));
-        scode.setText("Update Code");
+        scode.setText("UPDATE CODE");
         scode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scodeActionPerformed(evt);
@@ -59,11 +60,12 @@ public class security extends javax.swing.JFrame {
         });
         jPanel2.add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 280, 35));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Security Code");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
+        sc.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         sc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         sc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,11 +74,12 @@ public class security extends javax.swing.JFrame {
         });
         jPanel2.add(sc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 280, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Confirm Security Code");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
+        csc.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         csc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         csc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,13 +93,16 @@ public class security extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("CHANGE PASSWORD");
+        jLabel5.setText("TWO - FACOTR AUTHENTICATION");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(47, 47, 47))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,20 +132,25 @@ public class security extends javax.swing.JFrame {
         jLabel21.setText("________________________________________");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, 30));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("Your password must be at least 8 characters above and should include a");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 400, -1));
+        jLabel1.setText("Two-factor authentication protects your account by requiring an additional code.");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 430, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel4.setText("combination of numbers, letters and special characters (!$@%).");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 360, -1));
+        jLabel4.setText("Your security code must be at least 6 characters above.");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 320, -1));
 
-        fullname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        fullname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         fullname.setForeground(new java.awt.Color(0, 0, 102));
         fullname.setText("Fullname");
-        jPanel2.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 300, 50));
+        jPanel2.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 300, 30));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel6.setText("Add extra security to your account");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -268,6 +279,7 @@ public class security extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -78,11 +78,12 @@ public class changepass extends javax.swing.JFrame {
         });
         jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 280, 35));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("New password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
+        npass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         npass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         npass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,11 +92,12 @@ public class changepass extends javax.swing.JFrame {
         });
         jPanel1.add(npass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 280, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Confirm new password:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
 
+        cpass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         cpass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         cpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +117,10 @@ public class changepass extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,11 +132,12 @@ public class changepass extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 102));
         jLabel13.setText("Current password:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
 
+        cnpass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         cnpass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         cnpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,17 +173,17 @@ public class changepass extends javax.swing.JFrame {
         jLabel21.setText("________________________________________");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, 30));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Your password must be at least 8 characters above and should include a");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 400, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("combination of numbers, letters and special characters (!$@%).");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 360, -1));
 
-        fullname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        fullname.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         fullname.setForeground(new java.awt.Color(0, 0, 102));
         fullname.setText("Fullname");
         jPanel1.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 300, 50));

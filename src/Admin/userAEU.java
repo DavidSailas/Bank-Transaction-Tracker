@@ -283,7 +283,7 @@ public boolean upCheck() {
 
         remove.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         remove.setForeground(new java.awt.Color(0, 51, 184));
-        remove.setText("Remove");
+        remove.setText("REMOVE");
         remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeActionPerformed(evt);
@@ -294,7 +294,7 @@ public boolean upCheck() {
         addProfile.setBackground(new java.awt.Color(255, 255, 255));
         addProfile.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         addProfile.setForeground(new java.awt.Color(0, 51, 184));
-        addProfile.setText("Select");
+        addProfile.setText("SELECT");
         addProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addProfileActionPerformed(evt);
@@ -321,6 +321,7 @@ public boolean upCheck() {
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 470, 450));
 
+        u_fname.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_fname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,11 +330,12 @@ public boolean upCheck() {
         });
         jPanel4.add(u_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 150, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("First name:");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, 20));
 
+        u_lname.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_lname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,21 +344,22 @@ public boolean upCheck() {
         });
         jPanel4.add(u_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 150, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("Last name:");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, 20));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Email:");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, 20));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 102));
         jLabel6.setText("Username:");
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, 20));
 
+        u_email.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_email.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,6 +368,7 @@ public boolean upCheck() {
         });
         jPanel4.add(u_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 150, 30));
 
+        u_uname.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_uname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,11 +377,12 @@ public boolean upCheck() {
         });
         jPanel4.add(u_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 150, 30));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 102));
         jLabel7.setText("Password:");
         jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, 20));
 
+        u_pass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_pass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,7 +391,7 @@ public boolean upCheck() {
         });
         jPanel4.add(u_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 150, 30));
 
-        u_status.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        u_status.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         u_status.setForeground(new java.awt.Color(0, 0, 102));
         u_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Active", "Pending", "" }));
         u_status.addActionListener(new java.awt.event.ActionListener() {
@@ -396,7 +401,7 @@ public boolean upCheck() {
         });
         jPanel4.add(u_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 150, 30));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 102));
         jLabel8.setText("User Type:");
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, 20));
@@ -413,11 +418,12 @@ public boolean upCheck() {
         });
         jPanel4.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 100, -1));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 102));
         jLabel18.setText("User ID:");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, 20));
 
+        u_id.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_id.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         u_id.setEnabled(false);
         u_id.addActionListener(new java.awt.event.ActionListener() {
@@ -427,12 +433,12 @@ public boolean upCheck() {
         });
         jPanel4.add(u_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 150, 30));
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 102));
         jLabel19.setText("User Status:");
         jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, 20));
 
-        u_type.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        u_type.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         u_type.setForeground(new java.awt.Color(0, 0, 102));
         u_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Admin", "User", "" }));
         jPanel4.add(u_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 150, 30));
@@ -603,7 +609,7 @@ public boolean upCheck() {
         
  if(dbc.insertData("INSERT INTO tbl_u (u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image)"
         + " VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+u_email.getText()+"','"+u_uname.getText()+"','"
-        +password+"','"+u_type.getSelectedItem()+"','Active','"+imageDestination+"')"))
+        +password+"','"+u_type.getSelectedItem()+"','"+u_status.getSelectedItem()+"','"+imageDestination+"')"))
         {
              if(selectedFile != null) {
             try{

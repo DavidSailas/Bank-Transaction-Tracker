@@ -198,10 +198,9 @@ public class user extends javax.swing.JFrame {
         color2 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         color3 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         color4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
 
         view.setText("View");
         view.addActionListener(new java.awt.event.ActionListener() {
@@ -221,43 +220,43 @@ public class user extends javax.swing.JFrame {
 
         viewpanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("Id:");
 
-        u_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        u_id.setForeground(new java.awt.Color(0, 51, 184));
+        u_id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        u_id.setForeground(new java.awt.Color(0, 0, 102));
         u_id.setText("sample");
 
-        fullname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        fullname.setForeground(new java.awt.Color(0, 51, 184));
+        fullname.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        fullname.setForeground(new java.awt.Color(0, 0, 102));
         fullname.setText("Fullname");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
         jLabel6.setText("Username:");
 
-        username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        username.setForeground(new java.awt.Color(0, 51, 184));
+        username.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        username.setForeground(new java.awt.Color(0, 0, 102));
         username.setText("sample");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 102));
         jLabel7.setText("Email:");
 
-        umail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        umail.setForeground(new java.awt.Color(0, 51, 184));
+        umail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        umail.setForeground(new java.awt.Color(0, 0, 102));
         umail.setText("sample");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 102));
         jLabel8.setText("Type:");
 
-        type.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        type.setForeground(new java.awt.Color(0, 51, 184));
+        type.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        type.setForeground(new java.awt.Color(0, 0, 102));
         type.setText("sample");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         image.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -272,17 +271,17 @@ public class user extends javax.swing.JFrame {
             .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 102));
         jLabel10.setText("Status:");
 
-        stats.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        stats.setForeground(new java.awt.Color(0, 51, 184));
+        stats.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        stats.setForeground(new java.awt.Color(0, 0, 102));
         stats.setText("sample");
 
-        print.setBackground(new java.awt.Color(255, 255, 255));
+        print.setBackground(new java.awt.Color(0, 51, 184));
         print.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        print.setForeground(new java.awt.Color(0, 51, 184));
+        print.setForeground(new java.awt.Color(255, 255, 255));
         print.setText(" EXPORT");
         print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,7 +338,7 @@ public class user extends javax.swing.JFrame {
                                         .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(umail)
                                             .addComponent(username))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                         .addGroup(viewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel8)
@@ -384,7 +383,7 @@ public class user extends javax.swing.JFrame {
                 .addComponent(fullname)
                 .addGap(18, 18, 18)
                 .addComponent(print, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         exportData.setBackground(new java.awt.Color(255, 255, 255));
@@ -395,7 +394,7 @@ public class user extends javax.swing.JFrame {
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel22.setBackground(new java.awt.Color(0, 92, 229));
-        jLabel22.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText(" System Users Data");
@@ -403,8 +402,8 @@ public class user extends javax.swing.JFrame {
 
         exportData.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
 
-        excel.setBackground(new java.awt.Color(0, 204, 51));
-        excel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        excel.setBackground(new java.awt.Color(0, 51, 184));
+        excel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         excel.setForeground(new java.awt.Color(255, 255, 255));
         excel.setText("EXCEL");
         excel.addActionListener(new java.awt.event.ActionListener() {
@@ -415,19 +414,19 @@ public class user extends javax.swing.JFrame {
         exportData.add(excel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 110, 30));
         exportData.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 290, 30));
 
-        jLabel23.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(204, 204, 204));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Download reports as:");
         exportData.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 290, 30));
 
-        jLabel24.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(27, 57, 77));
         jLabel24.setText("File name:");
         exportData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 20));
 
-        pdf.setBackground(new java.awt.Color(255, 102, 102));
-        pdf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        pdf.setBackground(new java.awt.Color(0, 51, 184));
+        pdf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         pdf.setForeground(new java.awt.Color(255, 255, 255));
         pdf.setText(" PDF");
         pdf.addActionListener(new java.awt.event.ActionListener() {
@@ -450,7 +449,7 @@ public class user extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 450));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userTbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        userTbl.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 userTblMousePressed(evt);
@@ -502,14 +501,14 @@ public class user extends javax.swing.JFrame {
         });
         jPanel4.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Search");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 20));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(768, 49, 220, 385));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 102));
         jLabel9.setText("Accountant");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
@@ -517,7 +516,7 @@ public class user extends javax.swing.JFrame {
         export.setBackground(new java.awt.Color(0, 51, 184));
         export.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         export.setForeground(new java.awt.Color(255, 255, 255));
-        export.setText("Export Users Data");
+        export.setText("EXPORT USER DATA");
         export.setBorder(null);
         export.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -529,7 +528,10 @@ public class user extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 84));
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo-13.png"))); // NOI18N
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 120));
 
         color1.setBackground(new java.awt.Color(0, 92, 229));
         color1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -545,10 +547,10 @@ public class user extends javax.swing.JFrame {
         });
         color1.setLayout(null);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/house-chimney (1).png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house-chimney.png"))); // NOI18N
         jLabel15.setText(" DASHBOARD");
         color1.add(jLabel15);
         jLabel15.setBounds(0, 0, 180, 40);
@@ -569,10 +571,10 @@ public class user extends javax.swing.JFrame {
         });
         color2.setLayout(null);
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/users (1).png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/users.png"))); // NOI18N
         jLabel16.setText(" ACCOUNTANT");
         color2.add(jLabel16);
         jLabel16.setBounds(0, 0, 180, 40);
@@ -593,15 +595,15 @@ public class user extends javax.swing.JFrame {
         });
         color3.setLayout(null);
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/assessment.png"))); // NOI18N
-        jLabel25.setText(" TRACKER");
-        color3.add(jLabel25);
-        jLabel25.setBounds(0, 0, 160, 40);
+        jLabel20.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/assessment.png"))); // NOI18N
+        jLabel20.setText(" TRACKER");
+        color3.add(jLabel20);
+        jLabel20.setBounds(0, 0, 160, 40);
 
-        jPanel6.add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 180, 40));
+        jPanel6.add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 180, 40));
 
         color4.setBackground(new java.awt.Color(0, 92, 229));
         color4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -617,7 +619,7 @@ public class user extends javax.swing.JFrame {
         });
         color4.setLayout(null);
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/file-circle-info.png"))); // NOI18N
@@ -625,11 +627,7 @@ public class user extends javax.swing.JFrame {
         color4.add(jLabel18);
         jLabel18.setBounds(0, 0, 150, 40);
 
-        jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 180, 40));
-
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Logo-13.png"))); // NOI18N
-        jPanel6.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 120));
+        jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 40));
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
 
@@ -1069,12 +1067,11 @@ public class user extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
