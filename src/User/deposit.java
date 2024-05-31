@@ -6,6 +6,7 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -483,43 +484,65 @@ public class deposit extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel25MouseClicked
 
+    private int getCurrentUserId() {
+    user_dashboard uds = new user_dashboard();
+    uds.uid.getText();
+    return 1; 
+}
+    
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
-        
+    
     String amountText = amountdeposit.getText();
     String amountStr = amountText.replace("₱", "").replace(".00", "").trim();
     double amount = Double.parseDouble(amountStr);
 
-    
-    int u_id = 1; 
+
+    int u_id = getCurrentUserId(); 
+    if (u_id == -1) {
+        JOptionPane.showMessageDialog(null, "Error: Unable to retrieve user ID.");
+        return;
+    }  
     String transactionType = "deposit"; 
 
+    
     java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
     java.sql.Time currentTime = new java.sql.Time(System.currentTimeMillis());
+    
 
-    String sql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time) " +
-                 "VALUES (?, ?, ?, ?, ?)";
+    String checkUserSql = "SELECT COUNT(*) FROM tbl_u WHERE u_id = ?";
+    String insertTransactionSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time) " +
+                                   "VALUES (?, ?, ?, ?, ?)";
 
     try {
         dbconnector db = new dbconnector();
-        PreparedStatement pst = db.connect.prepareStatement(sql);
-        pst.setInt(1, u_id);
-        pst.setDouble(2, amount);
-        pst.setString(3, transactionType);
-        pst.setDate(4, currentDate);
-        pst.setTime(5, currentTime);
-        pst.executeUpdate();
-        pst.close();
-        JOptionPane.showMessageDialog(null, "Deposit successful!");
+        PreparedStatement checkUserPst = db.connect.prepareStatement(checkUserSql);
+        checkUserPst.setInt(1, u_id);
+        ResultSet rs = checkUserPst.executeQuery();
+        if (rs.next() && rs.getInt(1) > 0) {
+            
+            PreparedStatement insertTransactionPst = db.connect.prepareStatement(insertTransactionSql);
+            insertTransactionPst.setInt(1, u_id);
+            insertTransactionPst.setDouble(2, amount);
+            insertTransactionPst.setString(3, transactionType);
+            insertTransactionPst.setDate(4, currentDate);
+            insertTransactionPst.setTime(5, currentTime);
+            insertTransactionPst.executeUpdate();
+            insertTransactionPst.close();
 
+            JOptionPane.showMessageDialog(null, "Deposit successful!");
 
-        receipt r = new receipt();
-        r.amount.setText("₱" + String.format("%.2f", amount));
-        r.total.setText("₱" + String.format("%.2f", amount)); 
-        SimpleDateFormat sdfDate = new SimpleDateFormat("MMMM dd, yyyy");
-        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss a");
-        r.date.setText(sdfDate.format(currentDate));
-        r.time.setText(sdfTime.format(currentTime));
-        r.setVisible(true);
+        }
+            receipt r = new receipt();
+            r.amount.setText("₱" + String.format("%.2f", amount));
+            r.total.setText("₱" + String.format("%.2f", amount));
+            r.typetran.setText(transactionType);
+            r.tran_type.setText("You have successfully " + transactionType);
+            SimpleDateFormat sdfDate = new SimpleDateFormat("MMMM dd, yyyy");
+            SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss a");
+            r.date.setText(sdfDate.format(currentDate));
+            r.time.setText(sdfTime.format(currentTime));
+            r.setVisible(true);
+        checkUserPst.close();
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
     }

@@ -18,15 +18,30 @@ import javax.swing.Timer;
 
 public class user_dashboard extends javax.swing.JFrame {
 
+    private double amount;
+    
+        public user_dashboard(double walletAmount) {
+        this.amount = amount;
+        initComponents();
+        WalletAmountDisplay();
+    }
+        
     public user_dashboard() {
+        this.amount = 0.0;
         initComponents();
         date();
         time();
+        
     }
 
     Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229);
     
+        private void WalletAmountDisplay() {
+        receipt r = new receipt();   
+        walletbalance.setText("₱" + String.format("%.2f", r.amount));
+    }
+        
         private void date() {
        
         Date d = new Date();
@@ -104,8 +119,7 @@ public class user_dashboard extends javax.swing.JFrame {
         firstname = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        walletballance = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        walletbalance = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
         time = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -450,29 +464,21 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("WALLET BALANCE");
 
-        walletballance.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        walletballance.setForeground(new java.awt.Color(255, 255, 255));
-        walletballance.setText("0.00");
-
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("₱");
+        walletbalance.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        walletbalance.setForeground(new java.awt.Color(255, 255, 255));
+        walletbalance.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        walletbalance.setText("₱ 0.00");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(walletballance, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(262, Short.MAX_VALUE))
+                    .addComponent(jLabel11)
+                    .addComponent(walletbalance, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,9 +486,7 @@ public class user_dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(walletballance, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(walletbalance, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -776,7 +780,6 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -810,10 +813,10 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel stats;
     private javax.swing.JLabel time;
     private javax.swing.JLabel type;
-    private javax.swing.JLabel uid;
+    public javax.swing.JLabel uid;
     private javax.swing.JLabel umail;
     private javax.swing.JLabel username;
     public javax.swing.JPanel viewpanel;
-    private javax.swing.JLabel walletballance;
+    public javax.swing.JLabel walletbalance;
     // End of variables declaration//GEN-END:variables
 }
