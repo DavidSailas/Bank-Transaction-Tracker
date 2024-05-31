@@ -2,6 +2,7 @@
 package User;
 
 import config.dbconnector;
+import config.session;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class deposit extends javax.swing.JFrame {
         initComponents();
     }
     
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,7 +40,6 @@ public class deposit extends javax.swing.JFrame {
         confirmdeposit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         amountdeposit = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -122,16 +123,11 @@ public class deposit extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 500));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 92, 229));
         jPanel2.setMinimumSize(new java.awt.Dimension(500, 50));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("DEPOSIT");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 390, -1));
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/undo.png"))); // NOI18N
@@ -142,14 +138,19 @@ public class deposit extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 50));
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 49));
+
         amountdeposit.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         amountdeposit.setForeground(new java.awt.Color(0, 51, 184));
         amountdeposit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         amountdeposit.setText("₱ 0.00");
+        jPanel1.add(amountdeposit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 78, 472, 80));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Amount to Deposit");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 60, 500, 30));
 
         d50.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         d50.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,6 +177,8 @@ public class deposit extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jPanel1.add(d50, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 168, -1, -1));
+
         d100.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         d100.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -200,6 +203,8 @@ public class deposit extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        jPanel1.add(d100, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 168, -1, -1));
 
         d150.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         d150.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -226,6 +231,8 @@ public class deposit extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jPanel1.add(d150, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 168, -1, -1));
+
         d200.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         d200.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -250,6 +257,8 @@ public class deposit extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        jPanel1.add(d200, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 168, -1, -1));
 
         d250.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         d250.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,6 +285,8 @@ public class deposit extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jPanel1.add(d250, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 256, -1, -1));
+
         d500.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         d500.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -300,6 +311,8 @@ public class deposit extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        jPanel1.add(d500, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 256, -1, -1));
 
         d800.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         d800.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -326,6 +339,8 @@ public class deposit extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jPanel1.add(d800, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 256, -1, -1));
+
         d1000.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         d1000.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -351,6 +366,8 @@ public class deposit extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jPanel1.add(d1000, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 256, -1, -1));
+
         addcustomamount.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         addcustomamount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -370,11 +387,13 @@ public class deposit extends javax.swing.JFrame {
         );
         addcustomamountLayout.setVerticalGroup(
             addcustomamountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addcustomamountLayout.createSequentialGroup()
+            .addGroup(addcustomamountLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        jPanel1.add(addcustomamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 378, -1));
 
         deposit.setBackground(new java.awt.Color(51, 153, 255));
         deposit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -385,68 +404,7 @@ public class deposit extends javax.swing.JFrame {
                 depositActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addcustomamount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(d250, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(d500, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(d800, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(d1000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(d50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(d100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(d150, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(d200, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(amountdeposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(amountdeposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(d50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(d100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(d150, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(d200, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(d250, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(d500, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(d800, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(d1000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addcustomamount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
-        );
+        jPanel1.add(deposit, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 414, 378, 45));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -491,47 +449,50 @@ public class deposit extends javax.swing.JFrame {
 }
     
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
-    
+
     String amountText = amountdeposit.getText();
     String amountStr = amountText.replace("₱", "").replace(".00", "").trim();
     double amount = Double.parseDouble(amountStr);
 
+    String transactionType = "DEPOSIT"; 
 
-    int u_id = getCurrentUserId(); 
-    if (u_id == -1) {
-        JOptionPane.showMessageDialog(null, "Error: Unable to retrieve user ID.");
-        return;
-    }  
-    String transactionType = "deposit"; 
-
-    
     java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
     java.sql.Time currentTime = new java.sql.Time(System.currentTimeMillis());
-    
-
-    String checkUserSql = "SELECT COUNT(*) FROM tbl_u WHERE u_id = ?";
-    String insertTransactionSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time) " +
-                                   "VALUES (?, ?, ?, ?, ?)";
 
     try {
-        dbconnector db = new dbconnector();
-        PreparedStatement checkUserPst = db.connect.prepareStatement(checkUserSql);
-        checkUserPst.setInt(1, u_id);
-        ResultSet rs = checkUserPst.executeQuery();
-        if (rs.next() && rs.getInt(1) > 0) {
+        session sess = session.getInstance();
+        int u_id = sess.getUid();
+
+        dbconnector db = new dbconnector();              
+        ResultSet rs = db.getData("SELECT u_bal FROM tbl_u WHERE u_id = "+u_id);
+        
+        if (rs.next()) {
             
-            PreparedStatement insertTransactionPst = db.connect.prepareStatement(insertTransactionSql);
-            insertTransactionPst.setInt(1, u_id);
-            insertTransactionPst.setDouble(2, amount);
-            insertTransactionPst.setString(3, transactionType);
-            insertTransactionPst.setDate(4, currentDate);
-            insertTransactionPst.setTime(5, currentTime);
-            insertTransactionPst.executeUpdate();
-            insertTransactionPst.close();
+            double currentBalance = rs.getDouble("u_bal");
+            double newBalance = currentBalance + amount;
+
+            String updateSql = "UPDATE tbl_u SET u_bal = ? WHERE u_id = ?";
+            PreparedStatement updatePst = db.connect.prepareStatement(updateSql);
+            updatePst.setDouble(1, newBalance);
+            updatePst.setInt(2, u_id);
+            updatePst.executeUpdate();
+            updatePst.close();
+
+            String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats) " +
+                               "VALUES (?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement insertPst = db.connect.prepareStatement(insertSql);
+            insertPst.setInt(1, u_id);
+            insertPst.setDouble(2, amount);
+            insertPst.setString(3, transactionType);
+            insertPst.setDate(4, currentDate);
+            insertPst.setTime(5, currentTime);
+            insertPst.setString(6, "SUCCESS");
+            insertPst.executeUpdate();
+            insertPst.close();
 
             JOptionPane.showMessageDialog(null, "Deposit successful!");
 
-        }
             receipt r = new receipt();
             r.amount.setText("₱" + String.format("%.2f", amount));
             r.total.setText("₱" + String.format("%.2f", amount));
@@ -542,7 +503,10 @@ public class deposit extends javax.swing.JFrame {
             r.date.setText(sdfDate.format(currentDate));
             r.time.setText(sdfTime.format(currentTime));
             r.setVisible(true);
-        checkUserPst.close();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Unable to fetch user balance.");
+        }
+        rs.close();
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
     }
@@ -646,7 +610,6 @@ public class deposit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

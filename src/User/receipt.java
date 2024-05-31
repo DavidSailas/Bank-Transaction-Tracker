@@ -187,7 +187,6 @@ public class receipt extends javax.swing.JFrame {
 
     private void returnpageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnpageMouseClicked
         user_dashboard uds = new user_dashboard();
-        uds.walletbalance.setText("₱" + String.format("%.2f", amount));
         uds.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_returnpageMouseClicked

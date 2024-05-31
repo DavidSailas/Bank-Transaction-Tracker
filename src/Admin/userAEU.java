@@ -607,9 +607,9 @@ public boolean upCheck() {
         
         String imageDestination = (selectedFile != null) ? destination : "";
         
- if(dbc.insertData("INSERT INTO tbl_u (u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image)"
+ if(dbc.insertData("INSERT INTO tbl_u (u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image, u_bal)"
         + " VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+u_email.getText()+"','"+u_uname.getText()+"','"
-        +password+"','"+u_type.getSelectedItem()+"','"+u_status.getSelectedItem()+"','"+imageDestination+"')"))
+        +password+"','"+u_type.getSelectedItem()+"','"+u_status.getSelectedItem()+"','"+imageDestination+"',0)"))
         {
              if(selectedFile != null) {
             try{
@@ -701,25 +701,27 @@ public boolean upCheck() {
 
         dbconnector dbc = new dbconnector();
 
-        String sql = "DELETE FROM tbl_u WHERE u_id = ?";
+        String sql = "UPDATE tbl_user SET u_status = ? WHERE u_id = ?";
 
-        try (PreparedStatement pst = dbc.connect.prepareStatement(sql)) {
-            pst.setString(1, u_id.getText());
-            int rowsAffected = pst.executeUpdate();
+    try (PreparedStatement pst = dbc.connect.prepareStatement(sql)) {
+        // Set the parameters using PreparedStatement
+        pst.setString(1, u_status); // Set status
+        pst.setString(2, u_id.getText()); // Set user ID
+        int rowsAffected = pst.executeUpdate();
 
-            if (rowsAffected > 0) {
-                Window window = SwingUtilities.getWindowAncestor(confirmDel);
-                window.dispose();
-                JOptionPane.showMessageDialog(null, "User deleted successfully!");
-                user u = new user();
-                u.setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "No records found to delete.");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
+        if (rowsAffected > 0) {
+            Window window = SwingUtilities.getWindowAncestor(confirmDel);
+            window.dispose();
+            JOptionPane.showMessageDialog(null, "User data archived.");
+            user u = new user();
+            u.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "No records found to delete.");
         }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
+    }
     }//GEN-LAST:event_yesBTActionPerformed
 
     /**

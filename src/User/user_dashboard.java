@@ -5,11 +5,14 @@ import User.inbox;
 import User.settings;
 import User.transaction;
 import btt.loginform;
+import config.dbconnector;
 import config.session;
 import java.awt.Color;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -18,28 +21,41 @@ import javax.swing.Timer;
 
 public class user_dashboard extends javax.swing.JFrame {
 
-    private double amount;
-    
-        public user_dashboard(double walletAmount) {
-        this.amount = amount;
-        initComponents();
-        WalletAmountDisplay();
-    }
+ 
         
     public user_dashboard() {
-        this.amount = 0.0;
+
         initComponents();
         date();
         time();
-        
+        WalletAmountDisplay();
     }
 
     Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229);
     
         private void WalletAmountDisplay() {
-        receipt r = new receipt();   
-        walletbalance.setText("₱" + String.format("%.2f", r.amount));
+   
+        
+         dbconnector dbc = new dbconnector();
+        
+        try{
+            
+              session sess = session.getInstance();
+           
+       
+             ResultSet rs = dbc.getData("SELECT u_bal FROM tbl_u WHERE u_id = "+sess.getUid()); 
+            
+             if(rs.next()){
+                      walletbalance.setText("₱ " +rs.getString("u_bal"));
+             }
+            
+        }catch(SQLException ex){
+            System.out.println(""+ ex);
+        }
+        
+        
+  
     }
         
         private void date() {

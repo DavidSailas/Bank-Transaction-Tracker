@@ -5,6 +5,8 @@ import config.PasswordHasher;
 import config.dbconnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class registrationform extends javax.swing.JFrame {
@@ -13,7 +15,17 @@ public class registrationform extends javax.swing.JFrame {
     public registrationform() {
         initComponents();
     }
-    
+        public boolean isValidEmail(String email) {
+    String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + 
+                        "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    Pattern pattern = Pattern.compile(emailRegex);
+    if (email == null) {
+        return false;
+    }
+    Matcher matcher = pattern.matcher(email);
+    return matcher.matches();
+}
+        
      public String destination = "";
     
     public static String email, username;
@@ -141,7 +153,7 @@ public class registrationform extends javax.swing.JFrame {
 
         u_lname.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         u_lname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(u_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 220, -1));
+        jPanel1.add(u_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 210, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
@@ -174,7 +186,7 @@ public class registrationform extends javax.swing.JFrame {
                 u_unameActionPerformed(evt);
             }
         });
-        jPanel1.add(u_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, -1));
+        jPanel1.add(u_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 210, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 102));
@@ -377,32 +389,32 @@ if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || mail.getText().
         a5.setText("Field Required");
     } else if(u_pass.getText().length() < 8){
         a5.setText("Password is too short!");
-    }
-    if(u_cpass.getText().isEmpty()){
+    }else if (!u_pass.getText().equals(u_cpass.getText())) {        
+        a5.setText(" Password does not match!");
+        a6.setText(" Password does not match!");
+    }if(u_cpass.getText().isEmpty()){
         a6.setText("Field Required");            
     }
-} else {
-    // If there are no empty fields and the password length is sufficient
-    if(u_cpass.getText().length() < 8){
+else if (!isValidEmail(mail.getText())) {
+            a4.setText("Invalid Email Address!");
+        }  else if(u_pass.getText().length() < 8){
         a5.setText("Password is too short!");
-    }else if (!u_pass.getText().equals(u_cpass.getText())) {
-                    a5.setText(" Password does not match!");
-                    a6.setText(" Password does not match!");
-                    u_pass.setText("");
-                    u_cpass.setText("");
-    }else if(dupCheck()){
-        System.out.println("Duplicate Exist");
-    } else {
+        }else if (!u_pass.getText().equals(u_cpass.getText())) {        
+        a5.setText(" Password does not match!");
+        a6.setText(" Password does not match!");
+        } else if (dupCheck()) {
+            System.out.println("Duplicate Exist");
+        } else {
         // Creating dbconnector object
        dbconnector connector = new dbconnector();
 
 // Inserting data into the database
-String query = "INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image) "
+String query = "INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image, u_bal) "
         + "VALUES ('" + u_fname.getText() + "','" + u_lname.getText() + "','" + mail.getText() + "','"
-        + u_uname.getText() + "','" + password + "','User','Pending','"+destination+"','')";
+        + u_uname.getText() + "','" + password + "','User','Pending','"+destination+"', 0)";
 
 if (connector.insertData(query)) {
-    JOptionPane.showMessageDialog(null, "Inserted Success!");
+    JOptionPane.showMessageDialog(null, "Registered Success!");
     loginform ads = new loginform();
     ads.setVisible(true);
     this.dispose();
