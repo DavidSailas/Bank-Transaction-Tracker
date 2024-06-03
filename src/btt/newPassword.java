@@ -8,6 +8,8 @@ import config.session;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -25,13 +27,14 @@ public class newPassword extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         update = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        npass = new javax.swing.JPasswordField();
+        nps = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        cnpass = new javax.swing.JPasswordField();
+        cnps = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         a1 = new javax.swing.JLabel();
         a2 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -51,18 +54,18 @@ public class newPassword extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("New password:");
 
-        npass.addActionListener(new java.awt.event.ActionListener() {
+        nps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                npassActionPerformed(evt);
+                npsActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Confirm new password:");
 
-        cnpass.addActionListener(new java.awt.event.ActionListener() {
+        cnps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnpassActionPerformed(evt);
+                cnpsActionPerformed(evt);
             }
         });
 
@@ -76,10 +79,10 @@ public class newPassword extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(118, 118, 118))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,6 +100,9 @@ public class newPassword extends javax.swing.JFrame {
         a2.setForeground(new java.awt.Color(255, 0, 0));
         a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
+        id.setForeground(new java.awt.Color(255, 255, 255));
+        id.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,13 +116,14 @@ public class newPassword extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(67, 67, 67)
                         .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(npass)
+                    .addComponent(nps)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(20, 20, 20)
                         .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cnpass, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cnps, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(103, 103, 103))
+            .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,15 +133,16 @@ public class newPassword extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(npass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nps, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(cnpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cnps, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(28, 28, 28)
+                .addComponent(id))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -153,79 +161,84 @@ public class newPassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-    a1.setText("");
-    a2.setText("");
 
-    dbconnector dbc = new dbconnector();
-    session sess = session.getInstance();
-    PasswordHasher pH = new PasswordHasher();
+    
+        a1.setText("");
+        a2.setText("");
 
-    try {
+        dbconnector dbc = new dbconnector();
+        PasswordHasher pH = new PasswordHasher();
+
         
-        String query = "SELECT u_pass FROM tbl_u WHERE u_id = ?";
-        PreparedStatement pstmt = dbc.connect.prepareStatement(query);
-        pstmt.setInt(1, sess.getUid());  
-        ResultSet resultSet = pstmt.executeQuery();
+        try {
+            String query = "SELECT * FROM tbl_u WHERE u_id = '" + id.getText() + "'";
+            ResultSet resultSet = dbc.getData(query);
 
-        if (resultSet.next()) {
-            String currentPass = resultSet.getString("u_pass");
-            String hashedCurrentPass = pH.hashPassword(cnpass.getText());
+            if (resultSet.next()) {
+                if (nps.getText().isEmpty() || cnps.getText().isEmpty()) {
+                    if (nps.getText().isEmpty()) {
+                        a1.setText("Field required!");
+                    }
+                    if (cnps.getText().isEmpty()) {
+                        a1.setText("Field required!");
+                    }
+                } else if (nps.getText().length() < 8) {
+                    a2.setText("At least 8 characters");
+                } else if (!nps.getText().equals(cnps.getText())) {
+                    a1.setText("Password does not match!");
+                    a2.setText("Password does not match!");
+                } else {
+                    String password = pH.hashPassword(nps.getText());
+                    dbc.updateData("UPDATE tbl_u SET u_pass = '" + password + "' WHERE u_id = '" + id.getText() + "'");
 
-            if (cnpass.getText().isEmpty() || npass.getText().isEmpty()) {
-                if (npass.getText().isEmpty()) {
-                    a1.setText(" Field required!");
-                }
-                if (cnpass.getText().isEmpty()) {
-                    a2.setText(" Field required!");
-                }
-            } else if (npass.getText().length() < 8 || cnpass.getText().length() < 8) {
-                a2.setText(" Password is too short!");
-                npass.setText("");
-                cnpass.setText("");
-            } else if (!hashedCurrentPass.equals(currentPass)) {
-                a1.setText("Password is incorrect!");
-                cnpass.setText("");
-            } else if (!npass.getText().equals(cnpass.getText())) {
-                a1.setText(" Password does not match!");
-                a2.setText(" Password does not match!");
-                npass.setText("");
-                cnpass.setText("");
-            } else {
-                String hashedNewPass = pH.hashPassword(npass.getText());
-
-                
-                String updateQuery = "UPDATE tbl_u SET u_pass = ? WHERE u_id = ?";
-                PreparedStatement updatePstmt = dbc.connect.prepareStatement(updateQuery);
-                updatePstmt.setString(1, hashedNewPass);
-                updatePstmt.setInt(2, sess.getUid());  
-                updatePstmt.executeUpdate();
 
                 loginform lf = new loginform();
                 lf.setVisible(true);
                 this.dispose();
+                }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "User does not exist!");
-        }
 
-        resultSet.close();
-        pstmt.close();
-    } catch (SQLException ex) {
-        System.out.println(ex);
-    }
+            resultSet.close(); 
+
+        } catch (SQLException ex) {
+            System.out.println("" + ex);
+        }
     }//GEN-LAST:event_updateActionPerformed
 
-    private void npassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_npassActionPerformed
+    private void npsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_npsActionPerformed
         
-    }//GEN-LAST:event_npassActionPerformed
+    }//GEN-LAST:event_npsActionPerformed
 
-    private void cnpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpassActionPerformed
+    private void cnpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpsActionPerformed
        
-    }//GEN-LAST:event_cnpassActionPerformed
+    }//GEN-LAST:event_cnpsActionPerformed
 
     /**
      * @param args the command line arguments
      */
+             public void logEvent(int userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -262,13 +275,14 @@ public class newPassword extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel a1;
     private javax.swing.JLabel a2;
-    private javax.swing.JPasswordField cnpass;
+    private javax.swing.JPasswordField cnps;
+    public javax.swing.JLabel id;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField npass;
+    private javax.swing.JPasswordField nps;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,8 @@ import java.awt.Window;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -44,6 +46,7 @@ public class forgetpass extends javax.swing.JFrame {
         no = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         confirm = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -112,22 +115,29 @@ public class forgetpass extends javax.swing.JFrame {
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        id.setForeground(new java.awt.Color(255, 255, 255));
+        id.setText("jLabel9");
+
         javax.swing.GroupLayout usernameLayout = new javax.swing.GroupLayout(username);
         username.setLayout(usernameLayout);
         usernameLayout.setHorizontalGroup(
             usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(usernameLayout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(usernameLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(fullname, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(usernameLayout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(yes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(no, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(usernameLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(usernameLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(fullname, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(usernameLayout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(yes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(no, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         usernameLayout.setVerticalGroup(
             usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +150,9 @@ public class forgetpass extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(yes)
-                    .addComponent(no)))
+                    .addComponent(no))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(id))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -274,18 +286,65 @@ try {
 
     private void yesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesActionPerformed
 
+dbconnector connector = new dbconnector();
 
-        securitycode rc = new securitycode();     
+        
+try {
+        String userId = "";
+        String u_email = email.getText();
+        String query = "SELECT * FROM tbl_u WHERE u_email = ?;";
+        
+    try (PreparedStatement pstmt = connector.connect.prepareStatement(query)) {
+        pstmt.setString(1, u_email);
+        ResultSet rs = pstmt.executeQuery();
+        
+        if (rs.next()) {
+            
+            
+          userId = rs.getString("u_id");
+          
+        }
+        securitycode rc = new securitycode();
+        rc.id.setText(userId);
+        
         rc.setVisible(true);
         Window window = SwingUtilities.getWindowAncestor(username);
         window.dispose();        
         this.dispose(); 
-    
+    }
+} catch (SQLException ex) {
+    System.out.println(ex);
+}
+
+          
     }//GEN-LAST:event_yesActionPerformed
 
     /**
      * @param args the command line arguments
      */
+                 public void logEvent(int userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -322,6 +381,7 @@ try {
     private javax.swing.JButton confirm;
     private javax.swing.JTextField email;
     public javax.swing.JLabel fullname;
+    private javax.swing.JLabel id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;

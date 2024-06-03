@@ -11,6 +11,8 @@ import config.session;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +38,7 @@ public class securitycode extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         a1 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -81,6 +84,9 @@ public class securitycode extends javax.swing.JFrame {
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
+        id.setForeground(new java.awt.Color(255, 255, 255));
+        id.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,6 +102,7 @@ public class securitycode extends javax.swing.JFrame {
                         .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sc, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(135, Short.MAX_VALUE))
+            .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +116,8 @@ public class securitycode extends javax.swing.JFrame {
                 .addComponent(sc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
                 .addComponent(verify, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGap(35, 35, 35)
+                .addComponent(id))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,50 +137,75 @@ public class securitycode extends javax.swing.JFrame {
 
     private void verifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyActionPerformed
     
-    a1.setText("");   
+    
+         a1.setText("");   
         
-    dbconnector dbc = new dbconnector();
-    session sess = session.getInstance();
-    PasswordHasher pH = new PasswordHasher();
-
-    try {
-        // Query to get the security code for the user
-        String query = "SELECT u_code FROM tbl_u WHERE u_id = ?";
-        PreparedStatement pstmt = dbc.connect.prepareStatement(query);
-        pstmt.setString(1, String.valueOf(sess.getUid()));
-        ResultSet rs = pstmt.executeQuery();
-
-        if (rs.next()) {
-            String storedCode = rs.getString("u_code");
-            String enteredCode = pH.hashPassword(sc.getText());
-
-
-            if (sc.getText().isEmpty()) {
-                a1.setText("Field required!");
-            } else if (storedCode == null || storedCode.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "You must set a security code first.");
-            } else if (!enteredCode.equals(storedCode)) {              
-                a1.setText("Security code is incorrect!");
-            } else {
+     dbconnector dbc = new dbconnector();
+     String u_id = id.getText();
+     
+     PasswordHasher pH = new PasswordHasher();       
+        
+        try {
+          String query = "SELECT * FROM tbl_u WHERE u_id = '" + u_id + "'";
+          ResultSet rs = dbc.getData(query);
+            
+           if (rs.next()) {
+            
+             String code = pH.hashPassword(sc.getText());
+             String securityCode = rs.getString("u_code");
                 
-                newPassword np = new newPassword(); 
+             if(sc.getText().isEmpty()){
+                 
+                if(sc.getText().isEmpty()){
+                  a1.setText("Field required");
+                }
+             }else if(!code.equals(securityCode)){
+                  a1.setText("Invalid code");              
+             }else{
+                 System.out.println("code valid");
+
+                
+                newPassword np = new newPassword();
+                np.id.setText(u_id);
                 np.setVisible(true);
                 this.dispose();
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "User does not exist!");
+                
+             }
+             
+          }
+                   
+  
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
-
-        rs.close();
-        pstmt.close();
-    } catch (SQLException ex) {
-        System.out.println(ex);
-    }
     }//GEN-LAST:event_verifyActionPerformed
 
     /**
      * @param args the command line arguments
      */
+             public void logEvent(int userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -208,6 +241,7 @@ public class securitycode extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel a1;
+    public javax.swing.JLabel id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

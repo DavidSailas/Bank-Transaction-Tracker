@@ -6,8 +6,11 @@ import com.formdev.flatlaf.FlatLightLaf;
 import config.PasswordHasher;
 import config.dbconnector;
 import config.session;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JToggleButton;
@@ -56,8 +59,71 @@ public class loginform extends javax.swing.JFrame {
         }
 
     }
+          public String getUserId(String username) {
+       
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String userId = null;
+
+        try {
+       
+
+      
+            String sql = "SELECT u_id FROM tbl_user WHERE u_usn = ?";
+            pstmt = dbc.connect.prepareStatement(sql);
+            pstmt.setString(1, username);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                userId = rs.getString("u_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+           
+       
+        }
+        return userId;
+    }
   
+        public void logEvent(String userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setString(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
     
+ }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -271,29 +337,47 @@ public class loginform extends javax.swing.JFrame {
                 xps.setText("Field Required");
             }
         } else {
-            if(loginAcc(u_uname.getText(), password)) {
+            String username = u_uname.getText(); // assuming this is the username
+            String userId = getUserId(username); // Fetch the u_id from the database
+            String event;
+            String description;
+            
+            if(loginAcc(username, password)) {
                 if(!status.equals("Active")){
                     JOptionPane.showMessageDialog(null, "Account is not Active!.");
+                    event = "LOGIN_ATTEMPT";
+                    description = "Login successful but user status is not active";
+                    logEvent(userId, event, description);
                 } else {
                     if(type.equals("Admin")){
                         JOptionPane.showMessageDialog(null, "Log in successfully.");
                         admin_dashboard ads = new admin_dashboard();
                         ads.setVisible(true);
                         this.dispose();
+                        event = "LOGIN_SUCCESS";
+                        description = "Admin logged in successfully";
+                        logEvent(userId, event, description);
                     } else if(type.equals("User")){
                         JOptionPane.showMessageDialog(null, "Log in successfully.");
                         user_dashboard uds = new user_dashboard();
                         uds.setVisible(true);
                         this.dispose();
+                        event = "LOGIN_SUCCESS";
+                        description = "User logged in successfully";
+                        logEvent(userId, event, description);
                     } else {
                         JOptionPane.showMessageDialog(null, "Account does not exist!", "Notice", JOptionPane.ERROR_MESSAGE);
+                        event = "LOGIN_ATTEMPT";
+                        description = "Connection error";
+                        logEvent(userId, event, description);
                     }
                 }
             } else {
                 nousn.setText("Invalid Username.");
                 xps.setText("Invalid Password.");
-                u_uname.setText("");
-                u_pass.setText("");
+                event = "LOGIN_FAILURE";
+                description = "Invalid username or password";
+                logEvent(userId, event, description);
             }
         }
 
@@ -302,8 +386,11 @@ public class loginform extends javax.swing.JFrame {
     private void u_unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_u_unameActionPerformed
-      
-    
+
+    /**
+     * @param args the command line arguments
+     */      
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

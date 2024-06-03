@@ -13,6 +13,8 @@ import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -81,7 +83,7 @@ public class security extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel3.setText("Confirm Security Code");
+        jLabel3.setText("Confirm Password");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
         csc.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -179,57 +181,48 @@ public class security extends javax.swing.JFrame {
 
     private void scodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scodeActionPerformed
       
-    a1.setText("");
-    a2.setText("");
+        a1.setText("");
+        a2.setText("");
 
-    dbconnector dbc = new dbconnector();
-    session sess = session.getInstance();
-    PasswordHasher pH = new PasswordHasher();
+        dbconnector dbc = new dbconnector();
+        session sess = session.getInstance();
+        PasswordHasher pH = new PasswordHasher();
 
-    try {
-        String query = "SELECT u_code FROM tbl_u WHERE u_id = ?";
-        PreparedStatement pst = dbc.connect.prepareStatement(query);
-        pst.setString(1, String.valueOf(sess.getUid()));
-        ResultSet resultSet = pst.executeQuery();
+        try {
+            String query = "SELECT * FROM tbl_u WHERE u_id = '" + sess.getUid() + "'";
+            ResultSet resultSet = dbc.getData(query);
 
-        if (resultSet.next()) {
-            String sCode = resultSet.getString("u_code");
-            String cCode = csc.getText();
+            if (resultSet.next()) {
+                String oldpass = resultSet.getString("u_pass");
+                String cpass = pH.hashPassword(csc.getText());
 
-            if (csc.getText().isEmpty() || sc.getText().isEmpty()) {
-                if (csc.getText().isEmpty()) {
-                    a2.setText("Field required!");
+                if (csc.getText().isEmpty() || sc.getText().isEmpty()) {
+                    if (csc.getText().isEmpty()) {
+                        a2.setText("Field required!");
+                    }
+                    if (sc.getText().isEmpty()) {
+                        a1.setText("Field required!");
+                    }
+                } else if (!cpass.equals(oldpass)) {
+                    a2.setText("Password is incorrect!");
+                    
+                }else if(sc.getText().length() < 6){
+                    a1.setText("At least 6 code");
+                    
+                } else {
+                    String code = pH.hashPassword(sc.getText());
+                    dbc.updateData("UPDATE tbl_u SET u_code = '" + code + "' WHERE u_id = '" + sess.getUid() + "'");
+                    pass_security ps = new pass_security();
+                    ps.setVisible(true);
+                    this.dispose();
                 }
-                if (sc.getText().isEmpty()) {
-                    a1.setText("Field required!");
-                }
-            } else if (!pH.hashPassword(cCode).equals(sCode)) {
-                a2.setText("Security code does not match");
-            } else if (!sc.getText().equals(csc.getText())) {
-                a1.setText("Code does not match!");
-                a2.setText("Code does not match!");
-            } else if (sc.getText().length() < 6) {
-                a1.setText("At least 6 characters required for code!");
-            } else {
-                String hashedCode = pH.hashPassword(sc.getText());
-                String updateQuery = "UPDATE tbl_u SET u_code = ? WHERE u_id = ?";
-                PreparedStatement updatePst = dbc.connect.prepareStatement(updateQuery);
-                updatePst.setString(1, hashedCode);
-                updatePst.setString(2, String.valueOf(sess.getUid()));
-                updatePst.executeUpdate();
-                
-                settings s = new settings();
-                s.setVisible(true);
-                this.dispose();
             }
+
+            resultSet.close();  // Ensure the ResultSet is closed
+
+        } catch (SQLException ex) {
+            System.out.println("" + ex);
         }
-
-        resultSet.close();
-        pst.close();
-
-    } catch (SQLException ex) {
-        System.out.println("Database Error: " + ex.getMessage());
-    }
 
     
     }//GEN-LAST:event_scodeActionPerformed
@@ -251,6 +244,29 @@ public class security extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+         public void logEvent(int userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

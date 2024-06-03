@@ -3,8 +3,11 @@ package register;
 import btt.loginform;
 import config.PasswordHasher;
 import config.dbconnector;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -66,7 +69,29 @@ public class registrationform extends javax.swing.JFrame {
         }
         
     }
+            public void logEvent(String userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setString(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
     
+ }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -395,7 +420,7 @@ if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || mail.getText().
     }if(u_cpass.getText().isEmpty()){
         a6.setText("Field Required");            
     }
-else if (!isValidEmail(mail.getText())) {
+}else if (!isValidEmail(mail.getText())) {
             a4.setText("Invalid Email Address!");
         }  else if(u_pass.getText().length() < 8){
         a5.setText("Password is too short!");
@@ -406,24 +431,44 @@ else if (!isValidEmail(mail.getText())) {
             System.out.println("Duplicate Exist");
         } else {
         // Creating dbconnector object
-       dbconnector connector = new dbconnector();
+        dbconnector connector = new dbconnector();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
+    try{
+    
+                String sql = "INSERT INTO tbl_u (u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image, u_bal, u_contact, u_code) VALUES (?, ?, ?, ?, ?, 'User', 'Pending', ?, ?, ?, ?)";
+                pstmt = connector.connect.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                pstmt.setString(1, u_fname.getText());
+                pstmt.setString(2, u_lname.getText());
+                pstmt.setString(3, mail.getText());
+                pstmt.setString(4, u_uname.getText());
+                pstmt.setString(5, password);
+                pstmt.setString(6, destination);
+                pstmt.setString(7, "");
+                pstmt.setString(8, "");
+                pstmt.setString(9, "");
+                
+                int affectedRows = pstmt.executeUpdate();
 
-String query = "INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image, u_bal, u_contact, u_code) "
-        + "VALUES ('" + u_fname.getText() + "','" + u_lname.getText() + "','" + mail.getText() + "','"
-        + u_uname.getText() + "','" + password + "','User','Pending','"+destination+"', 0, '', '')";
-
-if (connector.insertData(query)) {
-    JOptionPane.showMessageDialog(null, "Registered Success!");
-    loginform ads = new loginform();
-    ads.setVisible(true);
-    this.dispose();
-} else {
-    JOptionPane.showMessageDialog(null, "Connection Error:");
-}
-
+                if (affectedRows > 0) {
+                    rs = pstmt.getGeneratedKeys();
+                    if (rs.next()) {
+                        String userId = rs.getString(1); 
+                       
+                        logEvent(userId, "USER_REGISTRATION", "User registered successfully");
+                    }
+                    loginform ads = new loginform();
+                    ads.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Connection Error!");
+                }
+    }catch (SQLException e) {
+                e.printStackTrace();
+            }
     }
-}
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -445,6 +490,7 @@ if (connector.insertData(query)) {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

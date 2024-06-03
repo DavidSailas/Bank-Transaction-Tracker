@@ -11,7 +11,9 @@ import java.awt.Window;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -497,11 +499,12 @@ public class withdraw extends javax.swing.JFrame {
                 insertPst.setString(3, transactionType);
                 insertPst.setDate(4, currentDate);
                 insertPst.setTime(5, currentTime);
-                insertPst.setString(6, "PENDING");
+                insertPst.setString(6, "FAILED");
                 insertPst.executeUpdate();
                 insertPst.close();
 
-                JOptionPane.showMessageDialog(null, "Insufficient balance for withdrawal. Transaction status set to pending.");
+                JOptionPane.showMessageDialog(null, "Insufficient Balance, Transaction failed!", "Error", JOptionPane.ERROR_MESSAGE);
+
                 return;
             }
             double newBalance = currentBalance - amount;
@@ -552,6 +555,29 @@ public class withdraw extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+             public void logEvent(int userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -9,8 +9,11 @@ import btt.loginform;
 import config.dbconnector;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -25,11 +28,43 @@ public class tracker extends javax.swing.JFrame {
     public tracker() {
         initComponents();
         displayHis();
+        displayActivity();
         DefaultTableModel model = (DefaultTableModel) historyTbl.getModel();
     }
     Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229); 
     
+       public void displayActivity() {
+    try {
+        dbconnector dbc = new dbconnector();
+        String query = "SELECT l.l_id, CONCAT(u.u_id, ' - ', u.u_type) AS user_info, l.l_event, l.l_timestamp " +
+                       "FROM tbl_logs l " +
+                       "JOIN tbl_u u ON l.u_id = u.u_id " +
+                       "ORDER BY l.l_timestamp DESC";
+        ResultSet rs = dbc.getData(query);
+        logsTbl.setModel(DbUtils.resultSetToTableModel(rs));
+
+        JTableHeader th = logsTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+
+        TableColumn tc0 = tcm.getColumn(0); 
+        TableColumn tc1 = tcm.getColumn(1); 
+        TableColumn tc2 = tcm.getColumn(2); 
+        TableColumn tc3 = tcm.getColumn(3); 
+
+        tc0.setHeaderValue("Log ID");
+        tc1.setHeaderValue("User");
+        tc2.setHeaderValue("EVENT");
+        tc3.setHeaderValue("TIME");
+
+
+        logsTbl.removeColumn(tc0);
+
+        rs.close();
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
+}
 public void displayHis() {
     try {
         dbconnector connector = new dbconnector();
@@ -127,7 +162,7 @@ public void displayHis() {
         jScrollPane2 = new javax.swing.JScrollPane();
         historyTbl = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        logsTbl = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -185,7 +220,7 @@ public void displayHis() {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 500, 140));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        logsTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -193,7 +228,7 @@ public void displayHis() {
 
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(logsTbl);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 500, 140));
 
@@ -384,6 +419,29 @@ public void displayHis() {
     /**
      * @param args the command line arguments
      */
+         public void logEvent(int userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -437,6 +495,6 @@ public void displayHis() {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable logsTbl;
     // End of variables declaration//GEN-END:variables
 }

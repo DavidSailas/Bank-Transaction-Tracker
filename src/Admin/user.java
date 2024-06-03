@@ -30,7 +30,9 @@ import java.nio.file.StandardCopyOption;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Arrays;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -129,12 +131,12 @@ public void displayData() {
         
         ResultSet rs = connector.getData("SELECT u_id, u_fname, u_lname, u_email, u_status FROM tbl_u WHERE u_status <> 'Archived'");
         DefaultTableModel model = (DefaultTableModel) userTbl.getModel();
-        model.setRowCount(0); // Clear existing rows
+        model.setRowCount(0);
         
-        // Set column names
+        
         model.setColumnIdentifiers(new String[]{"ID", "First Name", "Last Name", "Email", "Status"});
         
-        // Add data to the table model
+        
         while (rs.next()) {
             String[] rowData = new String[5];
             rowData[0] = rs.getString("u_id");
@@ -145,10 +147,10 @@ public void displayData() {
             model.addRow(rowData);
         }
 
-        // Set the table model to the JTable
+        
         userTbl.setModel(model);
         
-        // Set cell renderer for "Status" column to color code text based on status
+        
         userTbl.getColumnModel().getColumn(4).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -160,7 +162,7 @@ public void displayData() {
                     } else if (status.equals("Pending")) {
                         setForeground(Color.ORANGE);
                     } else {
-                        // Default text color for other statuses
+                        
                         setForeground(table.getForeground());
                     }
                 }
@@ -518,7 +520,7 @@ public void displayData() {
         jLayeredPane1.add(list);
         list.setBounds(0, 0, 0, 0);
 
-        jPanel4.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 300));
+        jPanel4.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 290));
 
         searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -770,7 +772,7 @@ public void displayData() {
        listModel.removeAllElements();
 
         if(!searchField.getText().equals("")){
-        list.setSize(200,210);
+        list.setSize(200,290);
 
         dbconnector dbc = new dbconnector();
 
@@ -1057,6 +1059,29 @@ public void displayData() {
     /**
      * @param args the command line arguments
      */
+         public void logEvent(int userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

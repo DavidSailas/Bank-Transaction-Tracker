@@ -13,6 +13,8 @@ import java.awt.Window;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -43,12 +45,12 @@ public void displayData() {
         ResultSet rs = connector.getData("SELECT u_id, u_fname, u_lname, u_status FROM tbl_u WHERE u_status = 'Archived'");
         
         DefaultTableModel model = (DefaultTableModel) archiveTbl.getModel();
-        model.setRowCount(0); // Clear existing rows
+        model.setRowCount(0); 
         
-        // Set column names
+        
         model.setColumnIdentifiers(new String[]{"ID", "First Name", "Last Name", "Status"});
         
-        // Add data to the table model
+        
         while (rs.next()) {
             String[] rowData = new String[4];
             rowData[0] = rs.getString("u_id");
@@ -58,10 +60,10 @@ public void displayData() {
             model.addRow(rowData);
         }
 
-        // Set the table model to the JTable
+        
         archiveTbl.setModel(model);
         
-        // Set cell renderer for "Status" column to color code text based on status
+        
         archiveTbl.getColumnModel().getColumn(3).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -459,27 +461,45 @@ public void displayData() {
     private void yesBT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBT1ActionPerformed
 
         
-    dbconnector dbc = new dbconnector();
-    String sqlUpdate = "UPDATE tbl_u SET u_status = ? WHERE u_id = ?";
-    try (PreparedStatement pstUpdate = dbc.connect.prepareStatement(sqlUpdate)) {
-        pstUpdate.setString(1, "Pending");
-        pstUpdate.setString(2, u_id.getText());
+        dbconnector dbc = new dbconnector();
+        
+        
+           int rowIndex = archiveTbl.getSelectedRow();
+    if (rowIndex < 0) {
+        JOptionPane.showMessageDialog(null, "Please select a user to unarchive.");
+    }else{
+                TableModel tbl = archiveTbl.getModel();
+        String sqlUpdate = "UPDATE tbl_u SET u_status = ? WHERE u_id = ?";
+        
+        try (PreparedStatement pstUpdate = dbc.connect.prepareStatement(sqlUpdate)) {
+            
+    String userId = tbl.getValueAt(rowIndex, 0).toString();
+    System.out.println("User ID to unarchive: " + userId); 
 
-        int rowsAffected = pstUpdate.executeUpdate();
+    pstUpdate.setString(1, "Pending");
+    pstUpdate.setString(2, userId);
 
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(null, "User data unarchived successfully.");
+    int rowsAffected = pstUpdate.executeUpdate();
+    System.out.println("Rows affected: " + rowsAffected); 
 
-            Window window = SwingUtilities.getWindowAncestor(confirmunarchive);
+    if (rowsAffected > 0) {
+        JOptionPane.showMessageDialog(null, "User data unarchived successfully.");
+
+        Window window = SwingUtilities.getWindowAncestor(confirmunarchive);
+        if (window != null) {
             window.dispose();
-
-            displayData();
-        } else {
-            JOptionPane.showMessageDialog(null, "No records found to unarchive.");
         }
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
+
+        displayData();
+    } else {
+        JOptionPane.showMessageDialog(null, "No records found to unarchive.");
     }
+} catch (SQLException ex) {
+    JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
+}
+    }
+        
+
 
 
     }//GEN-LAST:event_yesBT1ActionPerformed
@@ -487,6 +507,29 @@ public void displayData() {
     /**
      * @param args the command line arguments
      */
+         public void logEvent(int userId, String event, String description) {
+   
+        dbconnector dbc = new dbconnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
