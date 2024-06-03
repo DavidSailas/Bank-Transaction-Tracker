@@ -29,6 +29,7 @@ public class user_dashboard extends javax.swing.JFrame {
         date();
         time();
         WalletAmountDisplay();
+        
     }
 
     Color navcolor =  new Color(204,204,204);

@@ -13,6 +13,7 @@ public class session {
     private String type;
     private String status;
     private String u_image;
+    private String contact;
 
     
     private session(){
@@ -36,6 +37,13 @@ public class session {
 
     public void setUid(int uid) {
         this.uid = uid;
+    }
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
     public String getFname() {
         return fname;

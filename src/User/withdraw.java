@@ -482,12 +482,26 @@ public class withdraw extends javax.swing.JFrame {
         int u_id = sess.getUid();
 
         dbconnector db = new dbconnector();
-        ResultSet rs = db.getData("SELECT u_bal FROM tbl_u WHERE u_id = "+u_id);
+        ResultSet rs = db.getData("SELECT u_bal FROM tbl_u WHERE u_id = " + u_id);
 
         if (rs.next()) {
             double currentBalance = rs.getDouble("u_bal");
-            if(currentBalance < amount){
-                JOptionPane.showMessageDialog(null, "Insufficient balance for withdrawal.");
+            if (currentBalance < amount) {
+                // If the balance is insufficient, set transaction status to pending
+                String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats) " +
+                                   "VALUES (?, ?, ?, ?, ?, ?)";
+
+                PreparedStatement insertPst = db.connect.prepareStatement(insertSql);
+                insertPst.setInt(1, u_id);
+                insertPst.setDouble(2, amount);
+                insertPst.setString(3, transactionType);
+                insertPst.setDate(4, currentDate);
+                insertPst.setTime(5, currentTime);
+                insertPst.setString(6, "PENDING");
+                insertPst.executeUpdate();
+                insertPst.close();
+
+                JOptionPane.showMessageDialog(null, "Insufficient balance for withdrawal. Transaction status set to pending.");
                 return;
             }
             double newBalance = currentBalance - amount;
@@ -500,7 +514,7 @@ public class withdraw extends javax.swing.JFrame {
             updatePst.close();
 
             String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats) " +
-            "VALUES (?, ?, ?, ?, ?, ?)";
+                               "VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement insertPst = db.connect.prepareStatement(insertSql);
             insertPst.setInt(1, u_id);
@@ -524,6 +538,7 @@ public class withdraw extends javax.swing.JFrame {
             r.date.setText(sdfDate.format(currentDate));
             r.time.setText(sdfTime.format(currentTime));
             r.setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Error: Unable to fetch user balance.");
         }
@@ -531,6 +546,7 @@ public class withdraw extends javax.swing.JFrame {
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
     }
+    
     }//GEN-LAST:event_withdrawActionPerformed
 
     /**

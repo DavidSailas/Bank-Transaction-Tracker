@@ -15,6 +15,7 @@ import config.PanelPrinter;
 import config.dbconnector;
 import config.session;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.Window;
 import java.awt.image.BufferedImage;
@@ -36,8 +37,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -120,33 +123,69 @@ public class user extends javax.swing.JFrame {
         }
    }
    
-      public void displayData(){
-        try{
-            dbconnector connector = new dbconnector();
-            ResultSet rs = connector.getData("SELECT u_id, u_fname, u_lname,u_email,u_status FROM tbl_u");
-            userTbl.setModel(DbUtils.resultSetToTableModel(rs));
-            
-            JTableHeader th = userTbl.getTableHeader();
-            TableColumnModel tcm = th.getColumnModel();
-            TableColumn tc = tcm.getColumn(0);
-            TableColumn tc1 = tcm.getColumn(1);
-            TableColumn tc2 = tcm.getColumn(2);
-            TableColumn tc3 = tcm.getColumn(3);
-            TableColumn tc4 = tcm.getColumn(4);
-            
-            tc.setHeaderValue("ID");
-            tc1.setHeaderValue("First Name");
-            tc2.setHeaderValue("Last Name");
-            tc3.setHeaderValue("Email");
-            tc4.setHeaderValue("Status");
-             rs.close();
-        }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
+public void displayData() {
+    try {
+        dbconnector connector = new dbconnector();
         
+        ResultSet rs = connector.getData("SELECT u_id, u_fname, u_lname, u_email, u_status FROM tbl_u WHERE u_status <> 'Archived'");
+        DefaultTableModel model = (DefaultTableModel) userTbl.getModel();
+        model.setRowCount(0); // Clear existing rows
+        
+        // Set column names
+        model.setColumnIdentifiers(new String[]{"ID", "First Name", "Last Name", "Email", "Status"});
+        
+        // Add data to the table model
+        while (rs.next()) {
+            String[] rowData = new String[5];
+            rowData[0] = rs.getString("u_id");
+            rowData[1] = rs.getString("u_fname");
+            rowData[2] = rs.getString("u_lname");
+            rowData[3] = rs.getString("u_email");
+            rowData[4] = rs.getString("u_status");
+            model.addRow(rowData);
         }
-       
-    
+
+        // Set the table model to the JTable
+        userTbl.setModel(model);
+        
+        // Set cell renderer for "Status" column to color code text based on status
+        userTbl.getColumnModel().getColumn(4).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = (String) table.getValueAt(row, 4);
+                if (status != null) {
+                    if (status.equals("Active")) {
+                        setForeground(Color.GREEN);
+                    } else if (status.equals("Pending")) {
+                        setForeground(Color.ORANGE);
+                    } else {
+                        // Default text color for other statuses
+                        setForeground(table.getForeground());
+                    }
+                }
+                return c;
+            }
+        });
+
+        // Set custom column headers
+        JTableHeader th = userTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        tcm.getColumn(0).setHeaderValue("ID");
+        tcm.getColumn(1).setHeaderValue("First Name");
+        tcm.getColumn(2).setHeaderValue("Last Name");
+        tcm.getColumn(3).setHeaderValue("Email");
+        tcm.getColumn(4).setHeaderValue("Status");
+        
+        // Refresh the table header to show new column names
+        th.repaint();
+
+        rs.close();
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
     }
+}
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -698,12 +737,13 @@ public class user extends javax.swing.JFrame {
                 ru.u_uname.setText(rs.getString("u_uname"));
                 ru.u_email.setText(rs.getString("u_email"));
                 ru.u_type.setSelectedItem(rs.getString("u_type"));
-                ru.u_status.setSelectedItem(rs.getString("u_status"));
+                ru.u_stats.setSelectedItem(rs.getString("u_status"));
                 ru.ACCOUNT_NAME.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
                 ru.image.setIcon(ru.ResizeImage(rs.getString("u_image"), null, ru.image));
                 ru.oldpath = rs.getString("u_image");
                 ru.path = rs.getString("u_image");
                 ru.destination = rs.getString("u_image");
+                ru.add.setEnabled(false);
                 ru.setVisible(true);
                 this.dispose();
                 
@@ -823,7 +863,7 @@ public class user extends javax.swing.JFrame {
                     ur.u_pass.setText("");
                     ur.u_pass.setEnabled(false);
                     ur.u_type.setSelectedItem(""+resultSet.getString("u_type"));
-                    ur.u_status.setSelectedItem(""+resultSet.getString("u_status"));
+                    ur.u_stats.setSelectedItem(""+resultSet.getString("u_status"));
                     ur.add.setEnabled(false);
                     ur.update.setEnabled(true);
                     ur.image.setIcon(ur.ResizeImage(resultSet.getString("u_image"), null, ur.image));

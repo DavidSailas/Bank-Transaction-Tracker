@@ -1,9 +1,21 @@
 package User;
 
 import btt.loginform;
+import config.dbconnector;
 import config.session;
 import java.awt.Color;
+import java.awt.Component;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import net.proteanit.sql.DbUtils;
 
 
 
@@ -15,12 +27,94 @@ public class transaction extends javax.swing.JFrame {
     
     public transaction() {
         initComponents();
-        
+        displayTran();
+        DefaultTableModel model = (DefaultTableModel) tranTbl.getModel();
     }
     Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229);
- 
     
+    
+    private String getUId() {
+        session sess = session.getInstance();
+        int u_id = sess.getUid();
+        return String.valueOf(u_id);
+    }
+
+public void displayTran() {
+    String loggedInUId = getUId();
+
+    try {
+        dbconnector connector = new dbconnector();
+
+        String query = "SELECT tran_id, tran_amount, tran_type, tran_date, tran_time, tran_stats " +
+                       "FROM tbl_transaction WHERE u_id = ?";
+
+        // Use PreparedStatement to prevent SQL injection
+        try (PreparedStatement pst = connector.connect.prepareStatement(query)) {
+            pst.setString(1, loggedInUId);
+            ResultSet rs = pst.executeQuery();
+
+            // Create a table model
+            DefaultTableModel model = new DefaultTableModel() {
+                @Override
+                public Class<?> getColumnClass(int columnIndex) {
+                    return String.class; // All columns will be of type String
+                }
+
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false; // Disable cell editing
+                }
+            };
+
+            // Set column names
+            model.setColumnIdentifiers(new String[]{"ID", "Amount", "Action", "Date", "Time", "Status"});
+
+            // Add data to the table model
+            while (rs.next()) {
+                String[] rowData = new String[6];
+                rowData[0] = rs.getString("tran_id");
+                rowData[1] = rs.getString("tran_amount");
+                rowData[2] = rs.getString("tran_type");
+                rowData[3] = rs.getString("tran_date");
+                rowData[4] = rs.getString("tran_time");
+                rowData[5] = rs.getString("tran_stats");
+                model.addRow(rowData);
+            }
+
+            // Set the table model to the JTable
+            tranTbl.setModel(model);
+
+            // Set cell renderer for "Status" column to color code text based on transaction status
+            tranTbl.getColumnModel().getColumn(5).setCellRenderer(new DefaultTableCellRenderer() {
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                    String status = (String) table.getValueAt(row, 5);
+                    if (status != null) {
+                        if (status.equals("SUCCESS")) {
+                            setForeground(Color.GREEN);
+                        } else if (status.equals("PENDING")) {
+                            setForeground(Color.ORANGE);
+                        } else {
+                            // Default text color for other statuses
+                            setForeground(table.getForeground());
+                        }
+                    }
+                    return c;
+                }
+            });
+
+            rs.close();
+        }
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
+}
+
+
+
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -28,12 +122,7 @@ public class transaction extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        list = new javax.swing.JList<>();
-        searchField = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
+        tranTbl = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         color1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -64,8 +153,8 @@ public class transaction extends javax.swing.JFrame {
         jLabel9.setText("Transaction");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
 
-        jTable3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tranTbl.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        tranTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -73,58 +162,9 @@ public class transaction extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tranTbl);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 530, 380));
-
-        jPanel4.setBackground(new java.awt.Color(0, 92, 229));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLayeredPane1.setForeground(new java.awt.Color(0, 0, 102));
-
-        list.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        list.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        list.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                listMousePressed(evt);
-            }
-        });
-        jLayeredPane1.add(list);
-        list.setBounds(0, 0, 0, 0);
-
-        jPanel4.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 300));
-
-        searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        searchField.setHighlighter(null);
-        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                searchFieldMousePressed(evt);
-            }
-        });
-        searchField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFieldActionPerformed(evt);
-            }
-        });
-        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchFieldKeyReleased(evt);
-            }
-        });
-        jPanel4.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
-
-        jLabel20.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Search");
-        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 20));
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(768, 49, 220, 385));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 750, 380));
 
         jPanel6.setBackground(new java.awt.Color(0, 92, 229));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -280,22 +320,6 @@ public class transaction extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
-    private void listMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMousePressed
-
-    }//GEN-LAST:event_listMousePressed
-
-    private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
-
-    }//GEN-LAST:event_searchFieldMousePressed
-
-    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
-
-    }//GEN-LAST:event_searchFieldActionPerformed
-
-    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
-
-    }//GEN-LAST:event_searchFieldKeyReleased
-
     private void color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color1MouseClicked
         user_dashboard uds = new user_dashboard();
         uds.setVisible(true);
@@ -414,16 +438,11 @@ public class transaction extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JList<String> list;
-    private javax.swing.JTextField searchField;
+    private javax.swing.JTable tranTbl;
     // End of variables declaration//GEN-END:variables
 }

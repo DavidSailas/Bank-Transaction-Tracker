@@ -501,8 +501,9 @@ public class deposit extends javax.swing.JFrame {
             SimpleDateFormat sdfDate = new SimpleDateFormat("MMMM dd, yyyy");
             SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss a");
             r.date.setText(sdfDate.format(currentDate));
-            r.time.setText(sdfTime.format(currentTime));
+            r.time.setText(sdfTime.format(currentTime));           
             r.setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Error: Unable to fetch user balance.");
         }

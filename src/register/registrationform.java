@@ -408,10 +408,10 @@ else if (!isValidEmail(mail.getText())) {
         // Creating dbconnector object
        dbconnector connector = new dbconnector();
 
-// Inserting data into the database
-String query = "INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image, u_bal) "
+
+String query = "INSERT INTO tbl_u(u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image, u_bal, u_contact, u_code) "
         + "VALUES ('" + u_fname.getText() + "','" + u_lname.getText() + "','" + mail.getText() + "','"
-        + u_uname.getText() + "','" + password + "','User','Pending','"+destination+"', 0)";
+        + u_uname.getText() + "','" + password + "','User','Pending','"+destination+"', 0, '', '')";
 
 if (connector.insertData(query)) {
     JOptionPane.showMessageDialog(null, "Registered Success!");

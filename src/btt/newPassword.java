@@ -5,14 +5,15 @@ package btt;
 import config.PasswordHasher;
 import config.dbconnector;
 import config.session;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-public class confirmforgetpass extends javax.swing.JFrame {
+public class newPassword extends javax.swing.JFrame {
 
-    public confirmforgetpass() {
+    public newPassword() {
         initComponents();
     }
 
@@ -78,7 +79,7 @@ public class confirmforgetpass extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jLabel5)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,32 +101,28 @@ public class confirmforgetpass extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addGap(67, 67, 67)
-                .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(npass, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel3)
-                .addGap(20, 20, 20)
-                .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(cnpass, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(67, 67, 67)
+                        .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(npass)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(20, 20, 20)
+                        .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cnpass, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(103, 103, 103))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,16 +132,16 @@ public class confirmforgetpass extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(cnpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(49, 49, 49)
                 .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,58 +153,66 @@ public class confirmforgetpass extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-a1.setText("");
-a2.setText("");
+    a1.setText("");
+    a2.setText("");
 
-dbconnector dbc = new dbconnector();
-session sess = session.getInstance();
-PasswordHasher pH = new PasswordHasher();
+    dbconnector dbc = new dbconnector();
+    session sess = session.getInstance();
+    PasswordHasher pH = new PasswordHasher();
 
-try {
-    String query = "SELECT * FROM tbl_u WHERE u_id = '" + sess.getUid() + "'";
-    ResultSet resultSet = dbc.getData(query);
-
-    if (resultSet.next()) {
-        String newpass = resultSet.getString("u_pass");
-        String cps = pH.hashPassword(cnpass.getText());
-
+    try {
         
-        if (cnpass.getText().isEmpty() || npass.getText().isEmpty()) {
-            if (npass.getText().isEmpty()) {
-                a1.setText(" * Field required!");
+        String query = "SELECT u_pass FROM tbl_u WHERE u_id = ?";
+        PreparedStatement pstmt = dbc.connect.prepareStatement(query);
+        pstmt.setInt(1, sess.getUid());  
+        ResultSet resultSet = pstmt.executeQuery();
+
+        if (resultSet.next()) {
+            String currentPass = resultSet.getString("u_pass");
+            String hashedCurrentPass = pH.hashPassword(cnpass.getText());
+
+            if (cnpass.getText().isEmpty() || npass.getText().isEmpty()) {
+                if (npass.getText().isEmpty()) {
+                    a1.setText(" Field required!");
+                }
+                if (cnpass.getText().isEmpty()) {
+                    a2.setText(" Field required!");
+                }
+            } else if (npass.getText().length() < 8 || cnpass.getText().length() < 8) {
+                a2.setText(" Password is too short!");
+                npass.setText("");
+                cnpass.setText("");
+            } else if (!hashedCurrentPass.equals(currentPass)) {
+                a1.setText("Password is incorrect!");
+                cnpass.setText("");
+            } else if (!npass.getText().equals(cnpass.getText())) {
+                a1.setText(" Password does not match!");
+                a2.setText(" Password does not match!");
+                npass.setText("");
+                cnpass.setText("");
+            } else {
+                String hashedNewPass = pH.hashPassword(npass.getText());
+
+                
+                String updateQuery = "UPDATE tbl_u SET u_pass = ? WHERE u_id = ?";
+                PreparedStatement updatePstmt = dbc.connect.prepareStatement(updateQuery);
+                updatePstmt.setString(1, hashedNewPass);
+                updatePstmt.setInt(2, sess.getUid());  
+                updatePstmt.executeUpdate();
+
+                loginform lf = new loginform();
+                lf.setVisible(true);
+                this.dispose();
             }
-            if (cnpass.getText().isEmpty()) {
-                a2.setText(" * Field required!");
-            }
-        } else if (npass.getText().length() < 8 || cnpass.getText().length() < 8) {
-            
-            a2.setText(" * Password must be 8 characters above!");
-            npass.setText("");
-            cnpass.setText("");
-        } else if (!cps.equals(newpass)) {
-            
-            a1.setText("Password is incorrect!");
-            cnpass.setText("");
-        } else if (!npass.getText().equals(cnpass.getText())) {
-            
-            a1.setText(" * Password does not match!");
-            a2.setText(" * Password does not match!");
-            npass.setText("");
-            cnpass.setText("");
         } else {
-            
-            String nps = pH.hashPassword(npass.getText());
-            dbc.updateData("UPDATE tbl_u SET u_pass = '" + nps + "' WHERE u_id = '" + sess.getUid() + "'");
-            loginform lf = new loginform();
-            lf.setVisible(true);
-            this.dispose();
+            JOptionPane.showMessageDialog(null, "User does not exist!");
         }
+
+        resultSet.close();
+        pstmt.close();
+    } catch (SQLException ex) {
+        System.out.println(ex);
     }
-} catch (SQLException ex) {
-    System.out.println(ex);
-}
-
-
     }//GEN-LAST:event_updateActionPerformed
 
     private void npassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_npassActionPerformed
@@ -235,20 +240,21 @@ try {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(confirmforgetpass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(confirmforgetpass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(confirmforgetpass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(confirmforgetpass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new confirmforgetpass().setVisible(true);
+                new newPassword().setVisible(true);
             }
         });
     }

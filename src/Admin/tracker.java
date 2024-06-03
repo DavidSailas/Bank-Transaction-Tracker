@@ -6,16 +6,114 @@ import Admin.message;
 import Admin.security;
 import Admin.user;
 import btt.loginform;
+import config.dbconnector;
 import java.awt.Color;
+import java.awt.Component;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import net.proteanit.sql.DbUtils;
 
 public class tracker extends javax.swing.JFrame {
 
     public tracker() {
         initComponents();
+        displayHis();
+        DefaultTableModel model = (DefaultTableModel) historyTbl.getModel();
     }
     Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229); 
+    
+public void displayHis() {
+    try {
+        dbconnector connector = new dbconnector();
+
+        String query = "SELECT tbl_u.u_fname, tbl_transaction.tran_id, tbl_transaction.tran_amount, " +
+                       "tbl_transaction.tran_type, tbl_transaction.tran_date, tbl_transaction.tran_time, " +
+                       "tbl_transaction.tran_stats " +
+                       "FROM tbl_transaction " +
+                       "JOIN tbl_u ON tbl_transaction.u_id = tbl_u.u_id";
+
+        ResultSet rs = connector.getData(query);
+
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return String.class; // All columns will be of type String
+            }
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Disable cell editing
+            }
+        };
+
+        // Set column names
+        model.setColumnIdentifiers(new String[]{"Name", "Transaction ID", "Amount", "Action", "Date", "Time", "Status"});
+
+        // Add data to the table model
+        while (rs.next()) {
+            String[] rowData = new String[7];
+            rowData[0] = rs.getString("u_fname");
+            rowData[1] = rs.getString("tran_id");
+            rowData[2] = rs.getString("tran_amount");
+            rowData[3] = rs.getString("tran_type");
+            rowData[4] = rs.getString("tran_date");
+            rowData[5] = rs.getString("tran_time");
+            rowData[6] = rs.getString("tran_stats");
+            model.addRow(rowData);
+        }
+
+        // Set the table model to the JTable
+        historyTbl.setModel(model);
+
+        // Set cell renderer for "Status" column to color code text based on transaction status
+        historyTbl.getColumnModel().getColumn(6).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = (String) table.getValueAt(row, 6);
+                if (status != null) {
+                    if (status.equals("SUCCESS")) {
+                        setForeground(Color.GREEN);
+                    } else if (status.equals("PENDING")) {
+                        setForeground(Color.ORANGE);
+                    } else {
+                        // Default text color for other statuses
+                        setForeground(table.getForeground());
+                    }
+                }
+                return c;
+            }
+        });
+
+        JTableHeader th = historyTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+
+        tcm.getColumn(0).setHeaderValue("Name");
+        tcm.getColumn(1).setHeaderValue("Transaction ID");
+        tcm.getColumn(2).setHeaderValue("Amount");
+        tcm.getColumn(3).setHeaderValue("Action");
+        tcm.getColumn(4).setHeaderValue("Date");
+        tcm.getColumn(5).setHeaderValue("Time");
+        tcm.getColumn(6).setHeaderValue("Status");
+
+        // Refresh the table header to show new column names
+        th.repaint();
+
+        rs.close();
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
+}
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -27,7 +125,7 @@ public class tracker extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        historyTbl = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -75,7 +173,7 @@ public class tracker extends javax.swing.JFrame {
         jLabel2.setText("Recent Transaction History");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        historyTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -83,7 +181,7 @@ public class tracker extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(historyTbl);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 500, 140));
 
@@ -323,6 +421,7 @@ public class tracker extends javax.swing.JFrame {
     private javax.swing.JPanel color2;
     private javax.swing.JPanel color3;
     private javax.swing.JPanel color4;
+    private javax.swing.JTable historyTbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -338,7 +437,6 @@ public class tracker extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }

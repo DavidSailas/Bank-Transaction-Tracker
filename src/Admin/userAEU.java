@@ -4,6 +4,7 @@ package Admin;
 
 import config.PasswordHasher;
 import config.dbconnector;
+import config.session;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Window;
@@ -183,12 +184,14 @@ public boolean upCheck() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        confirmDel = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        confirmarchive = new javax.swing.JPanel();
         ACCOUNT_NAME = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        yesBT = new javax.swing.JButton();
+        noBT = new javax.swing.JButton();
+        yesBT1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -206,7 +209,7 @@ public boolean upCheck() {
         u_uname = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         u_pass = new javax.swing.JTextField();
-        u_status = new javax.swing.JComboBox<>();
+        u_stats = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         add = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
@@ -223,48 +226,85 @@ public boolean upCheck() {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
 
-        confirmDel.setBackground(new java.awt.Color(0, 92, 229));
-        confirmDel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        confirmDel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 420, 10));
+        confirmarchive.setBackground(new java.awt.Color(255, 255, 255));
+        confirmarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        ACCOUNT_NAME.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ACCOUNT_NAME.setForeground(new java.awt.Color(0, 0, 102));
+        ACCOUNT_NAME.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ACCOUNT_NAME.setText("SAMPLE");
+        confirmarchive.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 30));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Are you sure you want to archive user?");
+        confirmarchive.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 420, 20));
+
+        noBT.setBackground(new java.awt.Color(0, 51, 184));
+        noBT.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        noBT.setForeground(new java.awt.Color(255, 255, 255));
+        noBT.setText("NO");
+        noBT.setBorderPainted(false);
+        noBT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                noBTMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                noBTMouseExited(evt);
+            }
+        });
+        noBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noBTActionPerformed(evt);
+            }
+        });
+        confirmarchive.add(noBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 80, -1));
+
+        yesBT1.setBackground(new java.awt.Color(0, 51, 184));
+        yesBT1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        yesBT1.setForeground(new java.awt.Color(255, 255, 255));
+        yesBT1.setText("YES");
+        yesBT1.setBorderPainted(false);
+        yesBT1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                yesBT1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                yesBT1MouseExited(evt);
+            }
+        });
+        yesBT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesBT1ActionPerformed(evt);
+            }
+        });
+        confirmarchive.add(yesBT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 80, -1));
+
+        jPanel3.setBackground(new java.awt.Color(0, 92, 229));
+
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText(" NOTICE ");
         jLabel15.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
-        confirmDel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
 
-        ACCOUNT_NAME.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ACCOUNT_NAME.setForeground(new java.awt.Color(255, 255, 255));
-        ACCOUNT_NAME.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ACCOUNT_NAME.setText("SAMPLE");
-        confirmDel.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 30));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Are you sure you want to delete user:");
-        confirmDel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 420, 20));
-
-        yesBT.setBackground(new java.awt.Color(255, 255, 255));
-        yesBT.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        yesBT.setForeground(new java.awt.Color(0, 51, 184));
-        yesBT.setText("YES");
-        yesBT.setBorderPainted(false);
-        yesBT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                yesBTMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                yesBTMouseExited(evt);
-            }
-        });
-        yesBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yesBTActionPerformed(evt);
-            }
-        });
-        confirmDel.add(yesBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 80, -1));
+        confirmarchive.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
+        confirmarchive.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 420, 10));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -391,15 +431,15 @@ public boolean upCheck() {
         });
         jPanel4.add(u_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 150, 30));
 
-        u_status.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        u_status.setForeground(new java.awt.Color(0, 0, 102));
-        u_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Active", "Pending", "" }));
-        u_status.addActionListener(new java.awt.event.ActionListener() {
+        u_stats.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        u_stats.setForeground(new java.awt.Color(0, 0, 102));
+        u_stats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Active", "Pending", "" }));
+        u_stats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                u_statusActionPerformed(evt);
+                u_statsActionPerformed(evt);
             }
         });
-        jPanel4.add(u_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 150, 30));
+        jPanel4.add(u_stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 150, 30));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 102));
@@ -458,7 +498,7 @@ public boolean upCheck() {
         delete.setBackground(new java.awt.Color(0, 51, 184));
         delete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         delete.setForeground(new java.awt.Color(255, 255, 255));
-        delete.setText("DELETE");
+        delete.setText("ARCHIVE");
         delete.setPreferredSize(new java.awt.Dimension(60, 30));
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -575,9 +615,9 @@ public boolean upCheck() {
         // TODO add your handling code here:
     }//GEN-LAST:event_u_passActionPerformed
 
-    private void u_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_statusActionPerformed
+    private void u_statsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_statsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_u_statusActionPerformed
+    }//GEN-LAST:event_u_statsActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         
@@ -586,7 +626,7 @@ public boolean upCheck() {
        String password = pH.hashPassword(u_pass.getText());
        
       if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
-                || u_uname.getText().isEmpty() || u_type.getSelectedIndex() == 0 || u_status.getSelectedIndex() == 0)
+                || u_uname.getText().isEmpty() || u_type.getSelectedIndex() == 0 || u_stats.getSelectedIndex() == 0)
         {
             
             JOptionPane.showMessageDialog(null,"All fields are required!");
@@ -607,9 +647,9 @@ public boolean upCheck() {
         
         String imageDestination = (selectedFile != null) ? destination : "";
         
- if(dbc.insertData("INSERT INTO tbl_u (u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image, u_bal)"
+ if(dbc.insertData("INSERT INTO tbl_u (u_fname, u_lname, u_email, u_uname, u_pass, u_type, u_status, u_image, u_bal, u_contact, u_code)"
         + " VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+u_email.getText()+"','"+u_uname.getText()+"','"
-        +password+"','"+u_type.getSelectedItem()+"','"+u_status.getSelectedItem()+"','"+imageDestination+"',0)"))
+        +password+"','"+u_type.getSelectedItem()+"','"+u_stats.getSelectedItem()+"','"+imageDestination+"',0, '', '')"))
         {
              if(selectedFile != null) {
             try{
@@ -635,7 +675,7 @@ public boolean upCheck() {
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         
           if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
-                || u_uname.getText().isEmpty() || u_type.getSelectedIndex() == 0 || u_status.getSelectedIndex() == 0)
+                || u_uname.getText().isEmpty() || u_type.getSelectedIndex() == 0 || u_stats.getSelectedIndex() == 0)
         {
             
             JOptionPane.showMessageDialog(null,"All fields are required!");
@@ -653,7 +693,7 @@ public boolean upCheck() {
         dbc.updateData("UPDATE tbl_u SET u_fname = '" + u_fname.getText() + "', u_lname = '" + u_lname.getText()
                 + "', u_email = '" + u_email.getText() + "', u_uname = '" + u_uname.getText()
                 + "', u_type = '" + u_type.getSelectedItem()
-                + "', u_status = '" + u_status.getSelectedItem() + "',u_image = '" + destination + "' WHERE u_id = '" + u_id.getText() + "'");
+                + "', u_status = '" + u_stats.getSelectedItem() + "',u_image = '" + destination + "' WHERE u_id = '" + u_id.getText() + "'");
         
         
         if(destination.isEmpty()){
@@ -675,9 +715,11 @@ public boolean upCheck() {
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+    
+    ACCOUNT_NAME.setText(u_fname.getText() + " " + u_lname.getText());
         Object[] options = {};
     
-       JOptionPane.showOptionDialog(null, confirmDel, "",
+       JOptionPane.showOptionDialog(null, confirmarchive, "",
        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, null);
       
@@ -689,40 +731,56 @@ public boolean upCheck() {
         this.dispose();
     }//GEN-LAST:event_cancleActionPerformed
 
-    private void yesBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBTMouseEntered
+    private void noBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noBTMouseEntered
 
-    }//GEN-LAST:event_yesBTMouseEntered
+    }//GEN-LAST:event_noBTMouseEntered
 
-    private void yesBTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBTMouseExited
+    private void noBTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noBTMouseExited
 
-    }//GEN-LAST:event_yesBTMouseExited
+    }//GEN-LAST:event_noBTMouseExited
 
-    private void yesBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTActionPerformed
+    private void noBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noBTActionPerformed
+        user u = new user();
+        u.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_noBTActionPerformed
 
-        dbconnector dbc = new dbconnector();
+    private void yesBT1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBT1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yesBT1MouseEntered
 
-        String sql = "UPDATE tbl_user SET u_status = ? WHERE u_id = ?";
+    private void yesBT1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBT1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yesBT1MouseExited
+
+    private void yesBT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBT1ActionPerformed
+    
+    dbconnector dbc = new dbconnector();
+
+  
+    String sql = "UPDATE tbl_u SET u_status = ? WHERE u_id = ?";
 
     try (PreparedStatement pst = dbc.connect.prepareStatement(sql)) {
-        // Set the parameters using PreparedStatement
-        pst.setString(1, u_status); // Set status
-        pst.setString(2, u_id.getText()); // Set user ID
+        pst.setString(1, "Archived"); 
+        pst.setString(2, u_id.getText()); 
         int rowsAffected = pst.executeUpdate();
 
         if (rowsAffected > 0) {
-            Window window = SwingUtilities.getWindowAncestor(confirmDel);
+            Window window = SwingUtilities.getWindowAncestor(confirmarchive);
             window.dispose();
             JOptionPane.showMessageDialog(null, "User data archived.");
+            
             user u = new user();
             u.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "No records found to delete.");
+            JOptionPane.showMessageDialog(null, "No records found to archive.");
         }
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
     }
-    }//GEN-LAST:event_yesBTActionPerformed
+    
+    }//GEN-LAST:event_yesBT1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -764,10 +822,10 @@ public boolean upCheck() {
     public javax.swing.JButton add;
     public javax.swing.JButton addProfile;
     private javax.swing.JButton cancle;
-    private javax.swing.JPanel confirmDel;
+    private javax.swing.JPanel confirmarchive;
     private javax.swing.JButton delete;
     public javax.swing.JLabel image;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -786,18 +844,20 @@ public boolean upCheck() {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JButton noBT;
     public javax.swing.JButton remove;
     public javax.swing.JTextField u_email;
     public javax.swing.JTextField u_fname;
     public javax.swing.JTextField u_id;
     public javax.swing.JTextField u_lname;
     public javax.swing.JTextField u_pass;
-    public javax.swing.JComboBox<String> u_status;
+    public javax.swing.JComboBox<String> u_stats;
     public javax.swing.JComboBox<String> u_type;
     public javax.swing.JTextField u_uname;
     public javax.swing.JButton update;
-    private javax.swing.JButton yesBT;
+    private javax.swing.JButton yesBT1;
     // End of variables declaration//GEN-END:variables
 }
