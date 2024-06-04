@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2024 at 12:02 PM
+-- Generation Time: Jun 04, 2024 at 11:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,36 @@ CREATE TABLE `tbl_logs` (
   `l_timestamp` datetime NOT NULL,
   `l_description` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_logs`
+--
+
+INSERT INTO `tbl_logs` (`l_id`, `u_id`, `l_event`, `l_timestamp`, `l_description`) VALUES
+(1, 1002, 'LOGIN_SUCCESS', '2024-06-04 15:50:02', 'Admin logged in successfully'),
+(2, 1002, 'LOGIN_FAILURE', '2024-06-04 15:55:15', 'Invalid username or password'),
+(3, 1002, 'LOGIN_SUCCESS', '2024-06-04 15:55:33', 'Admin logged in successfully'),
+(4, 1002, 'LOGIN_SUCCESS', '2024-06-04 15:58:19', 'Admin logged in successfully'),
+(5, 1002, 'LOGIN_SUCCESS', '2024-06-04 16:34:12', 'Admin logged in successfully'),
+(6, 1002, 'LOGIN_SUCCESS', '2024-06-04 16:38:04', 'Admin logged in successfully'),
+(7, 1002, 'LOGIN_SUCCESS', '2024-06-04 16:41:56', 'Admin logged in successfully'),
+(8, 1002, 'LOGIN_SUCCESS', '2024-06-04 16:51:46', 'Admin logged in successfully'),
+(9, 1002, 'LOGIN_SUCCESS', '2024-06-04 16:54:43', 'Admin logged in successfully'),
+(10, 1002, 'LOGIN_SUCCESS', '2024-06-04 16:56:17', 'Admin logged in successfully'),
+(11, 1002, 'LOGIN_FAILURE', '2024-06-04 16:57:17', 'Invalid username or password'),
+(12, 1002, 'LOGIN_FAILURE', '2024-06-04 16:57:18', 'Invalid username or password'),
+(13, 1002, 'LOGIN_SUCCESS', '2024-06-04 16:57:27', 'Admin logged in successfully'),
+(14, 1002, 'LOGIN_SUCCESS', '2024-06-04 16:58:14', 'Admin logged in successfully'),
+(15, 1002, 'LOGIN_SUCCESS', '2024-06-04 17:07:46', 'Admin logged in successfully'),
+(16, 1002, 'LOGIN_SUCCESS', '2024-06-04 17:13:42', 'Admin logged in successfully'),
+(17, 1002, 'LOGIN_SUCCESS', '2024-06-04 17:20:20', 'Admin logged in successfully'),
+(18, 1002, 'LOGOUT', '2024-06-04 17:20:46', 'User logged out'),
+(19, 1006, 'LOGIN_SUCCESS', '2024-06-04 17:34:35', 'Admin logged in successfully'),
+(20, 1006, 'LOGOUT', '2024-06-04 17:35:17', 'User logged out'),
+(21, 1003, 'LOGIN_SUCCESS', '2024-06-04 17:38:45', 'User logged in successfully'),
+(22, 1003, 'LOGOUT', '2024-06-04 17:39:56', 'User logged out'),
+(23, 1022, 'LOGIN_SUCCESS', '2024-06-04 17:40:23', 'Admin logged in successfully'),
+(24, 1022, 'LOGOUT', '2024-06-04 17:40:41', 'User logged out');
 
 -- --------------------------------------------------------
 
@@ -67,7 +97,9 @@ INSERT INTO `tbl_transaction` (`tran_id`, `u_id`, `tran_amount`, `tran_date`, `t
 (9, 1001, 1000, '2024-06-03', '14:54:28', 'DEPOSIT', 'SUCCESS'),
 (10, 1005, 10000, '2024-06-03', '15:09:29', 'DEPOSIT', 'SUCCESS'),
 (11, 1005, 1000, '2024-06-03', '15:10:15', 'WITHDRAWAL', 'SUCCESS'),
-(12, 1014, 100, '2024-06-03', '15:11:12', 'WITHDRAWAL', 'FAILED');
+(12, 1014, 100, '2024-06-03', '15:11:12', 'WITHDRAWAL', 'FAILED'),
+(13, 1003, 1000, '2024-06-04', '17:38:52', 'DEPOSIT', 'SUCCESS'),
+(14, 1003, 500, '2024-06-04', '17:39:39', 'WITHDRAWAL', 'SUCCESS');
 
 -- --------------------------------------------------------
 
@@ -97,7 +129,7 @@ CREATE TABLE `tbl_u` (
 INSERT INTO `tbl_u` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_uname`, `u_pass`, `u_type`, `u_status`, `u_image`, `u_bal`, `u_contact`, `u_code`) VALUES
 (1001, 'David Sailas', 'Villondo Romano', 'dasai@gmail.com', 'dasai', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Active', 'src/u_default/blank_pfp.jpg', 2000, '', ''),
 (1002, 'David', 'Villondo', 'ashai@gmail.com', 'ashai', '043e34a704b33e08d927e54bd45800259e2280970f0dfd01bc', 'Admin', 'Active', 'src/u_images/david.jfif', 0, '09817970638', '8c178b5ecc13fab314bf4961208e5f88e9df338471bf05d435'),
-(1003, 'Ashlyn', 'Batol', 'aliya@gmail.com', 'aliya', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Active', 'src/u_images/ashlyn (2).jpg', 2000, '', ''),
+(1003, 'Ashlyn', 'Batol', 'aliya@gmail.com', 'aliya', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Active', 'src/u_images/ashlyn (2).jpg', 2500, '', ''),
 (1004, 'Christine Jane', 'Abendan', 'kath@gmail.com', 'kath', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Archived', 'src/u_default/blank_pfp.jpg', 0, '', ''),
 (1005, 'Christian', 'Abendan', 'cjabendan@gmail.com', 'ike', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Active', 'src/u_default/blank_pfp.jpg', 9000, '', ''),
 (1006, 'Sailas', 'Romano', 'sai@gmail.com', 'sai', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'Admin', 'Active', 'src/u_default/blank_pfp.jpg', 0, '', ''),
@@ -158,13 +190,13 @@ ALTER TABLE `tbl_u`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
-  MODIFY `tran_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `tran_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_u`

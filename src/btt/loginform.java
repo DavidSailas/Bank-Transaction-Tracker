@@ -70,7 +70,7 @@ public class loginform extends javax.swing.JFrame {
        
 
       
-            String sql = "SELECT u_id FROM tbl_user WHERE u_usn = ?";
+            String sql = "SELECT u_id FROM tbl_u WHERE u_uname = ?";
             pstmt = dbc.connect.prepareStatement(sql);
             pstmt.setString(1, username);
             rs = pstmt.executeQuery();

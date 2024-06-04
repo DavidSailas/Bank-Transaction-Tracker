@@ -459,7 +459,11 @@ public void displayData() {
     }//GEN-LAST:event_yesBT1MouseExited
 
     private void yesBT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBT1ActionPerformed
-
+        
+        session sess = session.getInstance();
+        
+        
+        int adminID = sess.getUid();
         
         dbconnector dbc = new dbconnector();
         
@@ -488,6 +492,8 @@ public void displayData() {
         Window window = SwingUtilities.getWindowAncestor(confirmunarchive);
         if (window != null) {
             window.dispose();
+            
+            logEvent(adminID, "USER_DATA_UNARCHIVED", "User: "+u_id.getText()+" data is unarchived by admin");
         }
 
         displayData();

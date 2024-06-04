@@ -20,6 +20,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -615,6 +617,10 @@ public boolean upCheck() {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         
+        session sess = session.getInstance();
+        
+        int adminID = sess.getUid(); 
+        
        PasswordHasher pH = new PasswordHasher();
         
        String password = pH.hashPassword(u_pass.getText());
@@ -645,7 +651,17 @@ public boolean upCheck() {
         + " VALUES ('"+u_fname.getText()+"','"+u_lname.getText()+"','"+u_email.getText()+"','"+u_uname.getText()+"','"
         +password+"','"+u_type.getSelectedItem()+"','"+u_stats.getSelectedItem()+"','"+imageDestination+"',0, '', '')"))
         {
-             if(selectedFile != null) {
+            try{
+                
+                ResultSet resultSet = dbc.getData("SELECT u_id FROM tbl_u WHERE u_uname = '" + u_uname.getText() + "'");
+                    if (resultSet.next()) {
+                        
+                        String newUserId = resultSet.getString("u_id");
+                        
+                        // Log the registration event with admin's ID
+                        logEvent(adminID, "ADMIN_USER_REGISTRATION", "New user registered. User ID: " + newUserId);
+                        
+                if(selectedFile != null) {
             try{
             Files.copy(selectedFile.toPath(), new File(destination).toPath(),StandardCopyOption.REPLACE_EXISTING);
             }catch(IOException ex){
@@ -656,6 +672,11 @@ public boolean upCheck() {
             user u = new user();
             u.setVisible(true);
             this.dispose();
+                    }
+            }catch (SQLException ex) {
+                    Logger.getLogger(userAEU.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
          }else{   
             JOptionPane.showMessageDialog(null,"Connection Error!"); 
             }    
@@ -667,6 +688,10 @@ public boolean upCheck() {
     }//GEN-LAST:event_u_idActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+
+        session sess = session.getInstance();
+        
+        int adminID = sess.getUid();
         
           if(u_fname.getText().isEmpty() || u_lname.getText().isEmpty() || u_email.getText().isEmpty() 
                 || u_uname.getText().isEmpty() || u_type.getSelectedIndex() == 0 || u_stats.getSelectedIndex() == 0)
@@ -701,6 +726,9 @@ public boolean upCheck() {
         }
                 
         }
+        
+        logEvent(adminID, "USER_DATA_UPDATE", "User: "+u_id.getText()+" data is updated by admin");
+        
             user u = new user();
             u.setVisible(true);
             this.dispose();
@@ -748,7 +776,12 @@ public boolean upCheck() {
     }//GEN-LAST:event_yesBT1MouseExited
 
     private void yesBT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBT1ActionPerformed
-    
+        
+        session sess = session.getInstance();
+        
+        
+        int adminID = sess.getUid();
+        
     dbconnector dbc = new dbconnector();
 
   
@@ -763,6 +796,8 @@ public boolean upCheck() {
             Window window = SwingUtilities.getWindowAncestor(confirmarchive);
             window.dispose();
             JOptionPane.showMessageDialog(null, "User data archived.");
+            
+            logEvent(adminID, "USER_DATA_ARCHIVED", "User: "+u_id.getText()+" data is archived by admin");
             
             user u = new user();
             u.setVisible(true);

@@ -3,6 +3,7 @@ package User;
 
 import btt.loginform;
 import config.dbconnector;
+import config.session;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -291,7 +292,11 @@ public class inbox extends javax.swing.JFrame {
     }//GEN-LAST:event_color4MouseExited
 
     private void color5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color5MouseClicked
-
+        session sess = session.getInstance();
+        
+        int userId = sess.getUid();
+        
+        logEvent(userId, "LOGOUT", "User logged out");
         loginform ads = new loginform();
         JOptionPane.showMessageDialog(null,"Logout Success!");
         ads.setVisible(true);

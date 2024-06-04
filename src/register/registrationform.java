@@ -387,10 +387,10 @@ a4.setText("");
 a5.setText("");
 a6.setText("");
 
-// Creating PasswordHasher object
+
 PasswordHasher pH = new PasswordHasher();
 
-// Hashing the password entered by the user
+
 String password = pH.hashPassword(u_cpass.getText());
 
 // Checking if any of the fields are empty or if the selected index is 0
