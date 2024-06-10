@@ -89,7 +89,7 @@ public class inbox extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MessagePanel = new javax.swing.JPanel();
+        reportPanel = new javax.swing.JPanel();
         sendto = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -100,10 +100,9 @@ public class inbox extends javax.swing.JFrame {
         close = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         popUp = new javax.swing.JPopupMenu();
-        Unread = new javax.swing.JMenuItem();
-        Read = new javax.swing.JMenuItem();
         View = new javax.swing.JMenuItem();
         ViewPanel = new javax.swing.JPanel();
+        requestPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -120,10 +119,11 @@ public class inbox extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         inboxTbl = new javax.swing.JTable();
-        message = new javax.swing.JLabel();
+        Request = new javax.swing.JLabel();
+        Reports = new javax.swing.JLabel();
 
-        MessagePanel.setBackground(new java.awt.Color(255, 255, 255));
-        MessagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        reportPanel.setBackground(new java.awt.Color(255, 255, 255));
+        reportPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         sendto.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         sendto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -132,34 +132,38 @@ public class inbox extends javax.swing.JFrame {
                 sendtoActionPerformed(evt);
             }
         });
-        MessagePanel.add(sendto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 92, 480, 30));
+        reportPanel.add(sendto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 92, 480, 30));
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel24.setText("____________________________________________________________________");
-        MessagePanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 480, 30));
+        reportPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 480, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("To:");
-        MessagePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, 20));
+        reportPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, 20));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("Message");
-        MessagePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        reportPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         textmessage.setColumns(20);
         textmessage.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         textmessage.setRows(5);
         jScrollPane2.setViewportView(textmessage);
 
-        MessagePanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 480, 300));
+        reportPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 480, 300));
 
         Send.setBackground(new java.awt.Color(0, 51, 184));
         Send.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Send.setForeground(new java.awt.Color(255, 255, 255));
         Send.setText("SEND");
-        MessagePanel.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 100, 35));
+        Send.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SendActionPerformed(evt);
+            }
+        });
+        reportPanel.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 100, 35));
 
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/cross-small.png"))); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,27 +171,11 @@ public class inbox extends javax.swing.JFrame {
                 closeMouseClicked(evt);
             }
         });
-        MessagePanel.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 19, -1, -1));
+        reportPanel.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 19, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("jLabel3");
-        MessagePanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
-
-        Unread.setText("Mark as unread");
-        Unread.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UnreadActionPerformed(evt);
-            }
-        });
-        popUp.add(Unread);
-
-        Read.setText("Mark as read");
-        Read.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReadActionPerformed(evt);
-            }
-        });
-        popUp.add(Read);
+        reportPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
 
         View.setText("View");
         popUp.add(View);
@@ -200,6 +188,17 @@ public class inbox extends javax.swing.JFrame {
         );
         ViewPanelLayout.setVerticalGroup(
             ViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout requestPanelLayout = new javax.swing.GroupLayout(requestPanel);
+        requestPanel.setLayout(requestPanelLayout);
+        requestPanelLayout.setHorizontalGroup(
+            requestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        requestPanelLayout.setVerticalGroup(
+            requestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
@@ -363,16 +362,25 @@ public class inbox extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 63, 758, 360));
 
-        message.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        message.setForeground(new java.awt.Color(0, 51, 184));
-        message.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/comment-alt-dots.png"))); // NOI18N
-        message.setText("Message");
-        message.addMouseListener(new java.awt.event.MouseAdapter() {
+        Request.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Request.setForeground(new java.awt.Color(0, 51, 184));
+        Request.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/file-edit.png"))); // NOI18N
+        Request.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                messageMouseClicked(evt);
+                RequestMouseClicked(evt);
             }
         });
-        jPanel1.add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
+        jPanel1.add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
+
+        Reports.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Reports.setForeground(new java.awt.Color(0, 51, 184));
+        Reports.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/triangle-warning.png"))); // NOI18N
+        Reports.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ReportsMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -466,7 +474,7 @@ public class inbox extends javax.swing.JFrame {
     }//GEN-LAST:event_color5MouseExited
 
     private void sendtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendtoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_sendtoActionPerformed
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
@@ -475,34 +483,29 @@ public class inbox extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
-    private void UnreadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnreadActionPerformed
-                        DefaultTableModel model = (DefaultTableModel) inboxTbl.getModel();
-        int rowCount = model.getRowCount();
-        for (int i = 0; i < rowCount; i++) {
-            model.setValueAt("unread", i, 3); // Assuming status is in column index 3
-        }
-    }//GEN-LAST:event_UnreadActionPerformed
-
     private void inboxTblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inboxTblMousePressed
         if (SwingUtilities.isRightMouseButton(evt)) {
         popUp.show(inboxTbl, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_inboxTblMousePressed
 
-    private void messageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messageMouseClicked
-        Object[] options = {};
-        JOptionPane.showOptionDialog(null, MessagePanel, "",
-        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-        null, options, null);
-    }//GEN-LAST:event_messageMouseClicked
+    private void SendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SendActionPerformed
 
-    private void ReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadActionPerformed
-                       DefaultTableModel model = (DefaultTableModel) inboxTbl.getModel();
-        int rowCount = model.getRowCount();
-        for (int i = 0; i < rowCount; i++) {
-            model.setValueAt("read", i, 3); // Assuming status is in column index 3
-        }
-    }//GEN-LAST:event_ReadActionPerformed
+    private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
+        Object[] options = {};
+        JOptionPane.showOptionDialog(null, requestPanel, "",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, null);
+    }//GEN-LAST:event_RequestMouseClicked
+
+    private void ReportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportsMouseClicked
+                Object[] options = {};
+        JOptionPane.showOptionDialog(null, reportPanel, "",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, null);
+    }//GEN-LAST:event_ReportsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -566,10 +569,9 @@ public class inbox extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel MessagePanel;
-    private javax.swing.JMenuItem Read;
+    private javax.swing.JLabel Reports;
+    private javax.swing.JLabel Request;
     private javax.swing.JButton Send;
-    private javax.swing.JMenuItem Unread;
     private javax.swing.JMenuItem View;
     private javax.swing.JPanel ViewPanel;
     private javax.swing.JLabel close;
@@ -594,8 +596,9 @@ public class inbox extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel message;
     private javax.swing.JPopupMenu popUp;
+    private javax.swing.JPanel reportPanel;
+    private javax.swing.JPanel requestPanel;
     public javax.swing.JTextField sendto;
     private javax.swing.JTextArea textmessage;
     // End of variables declaration//GEN-END:variables

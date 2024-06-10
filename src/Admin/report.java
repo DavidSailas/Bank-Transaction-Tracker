@@ -85,6 +85,11 @@ public void displayReports() {
             }
         });
 
+        reportsTbl.removeColumn(tc0);
+        reportsTbl.removeColumn(tc3);
+        reportsTbl.removeColumn(tc6);
+        reportsTbl.removeColumn(tc7);
+        
         rs.close();
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
@@ -110,8 +115,6 @@ public void displayReports() {
         sendto = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         popUp = new javax.swing.JPopupMenu();
-        Unread = new javax.swing.JMenuItem();
-        Read = new javax.swing.JMenuItem();
         View = new javax.swing.JMenuItem();
         ViewPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -208,22 +211,6 @@ public void displayReports() {
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel25.setText("___________________________________________________________________");
         MessagePanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 470, 30));
-
-        Unread.setText("Mark as unread");
-        Unread.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UnreadActionPerformed(evt);
-            }
-        });
-        popUp.add(Unread);
-
-        Read.setText("Mark as read");
-        Read.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReadActionPerformed(evt);
-            }
-        });
-        popUp.add(Read);
 
         View.setText("View");
         popUp.add(View);
@@ -468,14 +455,6 @@ public void displayReports() {
         }
     }//GEN-LAST:event_reportsTblMousePressed
 
-    private void UnreadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnreadActionPerformed
-                DefaultTableModel model = (DefaultTableModel) reportsTbl.getModel();
-        int rowCount = model.getRowCount();
-        for (int i = 0; i < rowCount; i++) {
-            model.setValueAt("unread", i, 3); // Assuming status is in column index 3
-        }
-    }//GEN-LAST:event_UnreadActionPerformed
-
     private void fromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromActionPerformed
         
     }//GEN-LAST:event_fromActionPerformed
@@ -485,14 +464,6 @@ public void displayReports() {
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_closeMouseClicked
-
-    private void ReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadActionPerformed
-               DefaultTableModel model = (DefaultTableModel) reportsTbl.getModel();
-        int rowCount = model.getRowCount();
-        for (int i = 0; i < rowCount; i++) {
-            model.setValueAt("read", i, 3); // Assuming status is in column index 3
-        }
-    }//GEN-LAST:event_ReadActionPerformed
 
     private int getUserIdByEmail(String email) throws SQLException {
     dbconnector dbc = new dbconnector();
@@ -617,9 +588,7 @@ public void displayReports() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MessagePanel;
-    private javax.swing.JMenuItem Read;
     private javax.swing.JButton Send;
-    private javax.swing.JMenuItem Unread;
     private javax.swing.JMenuItem View;
     private javax.swing.JPanel ViewPanel;
     private javax.swing.JLabel close;

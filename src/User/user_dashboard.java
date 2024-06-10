@@ -14,8 +14,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
@@ -28,30 +30,37 @@ public class user_dashboard extends javax.swing.JFrame {
         initComponents();
         date();
         time();
-        WalletAmountDisplay();
+        displayWalletAmount();
     }
 
     Color navcolor = new Color(204, 204, 204);
     Color hovercolor = new Color(0, 92, 229);
 
-private void WalletAmountDisplay() {
-    dbconnector dbc = new dbconnector();
+private void displayWalletAmount() {
+        dbconnector dbc = new dbconnector();
 
-    try {
-        session sess = session.getInstance();
+        try {
+            session sess = session.getInstance();
 
-        ResultSet rs = dbc.getData("SELECT u_bal FROM tbl_u WHERE u_id = " + sess.getUid());
+            ResultSet rs = dbc.getData("SELECT u_bal FROM tbl_u WHERE u_id = " + sess.getUid());
 
-        if (rs.next()) {
-            double balance = rs.getDouble("u_bal");
-            String formattedBalance = String.format("₱%,.2f", balance);
-            walletbalance.setText(formattedBalance);
+            if (rs.next()) {
+                double balance = rs.getDouble("u_bal");
+
+                // Format the balance to show with commas and decimal points
+                NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
+                formatter.setMinimumFractionDigits(2);
+                formatter.setMaximumFractionDigits(2);
+
+                String formattedBalance = formatter.format(balance);
+
+                walletbalance.setText("₱" + formattedBalance);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("" + ex);
         }
-
-    } catch (SQLException ex) {
-        System.out.println("" + ex);
     }
-}
 
         
         private void date() {

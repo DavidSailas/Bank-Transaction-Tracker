@@ -83,18 +83,16 @@ public void displayHis(LocalDate startDate, LocalDate endDate) {
     try {
         dbconnector connector = new dbconnector();
 
-
         java.sql.Date sqlStartDate = java.sql.Date.valueOf(startDate);
         java.sql.Date sqlEndDate = java.sql.Date.valueOf(endDate);
-
 
         String query = "SELECT tran.tran_id, tbl_u.u_fname, tran.tran_amount, " +
                        "tran.tran_type, tran.tran_date, tran.tran_time, " +
                        "tran.tran_stats " +
                        "FROM tbl_transaction tran " +
                        "JOIN tbl_u ON tran.u_id = tbl_u.u_id " +
-                       "WHERE tran.tran_date BETWEEN ? AND ?";
-        
+                       "WHERE tran.tran_date BETWEEN ? AND ? " +
+                       "ORDER BY tran.tran_date DESC, tran.tran_time DESC";
 
         PreparedStatement preparedStatement = connector.connect.prepareStatement(query);
         preparedStatement.setDate(1, sqlStartDate);
@@ -158,17 +156,25 @@ public void displayHis(LocalDate startDate, LocalDate endDate) {
         JTableHeader th = historyTbl.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
 
-        tcm.getColumn(0).setHeaderValue("ID");
-        tcm.getColumn(1).setHeaderValue("Name");
-        tcm.getColumn(2).setHeaderValue("Amount");
-        tcm.getColumn(3).setHeaderValue("Action");
-        tcm.getColumn(4).setHeaderValue("Date");
-        tcm.getColumn(5).setHeaderValue("Time");
-        tcm.getColumn(6).setHeaderValue("Status");
-
+        TableColumn tc0 = tcm.getColumn(0); 
+        TableColumn tc1 = tcm.getColumn(1); 
+        TableColumn tc2 = tcm.getColumn(2); 
+        TableColumn tc3 = tcm.getColumn(3); 
+        TableColumn tc4 = tcm.getColumn(4); 
+        TableColumn tc5 = tcm.getColumn(5); 
+        TableColumn tc6 = tcm.getColumn(6); 
+        
+        tc0.setHeaderValue("ID");
+        tc1.setHeaderValue("Name");
+        tc2.setHeaderValue("Amount");
+        tc3.setHeaderValue("Action");
+        tc4.setHeaderValue("Date");
+        tc5.setHeaderValue("Time");
+        tc6.setHeaderValue("Status");
+         
         th.repaint();
-
         rs.close();
+       
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
     }
@@ -534,27 +540,12 @@ public void displayTransfer() {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         des.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         des.setForeground(new java.awt.Color(0, 0, 102));
         des.setText("sample");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(des)
-                .addContainerGap(448, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(des)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+        jPanel2.add(des, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 30, 430, -1));
 
         viewactivity.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 510, 80));
 
@@ -1164,9 +1155,9 @@ public void displayTransfer() {
             PdfPTable pdfPTable = new PdfPTable(7);
 
             
-            pdfPTable.addCell("ID");
-            pdfPTable.addCell("Name");
-            pdfPTable.addCell("Amount");
+            pdfPTable.addCell("Transaction ID");
+            pdfPTable.addCell("User ID");
+          //pdfPTable.addCell("Amount");
             pdfPTable.addCell("Action");
             pdfPTable.addCell("Date");
             pdfPTable.addCell("Time");
@@ -1178,8 +1169,8 @@ public void displayTransfer() {
             
             while (rs.next()) {
                 pdfPTable.addCell(rs.getString("tran_id"));
-                pdfPTable.addCell(getUserFirstName(rs.getString("u_id"))); 
-                pdfPTable.addCell(rs.getString("tran_amount"));
+                pdfPTable.addCell(rs.getString("u_id")); 
+             // pdfPTable.addCell(rs.getString("tran_amount"));
                 pdfPTable.addCell(rs.getString("tran_type"));
                 pdfPTable.addCell(rs.getString("tran_date"));
                 pdfPTable.addCell(rs.getString("tran_time"));
