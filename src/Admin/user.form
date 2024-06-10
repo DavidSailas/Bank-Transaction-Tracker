@@ -787,7 +787,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/house-chimney.png"/>
+                      <Image iconType="3" name="/Admin_icon/house-chimney (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" DASHBOARD"/>
                   </Properties>
@@ -830,7 +830,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Admin_icon/users.png"/>
+                      <Image iconType="3" name="/Admin_icon/users (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" ACCOUNTANT"/>
                   </Properties>

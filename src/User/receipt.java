@@ -5,11 +5,18 @@
  */
 package User;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import config.dbconnector;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,13 +48,15 @@ public class receipt extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         amount = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        time = new javax.swing.JLabel();
+        refno = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tran_type = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        time = new javax.swing.JLabel();
+        download = new javax.swing.JLabel();
         returnpage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,13 +114,13 @@ public class receipt extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel10.setText("Time");
-        page.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
+        jLabel10.setText("Reference Number");
+        page.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
 
-        time.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        time.setForeground(new java.awt.Color(0, 0, 102));
-        time.setText("time");
-        page.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 100, -1));
+        refno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        refno.setForeground(new java.awt.Color(0, 0, 102));
+        refno.setText("ref no.");
+        page.add(refno, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 490, 100, -1));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 102));
@@ -132,19 +141,34 @@ public class receipt extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("funds in your wallet.");
-        page.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 510, -1));
+        page.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 510, -1));
 
         tran_type.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tran_type.setForeground(new java.awt.Color(0, 0, 102));
         tran_type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tran_type.setText("You have succesfully deposit/withdraw/transfer");
-        page.add(tran_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 510, -1));
+        page.add(tran_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 510, -1));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/file-download.png"))); // NOI18N
-        jLabel1.setText(" Download");
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel11.setText("Time");
+        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
+
+        time.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        time.setForeground(new java.awt.Color(0, 0, 102));
+        time.setText("time");
+        page.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 100, -1));
+
+        download.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        download.setForeground(new java.awt.Color(255, 255, 255));
+        download.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        download.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/file-download.png"))); // NOI18N
+        download.setText(" Download");
+        download.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                downloadMouseClicked(evt);
+            }
+        });
 
         returnpage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         returnpage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/undo.png"))); // NOI18N
@@ -159,10 +183,15 @@ public class receipt extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(returnpage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(page, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(returnpage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(page, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(download, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +200,10 @@ public class receipt extends javax.swing.JFrame {
                     .addComponent(returnpage, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(page, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(61, 61, 61)
-                .addComponent(jLabel1))
+                        .addComponent(page, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(download)
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,7 +214,7 @@ public class receipt extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
         );
 
         pack();
@@ -196,6 +226,53 @@ public class receipt extends javax.swing.JFrame {
         uds.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_returnpageMouseClicked
+
+    private void downloadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadMouseClicked
+    
+    String typeOfTransaction = typetran.getText();
+    String Amount = amount.getText();
+    String totalAmount = total.getText();
+    String Date = date.getText();
+    String Time = time.getText();
+    String referenceNumber = refno.getText();
+    
+    if (typeOfTransaction.isEmpty() || Amount.isEmpty() || totalAmount.isEmpty() || Date.isEmpty() || Time.isEmpty() || referenceNumber.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please fill all the fields to generate the receipt");
+        return;
+    }
+
+    // Set the name and location for the PDF
+    String name = "receipt.pdf";
+    String location = System.getProperty("user.home") + "/Documents/";
+
+    try {
+        // Create the PDF document
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream(location + name));
+        document.open();
+
+        // Add content to the PDF
+        document.add(new Paragraph("D.S PIONEER PAY"));
+        document.add(new Paragraph("TRANSACTION DETAILS"));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph("Type of Transaction: " + typeOfTransaction));
+        document.add(new Paragraph("Amount: " + Amount));
+        document.add(new Paragraph("Total: " + totalAmount));
+        document.add(new Paragraph("Date: " + Date));
+        document.add(new Paragraph("Time: " + Time));
+        document.add(new Paragraph("Reference Number: " + referenceNumber));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph("You have successfully deposit/withdraw/transfer funds in your wallet."));
+        
+        document.close();
+        
+       
+        JOptionPane.showMessageDialog(null, "Receipt Successfully Generated and Saved to " + location + name);
+        
+    } catch (DocumentException | FileNotFoundException e) {
+        JOptionPane.showMessageDialog(null, "Error in generating receipt: " + e.getMessage());
+    }        
+    }//GEN-LAST:event_downloadMouseClicked
 
     /**
      * @param args the command line arguments
@@ -258,8 +335,9 @@ public class receipt extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel amount;
     public javax.swing.JLabel date;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel download;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -271,6 +349,7 @@ public class receipt extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel page;
+    public javax.swing.JLabel refno;
     private javax.swing.JLabel returnpage;
     public javax.swing.JLabel time;
     public javax.swing.JLabel total;

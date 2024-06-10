@@ -2,7 +2,7 @@
 package Admin;
 
 import Admin.admin_dashboard;
-import Admin.message;
+import Admin.report;
 import Admin.security;
 import Admin.tracker;
 import Admin.userAEU;
@@ -591,7 +591,7 @@ public void displayData() {
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house-chimney.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/house-chimney (1).png"))); // NOI18N
         jLabel15.setText(" DASHBOARD");
         color1.add(jLabel15);
         jLabel15.setBounds(0, 0, 180, 40);
@@ -615,7 +615,7 @@ public void displayData() {
         jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/users.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/users (1).png"))); // NOI18N
         jLabel16.setText(" ACCOUNTANT");
         color2.add(jLabel16);
         jLabel16.setBounds(0, 0, 180, 40);
@@ -928,16 +928,16 @@ public void displayData() {
             pdfPTable.addCell("Email");
             pdfPTable.addCell("Username");
 
-            // Check if the result set has data and process the first row
+
             if (resultSet.next()) {
                 do {
-                    // Retrieve each column by name and add to the table
+
                     pdfPTable.addCell(resultSet.getString("u_id"));
                     pdfPTable.addCell(resultSet.getString("u_fname"));
                     pdfPTable.addCell(resultSet.getString("u_lname"));
                     pdfPTable.addCell(resultSet.getString("u_email"));
                     pdfPTable.addCell(resultSet.getString("u_uname"));
-                } while (resultSet.next()); // Continue with the rest of the rows
+                } while (resultSet.next()); 
             }
 
             document.add(pdfPTable);
@@ -1043,7 +1043,7 @@ public void displayData() {
     }//GEN-LAST:event_color3MouseExited
 
     private void color4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color4MouseClicked
-        message m = new message();
+        report m = new report();
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color4MouseClicked

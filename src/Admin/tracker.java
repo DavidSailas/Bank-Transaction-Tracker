@@ -1,14 +1,22 @@
 
 package Admin;
 
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import config.dbconnector;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Window;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -22,13 +30,16 @@ import net.proteanit.sql.DbUtils;
 
 public class tracker extends javax.swing.JFrame {
 
-    public tracker() {
-        initComponents();
-        displayHis();
-        displayActivity();
-        DefaultTableModel model = (DefaultTableModel) historyTbl.getModel();
+public tracker() {
+    initComponents();
+    LocalDate startDate = LocalDate.now().minusDays(7); 
+    LocalDate endDate = LocalDate.now(); 
+    displayHis(startDate, endDate); 
+    displayActivity();
+    displayTransfer();
+    DefaultTableModel model = (DefaultTableModel) historyTbl.getModel();
+}
 
-    }
     Color navcolor =  new Color(204,204,204);
     Color hovercolor =  new Color(0,92,229);
     
@@ -68,37 +79,45 @@ public class tracker extends javax.swing.JFrame {
     }
 }
        
-public void displayHis() {
+public void displayHis(LocalDate startDate, LocalDate endDate) {
     try {
         dbconnector connector = new dbconnector();
+
+
+        java.sql.Date sqlStartDate = java.sql.Date.valueOf(startDate);
+        java.sql.Date sqlEndDate = java.sql.Date.valueOf(endDate);
+
 
         String query = "SELECT tran.tran_id, tbl_u.u_fname, tran.tran_amount, " +
                        "tran.tran_type, tran.tran_date, tran.tran_time, " +
                        "tran.tran_stats " +
                        "FROM tbl_transaction tran " +
-                       "JOIN tbl_u ON tran.u_id = tbl_u.u_id";
+                       "JOIN tbl_u ON tran.u_id = tbl_u.u_id " +
+                       "WHERE tran.tran_date BETWEEN ? AND ?";
+        
 
-        ResultSet rs = connector.getData(query);
+        PreparedStatement preparedStatement = connector.connect.prepareStatement(query);
+        preparedStatement.setDate(1, sqlStartDate);
+        preparedStatement.setDate(2, sqlEndDate);
+
+        ResultSet rs = preparedStatement.executeQuery();
 
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                return String.class; // All columns will be of type String
+                return String.class; 
             }
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Disable cell editing
+                return false; 
             }
         };
 
-        // Set column names
         model.setColumnIdentifiers(new String[]{"ID", "Name", "Amount", "Action", "Date", "Time", "Status"});
 
-        // Add data to the table model
         while (rs.next()) {
             String[] rowData = new String[7];
-           
             rowData[0] = rs.getString("tran_id");
             rowData[1] = rs.getString("u_fname");
             rowData[2] = rs.getString("tran_amount");
@@ -109,23 +128,27 @@ public void displayHis() {
             model.addRow(rowData);
         }
 
-        // Set the table model to the JTable
         historyTbl.setModel(model);
 
-        // Set cell renderer for "Status" column to color code text based on transaction status
         historyTbl.getColumnModel().getColumn(6).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 String status = (String) table.getValueAt(row, 6);
                 if (status != null) {
-                    if (status.equals("SUCCESS")) {
-                        setForeground(Color.GREEN);
-                    } else if (status.equals("PENDING")) {
-                        setForeground(Color.ORANGE);
-                    } else {
-                        // Default text color for other statuses
-                        setForeground(table.getForeground());
+                    switch (status) {
+                        case "SUCCESS":
+                            setForeground(Color.GREEN);
+                            break;
+                        case "PENDING":
+                            setForeground(Color.ORANGE);
+                            break;
+                        case "FAILED":
+                            setForeground(Color.RED);
+                            break;
+                        default:
+                            setForeground(Color.BLACK);
+                            break;
                     }
                 }
                 return c;
@@ -143,17 +166,80 @@ public void displayHis() {
         tcm.getColumn(5).setHeaderValue("Time");
         tcm.getColumn(6).setHeaderValue("Status");
 
-        // Refresh the table header to show new column names
         th.repaint();
 
-        
         rs.close();
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
     }
 }
 
-    
+
+public void displayTransfer() {
+    try {
+        dbconnector connector = new dbconnector();
+        
+      
+        String query = "SELECT tbl_u.u_fname, tran.tran_amount, tran.tran_stats " +
+                       "FROM tbl_transaction tran " +
+                       "JOIN tbl_u ON tran.u_id = tbl_u.u_id " +
+                       "WHERE tran.tran_type = 'TRANSFER'"; 
+
+        ResultSet rs = connector.getData(query);
+
+        DefaultTableModel model = (DefaultTableModel) transferTbl.getModel();
+        model.setRowCount(0); 
+        
+        model.setColumnIdentifiers(new String[]{"Name", "Amount", "Status"});
+
+        while (rs.next()) {
+            String[] rowData = new String[3];
+            rowData[0] = rs.getString("u_fname");
+            rowData[1] = rs.getString("tran_amount");
+            rowData[2] = rs.getString("tran_stats");
+            model.addRow(rowData);
+        }
+
+        transferTbl.setModel(model);
+
+        transferTbl.getColumnModel().getColumn(2).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = (String) value;
+                if (status != null) {
+                    switch (status) {
+                        case "SUCCESS":
+                            setForeground(Color.GREEN);
+                            break;
+                        case "PENDING":
+                            setForeground(Color.ORANGE);
+                            break;
+                        case "FAILED":
+                            setForeground(Color.RED);
+                            break;
+                        default:
+                            setForeground(Color.BLACK);
+                            break;
+                    }
+                }
+                return c;
+            }
+        });
+
+        JTableHeader th = transferTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        tcm.getColumn(0).setHeaderValue("Name");
+        tcm.getColumn(1).setHeaderValue("Amount");
+        tcm.getColumn(2).setHeaderValue("Status");
+        th.repaint();
+
+        rs.close();
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
+}
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -175,6 +261,8 @@ public void displayHis() {
         type = new javax.swing.JLabel();
         status = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
+        jlabelrefno = new javax.swing.JLabel();
+        ref_no = new javax.swing.JLabel();
         viewactivity = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         u_id = new javax.swing.JLabel();
@@ -212,10 +300,19 @@ public void displayHis() {
         viewHis = new javax.swing.JMenuItem();
         popUp_transfer = new javax.swing.JPopupMenu();
         viewTransfer = new javax.swing.JMenuItem();
+        exportData = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        excel = new javax.swing.JButton();
+        nameField = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        pdf = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        transferTbl = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -233,6 +330,7 @@ public void displayHis() {
         jLabel17 = new javax.swing.JLabel();
         color4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        export = new javax.swing.JButton();
 
         viewhis.setBackground(new java.awt.Color(255, 255, 255));
         viewhis.setMinimumSize(new java.awt.Dimension(420, 300));
@@ -243,51 +341,51 @@ public void displayHis() {
         jLabel31.setForeground(new java.awt.Color(0, 0, 102));
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setText("Id:");
-        viewhis.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 70, 20));
+        viewhis.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 70, 20));
 
         tid.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tid.setForeground(new java.awt.Color(0, 0, 102));
         tid.setText("sample");
-        viewhis.add(tid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        viewhis.add(tid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
 
         jLabel32.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 102));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("Amount:");
-        viewhis.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 110, -1));
+        viewhis.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 110, -1));
 
         amount.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         amount.setForeground(new java.awt.Color(0, 0, 102));
         amount.setText("sample");
-        viewhis.add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
+        viewhis.add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
 
         Description1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Description1.setForeground(new java.awt.Color(0, 0, 102));
         Description1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Description1.setText(" Action:");
-        viewhis.add(Description1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 100, -1));
+        viewhis.add(Description1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 100, -1));
 
         jLabel33.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 0, 102));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("Fullname:");
-        viewhis.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 120, -1));
+        viewhis.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 120, -1));
 
         fullname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         fullname.setForeground(new java.awt.Color(0, 0, 102));
         fullname.setText("sample");
-        viewhis.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+        viewhis.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
 
         jLabel34.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(0, 0, 102));
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("Date & Time:");
-        viewhis.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 140, -1));
+        viewhis.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 140, -1));
 
         date_time.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         date_time.setForeground(new java.awt.Color(0, 0, 102));
         date_time.setText("sample");
-        viewhis.add(date_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
+        viewhis.add(date_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
 
         jPanel8.setBackground(new java.awt.Color(0, 92, 229));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -342,15 +440,26 @@ public void displayHis() {
                 .addContainerGap())
         );
 
-        viewhis.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 370, 80));
+        viewhis.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 370, 80));
 
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("jLabel7");
         viewhis.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 420, 10));
 
+        jlabelrefno.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlabelrefno.setForeground(new java.awt.Color(0, 0, 102));
+        jlabelrefno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlabelrefno.setText("Reference Number:");
+        viewhis.add(jlabelrefno, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 190, -1));
+
+        ref_no.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        ref_no.setForeground(new java.awt.Color(0, 0, 102));
+        ref_no.setText("sample");
+        viewhis.add(ref_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, -1));
+
         viewactivity.setBackground(new java.awt.Color(255, 255, 255));
-        viewactivity.setMinimumSize(new java.awt.Dimension(420, 300));
-        viewactivity.setPreferredSize(new java.awt.Dimension(420, 350));
+        viewactivity.setMinimumSize(new java.awt.Dimension(550, 350));
+        viewactivity.setPreferredSize(new java.awt.Dimension(550, 350));
         viewactivity.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -410,7 +519,7 @@ public void displayHis() {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Details");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 0, 320, 45));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 0, 450, 45));
 
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/undo.png"))); // NOI18N
@@ -421,7 +530,7 @@ public void displayHis() {
         });
         jPanel4.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 40, 40));
 
-        viewactivity.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 502, -1));
+        viewactivity.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -437,7 +546,7 @@ public void displayHis() {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(des)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(448, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,7 +556,7 @@ public void displayHis() {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        viewactivity.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 370, 80));
+        viewactivity.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 510, 80));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("jLabel7");
@@ -557,6 +666,56 @@ public void displayHis() {
         });
         popUp_transfer.add(viewTransfer);
 
+        exportData.setBackground(new java.awt.Color(255, 255, 255));
+        exportData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        exportData.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 320, 10));
+
+        jPanel9.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel26.setBackground(new java.awt.Color(0, 92, 229));
+        jLabel26.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText(" System Users Data");
+        jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
+
+        exportData.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
+
+        excel.setBackground(new java.awt.Color(0, 51, 184));
+        excel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        excel.setForeground(new java.awt.Color(255, 255, 255));
+        excel.setText("EXCEL");
+        excel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excelActionPerformed(evt);
+            }
+        });
+        exportData.add(excel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 110, 30));
+        exportData.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 290, 30));
+
+        jLabel27.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText("Download reports as:");
+        exportData.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 290, 30));
+
+        jLabel36.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel36.setText("File name:");
+        exportData.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 20));
+
+        pdf.setBackground(new java.awt.Color(0, 51, 184));
+        pdf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        pdf.setForeground(new java.awt.Color(255, 255, 255));
+        pdf.setText(" PDF");
+        pdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pdfActionPerformed(evt);
+            }
+        });
+        exportData.add(pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 110, 30));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
@@ -568,7 +727,7 @@ public void displayHis() {
         jLabel9.setText("Tracker");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        transferTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -576,7 +735,7 @@ public void displayHis() {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(transferTbl);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, 220, 330));
 
@@ -588,7 +747,7 @@ public void displayHis() {
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Transaction History");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
 
         historyTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -654,7 +813,7 @@ public void displayHis() {
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house-chimney.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/house-chimney (1).png"))); // NOI18N
         jLabel15.setText(" DASHBOARD");
         color1.add(jLabel15);
         jLabel15.setBounds(0, 0, 180, 40);
@@ -702,7 +861,7 @@ public void displayHis() {
         jLabel17.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/assessment.png"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/assessment (1).png"))); // NOI18N
         jLabel17.setText(" TRACKER");
         color3.add(jLabel17);
         jLabel17.setBounds(0, 0, 160, 40);
@@ -734,6 +893,18 @@ public void displayHis() {
         jPanel6.add(color4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 40));
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
+
+        export.setBackground(new java.awt.Color(0, 51, 184));
+        export.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        export.setForeground(new java.awt.Color(255, 255, 255));
+        export.setText("EXPORT DATA");
+        export.setBorder(null);
+        export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportActionPerformed(evt);
+            }
+        });
+        jPanel1.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 140, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -795,7 +966,7 @@ public void displayHis() {
     }//GEN-LAST:event_color3MouseExited
 
     private void color4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color4MouseClicked
-        message m = new message();
+        report m = new report();
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color4MouseClicked
@@ -874,7 +1045,7 @@ public void displayHis() {
         dbconnector dbc = new dbconnector();
         String query = "SELECT tran.tran_id, CONCAT(u.u_fname, ' - ', u.u_fname) AS fullname, " +
                        "CONCAT(tran.tran_date, ' - ', tran.tran_time) AS timestamp, " +
-                       "tran.tran_amount, tran.tran_type, tran.tran_stats " +
+                       "tran.tran_amount, tran.tran_type, tran.tran_stats, tran.tran_refno " +
                        "FROM tbl_transaction tran " +
                        "JOIN tbl_u u ON tran.u_id = u.u_id " +                    
                        "WHERE tran.tran_id = '" + tranid + "'";
@@ -888,6 +1059,7 @@ public void displayHis() {
             amount.setText(rs.getString("tran_amount"));
             date_time.setText(rs.getString("timestamp"));
             type.setText(rs.getString("tran_type"));
+            ref_no.setText(rs.getString("tran_refno"));
             
             String c = rs.getString("tran_stats");
               if(c.equals("SUCCESS")){
@@ -941,11 +1113,101 @@ public void displayHis() {
 
     private void back1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back1MouseClicked
         tracker t = new tracker();
-        Window window = SwingUtilities.getWindowAncestor(viewactivity);
+        Window window = SwingUtilities.getWindowAncestor(viewhis);
         window.dispose();
         t.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_back1MouseClicked
+
+    private void excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelActionPerformed
+
+    }//GEN-LAST:event_excelActionPerformed
+
+    private String getUserFirstName(String userId) throws SQLException {
+    dbconnector dbc = new dbconnector();
+    ResultSet rs = dbc.getData("SELECT u_fname FROM tbl_u WHERE u_id = '" + userId + "'");
+    if (rs.next()) {
+        return rs.getString("u_fname");
+    } else {
+        return "N/A"; 
+    }
+}
+    
+    private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
+
+    if (nameField.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please name the PDF first to generate");
+        return;
+    }
+    String name = nameField.getText() + ".pdf";
+    String location = System.getProperty("user.home") + "/Documents/";
+
+    LocalDate currentDate = LocalDate.now();
+
+    try {
+        dbconnector dbc = new dbconnector();
+
+        
+        for (int i = 0; i < 3; i++) {
+            
+            LocalDate startDate = currentDate.plusDays(i * 7).with(DayOfWeek.MONDAY);
+            LocalDate endDate = startDate.plusDays(6);
+
+           
+            displayHis(startDate, endDate);
+            
+            
+            com.itextpdf.text.Document document = new com.itextpdf.text.Document(PageSize.A5.rotate());
+            PdfWriter.getInstance(document, new FileOutputStream(location + name.replace(".pdf", "_" + startDate.toString() + ".pdf")));
+            document.open();
+
+            PdfPTable pdfPTable = new PdfPTable(7);
+
+            
+            pdfPTable.addCell("ID");
+            pdfPTable.addCell("Name");
+            pdfPTable.addCell("Amount");
+            pdfPTable.addCell("Action");
+            pdfPTable.addCell("Date");
+            pdfPTable.addCell("Time");
+            pdfPTable.addCell("Status");
+
+
+            ResultSet rs = dbc.getData("SELECT * FROM tbl_transaction");
+
+            
+            while (rs.next()) {
+                pdfPTable.addCell(rs.getString("tran_id"));
+                pdfPTable.addCell(getUserFirstName(rs.getString("u_id"))); 
+                pdfPTable.addCell(rs.getString("tran_amount"));
+                pdfPTable.addCell(rs.getString("tran_type"));
+                pdfPTable.addCell(rs.getString("tran_date"));
+                pdfPTable.addCell(rs.getString("tran_time"));
+                pdfPTable.addCell(rs.getString("tran_stats"));
+            }
+
+            document.add(pdfPTable);
+            document.close();
+        }
+
+        Window window = SwingUtilities.getWindowAncestor(exportData);
+        window.dispose();
+        JOptionPane.showMessageDialog(null, "Successfully Generated");
+        nameField.setText("");
+    } catch (DocumentException | FileNotFoundException | SQLException e) {
+        System.err.println(e);
+    }
+    
+    }//GEN-LAST:event_pdfActionPerformed
+
+    private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
+
+        Object[] options = {};
+        JOptionPane.showOptionDialog(null, exportData, "",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, null);
+        
+    }//GEN-LAST:event_exportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1018,6 +1280,9 @@ public void displayHis() {
     private javax.swing.JLabel date_time;
     private javax.swing.JLabel des;
     private javax.swing.JLabel event;
+    private javax.swing.JButton excel;
+    private javax.swing.JButton export;
+    private javax.swing.JPanel exportData;
     private javax.swing.JLabel fullname;
     private javax.swing.JLabel fullname4;
     private javax.swing.JTable historyTbl;
@@ -1031,10 +1296,13 @@ public void displayHis() {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -1044,6 +1312,7 @@ public void displayHis() {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -1057,18 +1326,23 @@ public void displayHis() {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jlabelrefno;
     private javax.swing.JTable logsTbl;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JButton pdf;
     private javax.swing.JPopupMenu popUp_activity;
     private javax.swing.JPopupMenu popUp_history;
     private javax.swing.JPopupMenu popUp_transfer;
+    private javax.swing.JLabel ref_no;
     private javax.swing.JLabel stats2;
     private javax.swing.JLabel status;
     private javax.swing.JLabel tid;
     private javax.swing.JLabel time;
+    private javax.swing.JTable transferTbl;
     private javax.swing.JLabel type;
     private javax.swing.JLabel type2;
     private javax.swing.JLabel u_id;

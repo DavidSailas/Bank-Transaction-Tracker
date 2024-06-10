@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class dbconnector {
     
     public Connection connect;
-    private String newPassword;
+    private String newReferenceNumber;
     
     public dbconnector(){
     
@@ -77,22 +77,40 @@ public boolean deleteData(String sql) {
         return false;
     }
 }
-    public String generateRandomCode(int length) {
-    String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
-    SecureRandom random = new SecureRandom();
-    StringBuilder sb = new StringBuilder();
-    
-    for (int i = 0; i < length; i++) {
-        int randomIndex = random.nextInt(chars.length());
-        sb.append(chars.charAt(randomIndex));
+    // Function to generate reference number
+    public String generateReferenceNumber(int length) {
+        String chars = "0123456789";
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
         
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(chars.length());
+            sb.append(chars.charAt(randomIndex));
+        }
+        
+        newReferenceNumber = sb.toString();
+        return newReferenceNumber;
     }
-    
-    return sb.toString();
-    
-}
-     public String getNewPassword() {
-        return newPassword;
+
+    // Function to store reference number in the database
+    public boolean storeReferenceNumber(String tableName) {
+        String sql = "INSERT INTO " + tableName + " (reference_number) VALUES (?)";
+        try {
+            PreparedStatement pst = connect.prepareStatement(sql);
+            pst.setString(1, newReferenceNumber);
+            pst.executeUpdate();
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Reference Number Stored Successfully!");
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error occurred while storing the reference number: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    // Getter for new reference number
+    public String getNewReferenceNumber() {
+        return newReferenceNumber;
     }
 
 }

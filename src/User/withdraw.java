@@ -70,11 +70,17 @@ public class withdraw extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 102));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Amount to Deposit");
+        jLabel14.setText("Amount to Withdraw");
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Enter amount to deposit");
+
+        amount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amountActionPerformed(evt);
+            }
+        });
 
         confirmwithdraw.setBackground(new java.awt.Color(0, 51, 184));
         confirmwithdraw.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -156,7 +162,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("50");
+        jLabel2.setText("500");
 
         javax.swing.GroupLayout w50Layout = new javax.swing.GroupLayout(w50);
         w50.setLayout(w50Layout);
@@ -183,7 +189,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("100");
+        jLabel3.setText("800");
 
         javax.swing.GroupLayout w100Layout = new javax.swing.GroupLayout(w100);
         w100.setLayout(w100Layout);
@@ -210,7 +216,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("150");
+        jLabel4.setText("1000");
 
         javax.swing.GroupLayout w150Layout = new javax.swing.GroupLayout(w150);
         w150.setLayout(w150Layout);
@@ -237,7 +243,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("200");
+        jLabel6.setText("1500");
 
         javax.swing.GroupLayout w200Layout = new javax.swing.GroupLayout(w200);
         w200.setLayout(w200Layout);
@@ -264,7 +270,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("250");
+        jLabel7.setText("3000");
 
         javax.swing.GroupLayout w250Layout = new javax.swing.GroupLayout(w250);
         w250.setLayout(w250Layout);
@@ -291,7 +297,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("500");
+        jLabel8.setText("5000");
 
         javax.swing.GroupLayout w500Layout = new javax.swing.GroupLayout(w500);
         w500.setLayout(w500Layout);
@@ -318,7 +324,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("800");
+        jLabel9.setText("8000");
 
         javax.swing.GroupLayout w800Layout = new javax.swing.GroupLayout(w800);
         w800.setLayout(w800Layout);
@@ -345,7 +351,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("1000");
+        jLabel10.setText("10000");
 
         javax.swing.GroupLayout w1000Layout = new javax.swing.GroupLayout(w1000);
         w1000.setLayout(w1000Layout);
@@ -417,11 +423,12 @@ public class withdraw extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmwithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmwithdrawActionPerformed
-        withdraw w = new withdraw();
+
+        amountActionPerformed(evt);
+        
         Window window = SwingUtilities.getWindowAncestor(confirmwithdraw);
         window.dispose();
-        w.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_confirmwithdrawActionPerformed
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
@@ -431,35 +438,35 @@ public class withdraw extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void w50MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_w50MouseClicked
-        amountwithdraw.setText("₱50.00");
+        amountwithdraw.setText("₱500.00");
     }//GEN-LAST:event_w50MouseClicked
 
     private void w100MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_w100MouseClicked
-        amountwithdraw.setText("₱100.00");
+        amountwithdraw.setText("₱800.00");
     }//GEN-LAST:event_w100MouseClicked
 
     private void w150MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_w150MouseClicked
-        amountwithdraw.setText("₱150.00");
+        amountwithdraw.setText("₱1,000.00");
     }//GEN-LAST:event_w150MouseClicked
 
     private void w200MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_w200MouseClicked
-        amountwithdraw.setText("₱200.00");
+        amountwithdraw.setText("₱1,500.00");
     }//GEN-LAST:event_w200MouseClicked
 
     private void w250MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_w250MouseClicked
-        amountwithdraw.setText("₱250.00");
+        amountwithdraw.setText("₱3,000.00");
     }//GEN-LAST:event_w250MouseClicked
 
     private void w500MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_w500MouseClicked
-        amountwithdraw.setText("₱500.00");
+        amountwithdraw.setText("₱5,000.00");
     }//GEN-LAST:event_w500MouseClicked
 
     private void w800MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_w800MouseClicked
-        amountwithdraw.setText("₱800.00");
+        amountwithdraw.setText("₱8,000.00");
     }//GEN-LAST:event_w800MouseClicked
 
     private void w1000MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_w1000MouseClicked
-        amountwithdraw.setText("₱1000.00");
+        amountwithdraw.setText("₱10,000.00");
     }//GEN-LAST:event_w1000MouseClicked
 
     private void addcustomamountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addcustomamountMouseClicked
@@ -471,8 +478,16 @@ public class withdraw extends javax.swing.JFrame {
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
     
     String amountText = amountwithdraw.getText();
-    String amountStr = amountText.replace("₱", "").replace(".00", "").trim();
+    String amountStr = amountText.replace("₱", "").replace(",", "").replace(".00", "").trim();
     double amount = Double.parseDouble(amountStr);
+
+    double minWithdrawal = 500;
+    double maxWithdrawal = 50000;
+
+    if (amount < minWithdrawal || amount > maxWithdrawal) {
+        JOptionPane.showMessageDialog(null, "Withdrawal amount must be between ₱" + String.format("%,d", (int)minWithdrawal) + " and ₱" + String.format("%,d", (int)maxWithdrawal) + ".", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
     String transactionType = "WITHDRAWAL";
 
@@ -489,9 +504,11 @@ public class withdraw extends javax.swing.JFrame {
         if (rs.next()) {
             double currentBalance = rs.getDouble("u_bal");
             if (currentBalance < amount) {
-                // If the balance is insufficient, set transaction status to pending
-                String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats) " +
-                                   "VALUES (?, ?, ?, ?, ?, ?)";
+                
+                String referenceNumber = db.generateReferenceNumber(10);
+                
+                String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats, tran_refno, tran_name, tran_no) " +
+                                   "VALUES (?, ?, ?, ?, ?, ?, ?, '', '')";
 
                 PreparedStatement insertPst = db.connect.prepareStatement(insertSql);
                 insertPst.setInt(1, u_id);
@@ -500,11 +517,14 @@ public class withdraw extends javax.swing.JFrame {
                 insertPst.setDate(4, currentDate);
                 insertPst.setTime(5, currentTime);
                 insertPst.setString(6, "FAILED");
+                insertPst.setString(7, referenceNumber);
                 insertPst.executeUpdate();
                 insertPst.close();
 
                 JOptionPane.showMessageDialog(null, "Insufficient Balance, Transaction failed!", "Error", JOptionPane.ERROR_MESSAGE);
 
+                logEvent(u_id, "USER_WITHDRAWAL", "Withdrawal of ₱" + String.format("%,.2f", amount) + " failed.");
+                
                 return;
             }
             double newBalance = currentBalance - amount;
@@ -516,8 +536,10 @@ public class withdraw extends javax.swing.JFrame {
             updatePst.executeUpdate();
             updatePst.close();
 
-            String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats) " +
-                               "VALUES (?, ?, ?, ?, ?, ?)";
+            String referenceNumber = db.generateReferenceNumber(10);
+            
+            String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats, tran_refno, tran_name, tran_no) " +
+                               "VALUES (?, ?, ?, ?, ?, ?, ?, '', '')";
 
             PreparedStatement insertPst = db.connect.prepareStatement(insertSql);
             insertPst.setInt(1, u_id);
@@ -526,20 +548,24 @@ public class withdraw extends javax.swing.JFrame {
             insertPst.setDate(4, currentDate);
             insertPst.setTime(5, currentTime);
             insertPst.setString(6, "SUCCESS");
+            insertPst.setString(7, referenceNumber);
             insertPst.executeUpdate();
             insertPst.close();
 
             JOptionPane.showMessageDialog(null, "Withdrawal successful!");
+            
+            logEvent(u_id, "USER_WITHDRAWAL", "Withdrawal of ₱" + String.format("%,.2f", amount) + " successful.");
 
             receipt r = new receipt();
-            r.amount.setText("₱" + String.format("%.2f", amount));
-            r.total.setText("₱" + String.format("%.2f", amount));
+            r.amount.setText("₱" + String.format("%,.2f", amount));
+            r.total.setText("₱" + String.format("%,.2f", amount));
             r.typetran.setText(transactionType);
             r.tran_type.setText("You have successfully " + transactionType);
             SimpleDateFormat sdfDate = new SimpleDateFormat("MMMM dd, yyyy");
             SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss a");
             r.date.setText(sdfDate.format(currentDate));
             r.time.setText(sdfTime.format(currentTime));
+            r.refno.setText(referenceNumber);
             r.setVisible(true);
             this.dispose();
         } else {
@@ -551,6 +577,19 @@ public class withdraw extends javax.swing.JFrame {
     }
     
     }//GEN-LAST:event_withdrawActionPerformed
+
+    private void amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountActionPerformed
+            String customAmount = amount.getText().trim();
+    if (!customAmount.isEmpty()) {
+        try {
+            double amountValue = Double.parseDouble(customAmount);
+            String formattedAmount = String.format("₱%,.2f", amountValue);
+            amountwithdraw.setText(formattedAmount);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid amount.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_amountActionPerformed
 
     /**
      * @param args the command line arguments

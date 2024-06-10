@@ -1,7 +1,7 @@
 
 package Admin;
 
-import Admin.message;
+import Admin.report;
 import Admin.security;
 import Admin.tracker;
 import Admin.user;
@@ -874,7 +874,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_color3MouseExited
 
     private void color4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_color4MouseClicked
-        message m = new message();
+        report m = new report();
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_color4MouseClicked

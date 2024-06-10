@@ -101,7 +101,7 @@ public class loginform extends javax.swing.JFrame {
         return userId;
     }
   
-        public void logEvent(String userId, String event, String description) {
+            public void logEvent(String userId, String event, String description) {
    
         dbconnector dbc = new dbconnector();
         PreparedStatement pstmt = null;
@@ -124,6 +124,7 @@ public class loginform extends javax.swing.JFrame {
     }
     
  }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -329,16 +330,16 @@ public class loginform extends javax.swing.JFrame {
         String password = pH.hashPassword(u_pass.getText());
 
 
-        if(u_uname.getText().isEmpty() || u_pass.getText().isEmpty()){ // Use isEmpty() for consistency
+        if(u_uname.getText().isEmpty() || u_pass.getText().isEmpty()){ 
             if(u_uname.getText().isEmpty()){
                 nousn.setText("Field Required");
             }
-            if(u_pass.getText().isEmpty()){ // Use isEmpty() instead of equals("")
+            if(u_pass.getText().isEmpty()){ 
                 xps.setText("Field Required");
             }
         } else {
-            String username = u_uname.getText(); // assuming this is the username
-            String userId = getUserId(username); // Fetch the u_id from the database
+            String username = u_uname.getText(); 
+            String userId = getUserId(username); 
             String event;
             String description;
             

@@ -1,9 +1,7 @@
-
 package config;
 
-
 public class session {
-    
+
     private static session instance;
     private int uid;
     private String fname;
@@ -13,15 +11,12 @@ public class session {
     private String type;
     private String status;
     private String u_image;
-    private String contact;
-
     
-    private session(){
-        
-    }
+
+    private session() {}
 
     public static synchronized session getInstance() {
-        if(instance == null){
+        if (instance == null) {
             instance = new session();
         }
         return instance;
@@ -38,13 +33,7 @@ public class session {
     public void setUid(int uid) {
         this.uid = uid;
     }
-    public String getContact() {
-        return contact;
-    }
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
     public String getFname() {
         return fname;
     }
@@ -92,10 +81,12 @@ public class session {
     public void setStatus(String status) {
         this.status = status;
     }
+
     public String getImagePath() {
         return u_image;
     }
+
     public void setImagePath(String u_image) {
         this.u_image = u_image;
-    } 
+    }
 }

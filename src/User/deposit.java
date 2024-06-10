@@ -121,7 +121,6 @@ public class deposit extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(500, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 500));
@@ -163,7 +162,7 @@ public class deposit extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("50");
+        jLabel2.setText("500");
 
         javax.swing.GroupLayout d50Layout = new javax.swing.GroupLayout(d50);
         d50.setLayout(d50Layout);
@@ -190,7 +189,7 @@ public class deposit extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("100");
+        jLabel3.setText("800");
 
         javax.swing.GroupLayout d100Layout = new javax.swing.GroupLayout(d100);
         d100.setLayout(d100Layout);
@@ -217,7 +216,7 @@ public class deposit extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("150");
+        jLabel4.setText("1000");
 
         javax.swing.GroupLayout d150Layout = new javax.swing.GroupLayout(d150);
         d150.setLayout(d150Layout);
@@ -244,7 +243,7 @@ public class deposit extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("200");
+        jLabel6.setText("1500");
 
         javax.swing.GroupLayout d200Layout = new javax.swing.GroupLayout(d200);
         d200.setLayout(d200Layout);
@@ -271,7 +270,7 @@ public class deposit extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("250");
+        jLabel7.setText("3000");
 
         javax.swing.GroupLayout d250Layout = new javax.swing.GroupLayout(d250);
         d250.setLayout(d250Layout);
@@ -298,7 +297,7 @@ public class deposit extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("500");
+        jLabel8.setText("5000");
 
         javax.swing.GroupLayout d500Layout = new javax.swing.GroupLayout(d500);
         d500.setLayout(d500Layout);
@@ -325,7 +324,7 @@ public class deposit extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("800");
+        jLabel9.setText("8000");
 
         javax.swing.GroupLayout d800Layout = new javax.swing.GroupLayout(d800);
         d800.setLayout(d800Layout);
@@ -352,7 +351,7 @@ public class deposit extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("1000");
+        jLabel10.setText("10000");
 
         javax.swing.GroupLayout d1000Layout = new javax.swing.GroupLayout(d1000);
         d1000.setLayout(d1000Layout);
@@ -412,7 +411,7 @@ public class deposit extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,9 +450,9 @@ public class deposit extends javax.swing.JFrame {
 }
     
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
-
-    String amountText = amountdeposit.getText();
-    String amountStr = amountText.replace("₱", "").replace(".00", "").trim();
+           
+    String amountText = amountdeposit.getText().trim();
+    String amountStr = amountText.replace("₱", "").replace(",", "").replace(".00", "").trim();
     double amount = Double.parseDouble(amountStr);
 
     String transactionType = "DEPOSIT"; 
@@ -464,12 +463,11 @@ public class deposit extends javax.swing.JFrame {
     try {
         session sess = session.getInstance();
         int u_id = sess.getUid();
-
+ 
         dbconnector db = new dbconnector();              
-        ResultSet rs = db.getData("SELECT u_bal FROM tbl_u WHERE u_id = "+u_id);
+        ResultSet rs = db.getData("SELECT u_bal FROM tbl_u WHERE u_id = " + u_id);
         
         if (rs.next()) {
-            
             double currentBalance = rs.getDouble("u_bal");
             double newBalance = currentBalance + amount;
 
@@ -480,8 +478,10 @@ public class deposit extends javax.swing.JFrame {
             updatePst.executeUpdate();
             updatePst.close();
 
-            String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats) " +
-                               "VALUES (?, ?, ?, ?, ?, ?)";
+            String referenceNumber = db.generateReferenceNumber(10);
+            
+            String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats, tran_refno, tran_name, tran_no) " +
+                               "VALUES (?, ?, ?, ?, ?, ?, ?, '', '')";
 
             PreparedStatement insertPst = db.connect.prepareStatement(insertSql);
             insertPst.setInt(1, u_id);
@@ -490,20 +490,24 @@ public class deposit extends javax.swing.JFrame {
             insertPst.setDate(4, currentDate);
             insertPst.setTime(5, currentTime);
             insertPst.setString(6, "SUCCESS");
+            insertPst.setString(7, referenceNumber);
             insertPst.executeUpdate();
             insertPst.close();
 
             JOptionPane.showMessageDialog(null, "Deposit successful!");
 
+            logEvent(u_id, "USER_DEPOSIT", "Deposit of ₱" + String.format("%,.2f", amount) + " successful.");
+            
             receipt r = new receipt();
-            r.amount.setText("₱" + String.format("%.2f", amount));
-            r.total.setText("₱" + String.format("%.2f", amount));
+            r.amount.setText("₱" + String.format("%,.2f", amount));
+            r.total.setText("₱" + String.format("%,.2f", amount));
             r.typetran.setText(transactionType);
             r.tran_type.setText("You have successfully " + transactionType);
             SimpleDateFormat sdfDate = new SimpleDateFormat("MMMM dd, yyyy");
             SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss a");
             r.date.setText(sdfDate.format(currentDate));
-            r.time.setText(sdfTime.format(currentTime));           
+            r.time.setText(sdfTime.format(currentTime));
+            r.refno.setText(referenceNumber);
             r.setVisible(true);
             this.dispose();
         } else {
@@ -513,44 +517,51 @@ public class deposit extends javax.swing.JFrame {
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
     }
+    
     }//GEN-LAST:event_depositActionPerformed
 
     private void d50MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d50MouseClicked
-        amountdeposit.setText("₱50.00");
+        amountdeposit.setText("₱500.00");
     }//GEN-LAST:event_d50MouseClicked
 
     private void d100MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d100MouseClicked
-        amountdeposit.setText("₱100.00");
+        amountdeposit.setText("₱800.00");
     }//GEN-LAST:event_d100MouseClicked
 
     private void d150MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d150MouseClicked
-        amountdeposit.setText("₱150.00");
+        amountdeposit.setText("₱1,000.00");
     }//GEN-LAST:event_d150MouseClicked
 
     private void d200MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d200MouseClicked
-        amountdeposit.setText("₱200.00");
+        amountdeposit.setText("₱1,500.00");
     }//GEN-LAST:event_d200MouseClicked
 
     private void d250MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d250MouseClicked
-        amountdeposit.setText("₱250.00");
+        amountdeposit.setText("₱3,000.00");
     }//GEN-LAST:event_d250MouseClicked
 
     private void d500MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d500MouseClicked
-        amountdeposit.setText("₱500.00");
+        amountdeposit.setText("₱5,000.00");
     }//GEN-LAST:event_d500MouseClicked
 
     private void d800MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d800MouseClicked
-        amountdeposit.setText("₱800.00");
+        amountdeposit.setText("₱8,000.00");
     }//GEN-LAST:event_d800MouseClicked
 
     private void d1000MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d1000MouseClicked
-        amountdeposit.setText("₱1000.00");
+        amountdeposit.setText("₱10,000.00");
     }//GEN-LAST:event_d1000MouseClicked
 
     private void amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountActionPerformed
-    String customAmount = amount.getText();
+    String customAmount = amount.getText().trim();
     if (!customAmount.isEmpty()) {
-        amountdeposit.setText("₱" + customAmount + ".00");
+        try {
+            double amountValue = Double.parseDouble(customAmount);
+            String formattedAmount = String.format("₱%,.2f", amountValue);
+            amountdeposit.setText(formattedAmount);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid amount.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     }//GEN-LAST:event_amountActionPerformed
 

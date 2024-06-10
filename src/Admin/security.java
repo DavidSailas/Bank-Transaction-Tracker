@@ -2,7 +2,7 @@
 package Admin;
 
 import Admin.admin_dashboard;
-import Admin.message;
+import Admin.report;
 import Admin.tracker;
 import Admin.user;
 import btt.loginform;
@@ -46,7 +46,6 @@ public class security extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        fullname = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,11 +141,6 @@ public class security extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("Your security code must be at least 6 characters above.");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 320, -1));
-
-        fullname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        fullname.setForeground(new java.awt.Color(0, 0, 102));
-        fullname.setText("Fullname");
-        jPanel2.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 300, 30));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 102));
@@ -304,7 +298,6 @@ public class security extends javax.swing.JFrame {
     private javax.swing.JLabel a2;
     private javax.swing.JLabel back;
     private javax.swing.JPasswordField csc;
-    public javax.swing.JLabel fullname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;

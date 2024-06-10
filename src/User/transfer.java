@@ -6,10 +6,16 @@
 package User;
 
 import config.dbconnector;
+import config.session;
+import java.awt.Window;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -33,6 +39,20 @@ public class transfer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popup_transfer = new javax.swing.JPopupMenu();
+        transferpay = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        amount = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        accname = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        accno = new javax.swing.JTextField();
+        bankname = new javax.swing.JLabel();
+        transferbank = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -45,30 +65,117 @@ public class transfer extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        transferpay.setMinimumSize(new java.awt.Dimension(500, 500));
+        transferpay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel7.setMinimumSize(new java.awt.Dimension(500, 50));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/undo.png"))); // NOI18N
+        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel26MouseClicked(evt);
+            }
+        });
+        jPanel7.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 50));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Bank Transfer");
+        jPanel7.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 0, 380, 50));
+
+        transferpay.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("jLabel7");
+        transferpay.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel8.setText("Account Name");
+        transferpay.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 90, -1));
+        transferpay.add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 280, 30));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel9.setText("Enter Amount ( Max of PHP 50,000.00)");
+        transferpay.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+
+        accname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accnameActionPerformed(evt);
+            }
+        });
+        transferpay.add(accname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 280, 30));
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel10.setText("Account Number ( 12 Digits )");
+        transferpay.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+
+        accno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accnoActionPerformed(evt);
+            }
+        });
+        transferpay.add(accno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 280, 30));
+
+        bankname.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        bankname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bankname.setText("Bank Name");
+        transferpay.add(bankname, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 90, 500, -1));
+
+        transferbank.setBackground(new java.awt.Color(51, 153, 255));
+        transferbank.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        transferbank.setForeground(new java.awt.Color(255, 255, 255));
+        transferbank.setText("TRANSFER");
+        transferbank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferbankActionPerformed(evt);
+            }
+        });
+        transferpay.add(transferbank, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 430, 280, 40));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
-        setPreferredSize(new java.awt.Dimension(500, 500));
+        setUndecorated(true);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 500));
 
         jPanel2.setBackground(new java.awt.Color(0, 82, 158));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Metrobank-Logo.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 195, 80));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 195, 60));
 
         jPanel3.setBackground(new java.awt.Color(9, 53, 116));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/bdo-unibank-Logo.png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 195, 80));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 195, 60));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -126,10 +233,10 @@ public class transfer extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                 .addGap(37, 37, 37)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
@@ -147,6 +254,7 @@ public class transfer extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
@@ -154,6 +262,163 @@ public class transfer extends javax.swing.JFrame {
         uds.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel25MouseClicked
+
+    private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel26MouseClicked
+
+    private void accnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accnameActionPerformed
+
+    private void accnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accnoActionPerformed
+
+    private void transferbankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferbankActionPerformed
+          
+    String amountText = amount.getText();
+    String amountStr = amountText.replace("₱", "").replace(".00", "").trim();
+    double amount = Double.parseDouble(amountStr);
+
+    double minTransfer = 500;
+    double maxTransfer = 50000;
+
+    if (amount < minTransfer || amount > maxTransfer) {
+        JOptionPane.showMessageDialog(null, "Transfer amount must be between ₱" + String.format("%,d", (int)minTransfer) + " and ₱" + String.format("%,d", (int)maxTransfer) + ".", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    String recipientName = accname.getText().trim();
+    String recipientAccNo = accno.getText().trim();
+
+    if (recipientName.isEmpty() || recipientAccNo.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please fill in all recipient details.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+
+    if (recipientAccNo.length() > 12) {
+        JOptionPane.showMessageDialog(null, "Account number must not exceed 12 characters.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    String transactionType = "TRANSFER";
+    java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+    java.sql.Time currentTime = new java.sql.Time(System.currentTimeMillis());
+
+    try {
+        session sess = session.getInstance();
+        int u_id = sess.getUid();
+
+        dbconnector db = new dbconnector();
+        ResultSet rs = db.getData("SELECT u_bal FROM tbl_u WHERE u_id = " + u_id);
+
+        if (rs.next()) {
+            double currentBalance = rs.getDouble("u_bal");
+            if (currentBalance < amount) {
+                String referenceNumber = db.generateReferenceNumber(10);
+
+                String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats, tran_refno, tran_name, tran_no) " +
+                                   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                PreparedStatement insertPst = db.connect.prepareStatement(insertSql);
+                insertPst.setInt(1, u_id);
+                insertPst.setDouble(2, amount);
+                insertPst.setString(3, transactionType);
+                insertPst.setDate(4, currentDate);
+                insertPst.setTime(5, currentTime);
+                insertPst.setString(6, "FAILED");
+                insertPst.setString(7, referenceNumber);
+                insertPst.setString(8, recipientName);
+                insertPst.setString(9, recipientAccNo);
+                insertPst.executeUpdate();
+                insertPst.close();
+
+                JOptionPane.showMessageDialog(null, "Insufficient Balance, Transaction failed!", "Error", JOptionPane.ERROR_MESSAGE);
+
+                logEvent(u_id, "USER_TRANSFER", "Transfer of ₱" + String.format("%,.2f", amount) + " "
+                        + "to account " + recipientAccNo + 
+                        " failed.");
+                
+                return;
+            }
+            double newBalance = currentBalance - amount;
+
+            String updateSql = "UPDATE tbl_u SET u_bal = ? WHERE u_id = ?";
+            PreparedStatement updatePst = db.connect.prepareStatement(updateSql);
+            updatePst.setDouble(1, newBalance);
+            updatePst.setInt(2, u_id);
+            updatePst.executeUpdate();
+            updatePst.close();
+
+            String referenceNumber = db.generateReferenceNumber(10);
+
+            String insertSql = "INSERT INTO tbl_transaction (u_id, tran_amount, tran_type, tran_date, tran_time, tran_stats, tran_refno, tran_name, tran_no) " +
+                               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement insertPst = db.connect.prepareStatement(insertSql);
+            insertPst.setInt(1, u_id);
+            insertPst.setDouble(2, amount);
+            insertPst.setString(3, transactionType);
+            insertPst.setDate(4, currentDate);
+            insertPst.setTime(5, currentTime);
+            insertPst.setString(6, "SUCCESS");
+            insertPst.setString(7, referenceNumber);
+            insertPst.setString(8, recipientName);
+            insertPst.setString(9, recipientAccNo);
+            insertPst.executeUpdate();
+            insertPst.close();
+
+            JOptionPane.showMessageDialog(null, "Transfer successful!");
+
+            logEvent(u_id, "USER_TRANSFER", "Transfer of ₱" + String.format("%,.2f", amount) + " "
+                    + "to account " + recipientAccNo + 
+                    " successful.");
+
+            receipttransfer rt = new receipttransfer();
+            rt.accname.setText(recipientName);
+            rt.accno.setText(recipientAccNo);
+            rt.amount.setText("₱" + String.format("%,.2f", amount));
+            rt.total.setText("₱" + String.format("%,.2f", amount));
+            rt.typetran.setText(transactionType);
+            rt.tran_type.setText("You have successfully " + transactionType);
+            SimpleDateFormat sdfDate = new SimpleDateFormat("MMMM dd, yyyy");
+            SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss a");
+            rt.date.setText(sdfDate.format(currentDate));
+            rt.time.setText(sdfTime.format(currentTime));
+            rt.refno.setText(referenceNumber);
+            Window window = SwingUtilities.getWindowAncestor(transferpay);
+            window.dispose();
+            rt.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Unable to fetch user balance.");
+        }
+        rs.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+    }
+    
+    }//GEN-LAST:event_transferbankActionPerformed
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        JOptionPane.showOptionDialog(null, transferpay, "",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, new Object[]{}, null);
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        JOptionPane.showOptionDialog(null, transferpay, "",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, new Object[]{}, null);
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        JOptionPane.showOptionDialog(null, transferpay, "",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, new Object[]{}, null);
+    }//GEN-LAST:event_jPanel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -214,16 +479,30 @@ public class transfer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPopupMenu Popup_transfer;
+    private javax.swing.JTextField accname;
+    private javax.swing.JTextField accno;
+    private javax.swing.JTextField amount;
+    private javax.swing.JLabel bankname;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JButton transferbank;
+    private javax.swing.JPanel transferpay;
     // End of variables declaration//GEN-END:variables
 }
