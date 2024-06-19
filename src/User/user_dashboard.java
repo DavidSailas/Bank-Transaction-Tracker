@@ -116,6 +116,9 @@ private void displayWalletAmount() {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
+        ads = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         color1 = new javax.swing.JPanel();
@@ -146,7 +149,6 @@ private void displayWalletAmount() {
         jPanel7 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -250,6 +252,34 @@ private void displayWalletAmount() {
         jPanel4.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 40, 40));
 
         viewpanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 502, -1));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/_bb05cd29-3d0a-4419-9baa-ca2ef48f32b6 (1).jpg"))); // NOI18N
+
+        jButton1.setText("Learn More");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout adsLayout = new javax.swing.GroupLayout(ads);
+        ads.setLayout(adsLayout);
+        adsLayout.setHorizontalGroup(
+            adsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2)
+            .addGroup(adsLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jButton1))
+        );
+        adsLayout.setVerticalGroup(
+            adsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adsLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(30, 30, 30))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -578,10 +608,6 @@ private void displayWalletAmount() {
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 100, 80));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Coin logo.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 230, 230, 160));
-
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Credit card.png"))); // NOI18N
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 210, 170));
@@ -787,6 +813,10 @@ private void displayWalletAmount() {
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -848,6 +878,7 @@ private void displayWalletAmount() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel ads;
     private javax.swing.JLabel back;
     private javax.swing.JPanel color1;
     private javax.swing.JPanel color2;
@@ -858,6 +889,7 @@ private void displayWalletAmount() {
     public javax.swing.JLabel firstname;
     private javax.swing.JLabel fullname2;
     public javax.swing.JLabel image;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

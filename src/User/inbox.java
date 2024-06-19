@@ -94,8 +94,6 @@ public class inbox extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        textmessage = new javax.swing.JTextArea();
         Send = new javax.swing.JButton();
         close = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -132,27 +130,20 @@ public class inbox extends javax.swing.JFrame {
                 sendtoActionPerformed(evt);
             }
         });
-        reportPanel.add(sendto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 92, 480, 30));
+        reportPanel.add(sendto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 480, 30));
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel24.setText("____________________________________________________________________");
-        reportPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 480, 30));
+        reportPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 480, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel4.setText("To:");
-        reportPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, 20));
+        jLabel4.setText("other");
+        reportPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, 20));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         reportPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        textmessage.setColumns(20);
-        textmessage.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        textmessage.setRows(5);
-        jScrollPane2.setViewportView(textmessage);
-
-        reportPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 480, 300));
 
         Send.setBackground(new java.awt.Color(0, 51, 184));
         Send.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -494,6 +485,7 @@ public class inbox extends javax.swing.JFrame {
     }//GEN-LAST:event_SendActionPerformed
 
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
+        
         Object[] options = {};
         JOptionPane.showOptionDialog(null, requestPanel, "",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
@@ -501,10 +493,13 @@ public class inbox extends javax.swing.JFrame {
     }//GEN-LAST:event_RequestMouseClicked
 
     private void ReportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportsMouseClicked
-                Object[] options = {};
+  
+        Object[] options = {};
         JOptionPane.showOptionDialog(null, reportPanel, "",
-            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-            null, options, null);
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+        null, options, null); 
+        
+        
     }//GEN-LAST:event_ReportsMouseClicked
 
     /**
@@ -595,11 +590,9 @@ public class inbox extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu popUp;
     private javax.swing.JPanel reportPanel;
     private javax.swing.JPanel requestPanel;
     public javax.swing.JTextField sendto;
-    private javax.swing.JTextArea textmessage;
     // End of variables declaration//GEN-END:variables
 }
