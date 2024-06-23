@@ -1,8 +1,5 @@
 package User;
 
-
-
-
 import btt.loginform;
 import config.dbconnector;
 import config.session;
@@ -46,8 +43,7 @@ private void displayWalletAmount() {
 
             if (rs.next()) {
                 double balance = rs.getDouble("u_bal");
-
-                // Format the balance to show with commas and decimal points
+               
                 NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
                 formatter.setMinimumFractionDigits(2);
                 formatter.setMaximumFractionDigits(2);
@@ -116,9 +112,6 @@ private void displayWalletAmount() {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
-        ads = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         color1 = new javax.swing.JPanel();
@@ -150,8 +143,6 @@ private void displayWalletAmount() {
         jLabel10 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -161,6 +152,11 @@ private void displayWalletAmount() {
         jPanel11 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
 
         viewpanel.setBackground(new java.awt.Color(255, 255, 255));
         viewpanel.setMinimumSize(new java.awt.Dimension(500, 350));
@@ -258,34 +254,6 @@ private void displayWalletAmount() {
         jPanel4.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 40, 40));
 
         viewpanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 502, -1));
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/_bb05cd29-3d0a-4419-9baa-ca2ef48f32b6 (1).jpg"))); // NOI18N
-
-        jButton1.setText("Learn More");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout adsLayout = new javax.swing.GroupLayout(ads);
-        ads.setLayout(adsLayout);
-        adsLayout.setHorizontalGroup(
-            adsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2)
-            .addGroup(adsLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jButton1))
-        );
-        adsLayout.setVerticalGroup(
-            adsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adsLayout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(30, 30, 30))
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -618,16 +586,6 @@ private void displayWalletAmount() {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Credit card.png"))); // NOI18N
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 210, 170));
 
-        jLabel21.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel21.setText("\"Manage your finances effortlessly.");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, -1, -1));
-
-        jLabel22.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel22.setText("D.S. PIONEER PAY makes it simple.\"");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, -1, -1));
-
         jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -638,12 +596,12 @@ private void displayWalletAmount() {
         jLabel13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 51, 184));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("SEND MONEY");
+        jLabel13.setText("PIONEERSAVE");
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/paper-plane.png"))); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/piggy-bank.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -674,12 +632,12 @@ private void displayWalletAmount() {
         jLabel23.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 51, 184));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("SEND MONEY");
+        jLabel23.setText("PIOINEERCARD");
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/paper-plane.png"))); // NOI18N
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/credit-card-buyer.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -735,6 +693,30 @@ private void displayWalletAmount() {
         );
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 100, 80));
+
+        jPanel12.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Investment data-bro (1).png"))); // NOI18N
+        jPanel12.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 220, 190));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("\"Manage your finances effortlessly.");
+        jPanel12.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 20));
+
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("make it simple.\"");
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 20));
+
+        jLabel32.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("D.S. PIONEER PAY  ");
+        jPanel12.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 110, 20));
+
+        jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 380, 190));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -880,7 +862,9 @@ private void displayWalletAmount() {
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
-        // TODO add your handling code here:
+        save s = new save();
+        s.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jPanel9MouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
@@ -891,16 +875,16 @@ private void displayWalletAmount() {
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
-        // TODO add your handling code here:
+        card c = new card();
+        c.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jPanel10MouseClicked
 
     private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
-        // TODO add your handling code here:
+        send s = new send();
+        s.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jPanel11MouseClicked
 
     /**
@@ -964,7 +948,6 @@ private void displayWalletAmount() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JPanel ads;
     private javax.swing.JLabel back;
     private javax.swing.JPanel color1;
     private javax.swing.JPanel color2;
@@ -975,7 +958,6 @@ private void displayWalletAmount() {
     public javax.swing.JLabel firstname;
     private javax.swing.JLabel fullname2;
     public javax.swing.JLabel image;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -987,7 +969,6 @@ private void displayWalletAmount() {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1000,6 +981,8 @@ private void displayWalletAmount() {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1009,6 +992,7 @@ private void displayWalletAmount() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

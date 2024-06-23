@@ -362,9 +362,6 @@ public class loginform extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Log in successfully.");
                         user_dashboard uds = new user_dashboard();
                         uds.setVisible(true);    
-                        JOptionPane.showOptionDialog(null, uds.ads, "",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                        null, new Object[]{}, null);
                         this.dispose();
                         event = "LOGIN_SUCCESS";
                         description = "User logged in successfully";

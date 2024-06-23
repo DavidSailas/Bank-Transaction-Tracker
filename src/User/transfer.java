@@ -40,7 +40,7 @@ public class transfer extends javax.swing.JFrame {
     private void initComponents() {
 
         Popup_transfer = new javax.swing.JPopupMenu();
-        transferpay = new javax.swing.JPanel();
+        transferBDO = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -51,8 +51,45 @@ public class transfer extends javax.swing.JFrame {
         accname = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         accno = new javax.swing.JTextField();
-        bankname = new javax.swing.JLabel();
         transferbank = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        transferUBank = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        amount1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        accname1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        accno1 = new javax.swing.JTextField();
+        transferbank1 = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        transferMBank = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        amount2 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        accname2 = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        accno2 = new javax.swing.JTextField();
+        transferbank2 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        transferGcash = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,9 +101,14 @@ public class transfer extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
 
-        transferpay.setMinimumSize(new java.awt.Dimension(500, 500));
-        transferpay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        transferBDO.setMinimumSize(new java.awt.Dimension(500, 500));
+        transferBDO.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(0, 92, 229));
         jPanel7.setMinimumSize(new java.awt.Dimension(500, 50));
@@ -87,43 +129,38 @@ public class transfer extends javax.swing.JFrame {
         jLabel6.setText("Bank Transfer");
         jPanel7.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 0, 380, 50));
 
-        transferpay.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+        transferBDO.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("jLabel7");
-        transferpay.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
+        transferBDO.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel8.setText("Account Name");
-        transferpay.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 90, -1));
-        transferpay.add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 280, 30));
+        transferBDO.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 90, -1));
+        transferBDO.add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 280, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel9.setText("Enter Amount ( Max of PHP 50,000.00)");
-        transferpay.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+        transferBDO.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
 
         accname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accnameActionPerformed(evt);
             }
         });
-        transferpay.add(accname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 280, 30));
+        transferBDO.add(accname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 280, 30));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel10.setText("Account Number ( 12 Digits )");
-        transferpay.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        transferBDO.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
         accno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accnoActionPerformed(evt);
             }
         });
-        transferpay.add(accno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 280, 30));
-
-        bankname.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        bankname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bankname.setText("Bank Name");
-        transferpay.add(bankname, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 90, 500, -1));
+        transferBDO.add(accno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 280, 30));
 
         transferbank.setBackground(new java.awt.Color(51, 153, 255));
         transferbank.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -134,7 +171,230 @@ public class transfer extends javax.swing.JFrame {
                 transferbankActionPerformed(evt);
             }
         });
-        transferpay.add(transferbank, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 430, 280, 40));
+        transferBDO.add(transferbank, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 430, 230, 40));
+
+        jPanel6.setBackground(new java.awt.Color(9, 53, 116));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+        });
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/bdo-unibank-Logo.png"))); // NOI18N
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 195, 60));
+
+        transferBDO.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, 80));
+
+        transferUBank.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel8.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel8.setMinimumSize(new java.awt.Dimension(500, 50));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/undo.png"))); // NOI18N
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
+        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 50));
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Bank Transfer");
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 0, 380, 50));
+
+        transferUBank.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("jLabel7");
+        transferUBank.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
+
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel14.setText("Account Name");
+        transferUBank.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 90, -1));
+        transferUBank.add(amount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 280, 30));
+
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel15.setText("Enter Amount ( Max of PHP 50,000.00)");
+        transferUBank.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+
+        accname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accname1ActionPerformed(evt);
+            }
+        });
+        transferUBank.add(accname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 280, 30));
+
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel16.setText("Account Number ( 12 Digits )");
+        transferUBank.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+
+        accno1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accno1ActionPerformed(evt);
+            }
+        });
+        transferUBank.add(accno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 280, 30));
+
+        transferbank1.setBackground(new java.awt.Color(51, 153, 255));
+        transferbank1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        transferbank1.setForeground(new java.awt.Color(255, 255, 255));
+        transferbank1.setText("TRANSFER");
+        transferbank1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferbank1ActionPerformed(evt);
+            }
+        });
+        transferUBank.add(transferbank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 430, 230, 40));
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel10MouseClicked(evt);
+            }
+        });
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/unionbank-Logo.png"))); // NOI18N
+        jPanel10.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 195, 80));
+
+        transferUBank.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, 80));
+
+        transferMBank.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel11.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel11.setMinimumSize(new java.awt.Dimension(500, 50));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/undo.png"))); // NOI18N
+        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel28MouseClicked(evt);
+            }
+        });
+        jPanel11.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 50));
+
+        jLabel19.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Bank Transfer");
+        jPanel11.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 0, 380, 50));
+
+        transferMBank.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("jLabel7");
+        transferMBank.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel21.setText("Account Name");
+        transferMBank.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 90, -1));
+        transferMBank.add(amount2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 280, 30));
+
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel22.setText("Enter Amount ( Max of PHP 50,000.00)");
+        transferMBank.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+
+        accname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accname2ActionPerformed(evt);
+            }
+        });
+        transferMBank.add(accname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 280, 30));
+
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel23.setText("Account Number ( 12 Digits )");
+        transferMBank.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+
+        accno2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accno2ActionPerformed(evt);
+            }
+        });
+        transferMBank.add(accno2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 280, 30));
+
+        transferbank2.setBackground(new java.awt.Color(51, 153, 255));
+        transferbank2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        transferbank2.setForeground(new java.awt.Color(255, 255, 255));
+        transferbank2.setText("TRANSFER");
+        transferbank2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferbank2ActionPerformed(evt);
+            }
+        });
+        transferMBank.add(transferbank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 430, 230, 40));
+
+        jPanel9.setBackground(new java.awt.Color(0, 82, 158));
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel9MouseClicked(evt);
+            }
+        });
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Metrobank-Logo.png"))); // NOI18N
+        jPanel9.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 195, 60));
+
+        transferMBank.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, 80));
+
+        transferGcash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel12.setBackground(new java.awt.Color(0, 92, 229));
+        jPanel12.setMinimumSize(new java.awt.Dimension(500, 50));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/undo.png"))); // NOI18N
+        jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel29MouseClicked(evt);
+            }
+        });
+        jPanel12.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 50));
+
+        jLabel30.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("Bank Transfer");
+        jPanel12.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 0, 380, 50));
+
+        transferGcash.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("jLabel7");
+        transferGcash.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
+
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Gcash.png"))); // NOI18N
+        jLabel35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel35MouseClicked(evt);
+            }
+        });
+        transferGcash.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 470, -1));
+
+        jLabel36.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 51, 184));
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("COME BACK SOON");
+        transferGcash.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 490, -1));
+
+        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("UNDER MAINTENANCE");
+        transferGcash.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 270, 490, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -142,6 +402,7 @@ public class transfer extends javax.swing.JFrame {
 
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 500));
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 500));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 82, 158));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -156,6 +417,8 @@ public class transfer extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Metrobank-Logo.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 195, 60));
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 256, -1, 80));
+
         jPanel3.setBackground(new java.awt.Color(9, 53, 116));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -169,6 +432,8 @@ public class transfer extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/bdo-unibank-Logo.png"))); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 195, 60));
 
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 256, -1, 80));
+
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -181,6 +446,8 @@ public class transfer extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/unionbank-Logo.png"))); // NOI18N
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 195, 80));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 369, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(0, 92, 229));
         jPanel4.setMinimumSize(new java.awt.Dimension(500, 50));
@@ -201,46 +468,44 @@ public class transfer extends javax.swing.JFrame {
         jLabel5.setText("Bank Transfer");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 0, 380, 50));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 49));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Partner Banks");
+        jLabel3.setText("Easily transfer funds now!");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 260, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-                .addGap(37, 37, 37)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-        );
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Gcash.png"))); // NOI18N
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 354, 100, -1));
+
+        jLabel32.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("Partner Banks");
+        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 197, 176, 30));
+
+        jLabel33.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("partner banks for safekeeping.");
+        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 260, 20));
+
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setText("jLabel34");
+        jPanel1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 486, 500, -1));
+
+        jLabel38.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText("You can easily transfer your funds to our secure");
+        jPanel1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 500, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -388,7 +653,7 @@ public class transfer extends javax.swing.JFrame {
             rt.date.setText(sdfDate.format(currentDate));
             rt.time.setText(sdfTime.format(currentTime));
             rt.refno.setText(referenceNumber);
-            Window window = SwingUtilities.getWindowAncestor(transferpay);
+            Window window = SwingUtilities.getWindowAncestor(transferBDO);
             window.dispose();
             rt.setVisible(true);
             this.dispose();
@@ -403,22 +668,80 @@ public class transfer extends javax.swing.JFrame {
     }//GEN-LAST:event_transferbankActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        JOptionPane.showOptionDialog(null, transferpay, "",
+        JOptionPane.showOptionDialog(null, transferBDO, "",
         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, new Object[]{}, null);
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        JOptionPane.showOptionDialog(null, transferpay, "",
+        JOptionPane.showOptionDialog(null, transferMBank, "",
         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, new Object[]{}, null);
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        JOptionPane.showOptionDialog(null, transferpay, "",
+        JOptionPane.showOptionDialog(null, transferUBank, "",
         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, new Object[]{}, null);
     }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void accname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accname1ActionPerformed
+
+    private void accno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accno1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accno1ActionPerformed
+
+    private void transferbank1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferbank1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transferbank1ActionPerformed
+
+    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel10MouseClicked
+
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel28MouseClicked
+
+    private void accname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accname2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accname2ActionPerformed
+
+    private void accno2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accno2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accno2ActionPerformed
+
+    private void transferbank2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferbank2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transferbank2ActionPerformed
+
+    private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
+
+    }//GEN-LAST:event_jPanel9MouseClicked
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        JOptionPane.showOptionDialog(null, transferGcash, "",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, new Object[]{}, null);        
+    }//GEN-LAST:event_jLabel24MouseClicked
+
+    private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel29MouseClicked
+
+    private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel35MouseClicked
 
     /**
      * @param args the command line arguments
@@ -481,15 +804,46 @@ public class transfer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu Popup_transfer;
     private javax.swing.JTextField accname;
+    private javax.swing.JTextField accname1;
+    private javax.swing.JTextField accname2;
     private javax.swing.JTextField accno;
+    private javax.swing.JTextField accno1;
+    private javax.swing.JTextField accno2;
     private javax.swing.JTextField amount;
-    private javax.swing.JLabel bankname;
+    private javax.swing.JTextField amount1;
+    private javax.swing.JTextField amount2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -497,12 +851,23 @@ public class transfer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel transferBDO;
+    private javax.swing.JPanel transferGcash;
+    private javax.swing.JPanel transferMBank;
+    private javax.swing.JPanel transferUBank;
     private javax.swing.JButton transferbank;
-    private javax.swing.JPanel transferpay;
+    private javax.swing.JButton transferbank1;
+    private javax.swing.JButton transferbank2;
     // End of variables declaration//GEN-END:variables
 }

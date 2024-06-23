@@ -100,20 +100,6 @@ public void displayReports() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MessagePanel = new javax.swing.JPanel();
-        from = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        textmessage = new javax.swing.JTextArea();
-        Send = new javax.swing.JButton();
-        close = new javax.swing.JLabel();
-        u_id = new javax.swing.JLabel();
-        type = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        sendto = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
         popUp = new javax.swing.JPopupMenu();
         View = new javax.swing.JMenuItem();
         ViewPanel = new javax.swing.JPanel();
@@ -131,86 +117,6 @@ public void displayReports() {
         jLabel18 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         reportsTbl = new javax.swing.JTable();
-        message = new javax.swing.JLabel();
-
-        MessagePanel.setBackground(new java.awt.Color(255, 255, 255));
-        MessagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        from.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        from.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        from.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromActionPerformed(evt);
-            }
-        });
-        MessagePanel.add(from, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 92, 470, 30));
-
-        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel24.setText("___________________________________________________________________");
-        MessagePanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 470, 30));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel4.setText("From:");
-        MessagePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, 20));
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("Message");
-        MessagePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        textmessage.setColumns(20);
-        textmessage.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        textmessage.setRows(5);
-        jScrollPane2.setViewportView(textmessage);
-
-        MessagePanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 480, 240));
-
-        Send.setBackground(new java.awt.Color(0, 51, 184));
-        Send.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Send.setForeground(new java.awt.Color(255, 255, 255));
-        Send.setText("SEND");
-        Send.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SendActionPerformed(evt);
-            }
-        });
-        MessagePanel.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 100, 30));
-
-        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin_icon/cross-small.png"))); // NOI18N
-        close.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeMouseClicked(evt);
-            }
-        });
-        MessagePanel.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 19, -1, -1));
-
-        u_id.setForeground(new java.awt.Color(255, 255, 255));
-        u_id.setText("jLabel3");
-        MessagePanel.add(u_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 500, 10));
-
-        type.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        type.setForeground(new java.awt.Color(0, 0, 102));
-        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Report", "Message", "Request" }));
-        MessagePanel.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 100, 30));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel5.setText("To:");
-        MessagePanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 20));
-
-        sendto.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        sendto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        sendto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendtoActionPerformed(evt);
-            }
-        });
-        MessagePanel.add(sendto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 470, 30));
-
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel25.setText("___________________________________________________________________");
-        MessagePanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 470, 30));
 
         View.setText("View");
         popUp.add(View);
@@ -360,17 +266,6 @@ public void displayReports() {
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 61, 771, 368));
 
-        message.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        message.setForeground(new java.awt.Color(0, 51, 184));
-        message.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/comment-alt-dots.png"))); // NOI18N
-        message.setText("Message");
-        message.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                messageMouseClicked(evt);
-            }
-        });
-        jPanel3.add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -442,28 +337,11 @@ public void displayReports() {
         color4.setBackground(hovercolor);
     }//GEN-LAST:event_color4MouseExited
 
-    private void messageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messageMouseClicked
-        Object[] options = {};
-        JOptionPane.showOptionDialog(null, MessagePanel, "",
-        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-        null, options, null);
-    }//GEN-LAST:event_messageMouseClicked
-
     private void reportsTblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsTblMousePressed
         if (SwingUtilities.isRightMouseButton(evt)) {
         popUp.show(reportsTbl, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_reportsTblMousePressed
-
-    private void fromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromActionPerformed
-        
-    }//GEN-LAST:event_fromActionPerformed
-
-    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        report r = new report();
-        r.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_closeMouseClicked
 
     private int getUserIdByEmail(String email) throws SQLException {
     dbconnector dbc = new dbconnector();
@@ -478,55 +356,6 @@ public void displayReports() {
     }
 }
     
-    private void SendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendActionPerformed
-                
-        String sender = from.getText(); // From
-    String recipient = sendto.getText(); // To
-    String messageType = type.getSelectedItem().toString(); // Type
-    String messageContent = textmessage.getText(); // Message
-
-    // Check if any field is empty
-    if (sender.isEmpty() || recipient.isEmpty() || messageType.isEmpty() || messageContent.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Please fill all fields.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // Insert the message into the database
-    try {
-        dbconnector dbc = new dbconnector();
-        String query = "INSERT INTO tbl_communication (u_id, c_type, c_status, c_content, c_date_time, c_from, c_to) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement statement = dbc.connect.prepareStatement(query);
-        // Assuming you have a method to retrieve the user ID based on the sender's email
-        int userId = getUserIdByEmail(sender); // Implement this method according to your database structure
-        statement.setInt(1, userId);
-        statement.setString(2, messageType);
-        statement.setString(3, "unread"); // Assuming the default status is "unread"
-        statement.setString(4, messageContent);
-        statement.setTimestamp(5, new Timestamp(System.currentTimeMillis())); // Current timestamp
-        statement.setString(6, sender);
-        statement.setString(7, recipient);
-        statement.executeUpdate();
-        
-        JOptionPane.showMessageDialog(null, "Message sent successfully!");
-        
-        // Optionally, you can clear the fields after sending the message
-        from.setText("");
-        sendto.setText("");
-        type.setSelectedIndex(0);
-        textmessage.setText("");
-        
-        // Update the displayed reports
-        displayReports();
-    } catch (SQLException ex) {
-        System.out.println("Error: " + ex.getMessage());
-    }
-
-    }//GEN-LAST:event_SendActionPerformed
-
-    private void sendtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendtoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sendtoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -587,37 +416,22 @@ public void displayReports() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel MessagePanel;
-    private javax.swing.JButton Send;
     private javax.swing.JMenuItem View;
     private javax.swing.JPanel ViewPanel;
-    private javax.swing.JLabel close;
     private javax.swing.JPanel color1;
     private javax.swing.JPanel color2;
     private javax.swing.JPanel color3;
     private javax.swing.JPanel color4;
-    public javax.swing.JTextField from;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel message;
     private javax.swing.JPopupMenu popUp;
     private javax.swing.JTable reportsTbl;
-    public javax.swing.JTextField sendto;
-    private javax.swing.JTextArea textmessage;
-    public javax.swing.JComboBox<String> type;
-    private javax.swing.JLabel u_id;
     // End of variables declaration//GEN-END:variables
 }
